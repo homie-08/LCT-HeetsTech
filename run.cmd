@@ -25,12 +25,19 @@ if not exist ".env" (
 )
 
 echo [3/4] Фронтенд
-if not exist "frontend\node_modules" call npm install --prefix frontend || goto :fail
-call npm run build --prefix frontend || goto :fail
+rem npm читает package.json из текущего каталога, а не из --prefix, поэтому
+rem заходим в папку фронтенда, а не передаём её флагом.
+pushd frontend
+if not exist "node_modules" call npm install || goto :failpop
+call npm run build || goto :failpop
+popd
 
 echo [4/4] Сервер: http://127.0.0.1:%PORT%/  (Ctrl+C - остановить)
 "%PYTHON%" -m uvicorn sd.api:app --host 127.0.0.1 --port %PORT%
 goto :eof
+
+:failpop
+popd
 
 :fail
 echo.

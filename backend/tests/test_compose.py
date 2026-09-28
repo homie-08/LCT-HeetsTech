@@ -246,3 +246,40 @@ def test_icon_above_an_empty_card_column_is_removed():
 
     assert holder.gone == [icons[2]._element]
     assert notes == ["слайд 4: иконка пустой карточки убрана (1 фигур)"]
+
+
+def test_paragraph_keeps_one_properties_element():
+    """Два `a:pPr` в абзаце — файл, который PowerPoint не открывает.
+
+    Шаблоны, собранные чужим экспортом, такое содержат; мы копируем абзац как
+    образец, и ошибка расходилась по всей колоде. Регресс: после подстановки
+    текста свойства абзаца ровно одни и стоят первыми.
+    """
+    from lxml import etree
+    from pptx.oxml.ns import qn
+
+    from sd.ooxml.text import set_text
+
+    body = etree.fromstring(
+        '<p:txBody xmlns:p="http://schemas.openxmlformats.org/presentationml/2006/main"'
+        ' xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main">'
+        '<a:bodyPr/><a:lstStyle/>'
+        '<a:p>'
+        '<a:pPr algn="l"><a:lnSpc><a:spcPct val="79167"/></a:lnSpc></a:pPr>'
+        '<a:pPr algn="l"><a:lnSpc><a:spcPct val="79167"/></a:lnSpc></a:pPr>'
+        '<a:r><a:rPr lang="ru-RU" sz="1800"/><a:t>Образец</a:t></a:r>'
+        '</a:p></p:txBody>')
+
+    set_text(body, ["Первая строка", "Вторая строка"])
+
+    paragraphs = body.findall(qn("a:p"))
+    assert len(paragraphs) == 2
+    for paragraph in paragraphs:
+        properties = paragraph.findall(qn("a:pPr"))
+        assert len(properties) == 1, "свойства абзаца должны остаться одни"
+        assert paragraph[0] is properties[0], "и стоять первыми"
+        # Оформление образца при этом сохраняется.
+        assert properties[0].get("algn") == "l"
+        assert properties[0].find(qn("a:lnSpc")) is not None
+    texts = [paragraph.find(".//" + qn("a:t")).text for paragraph in paragraphs]
+    assert texts == ["Первая строка", "Вторая строка"]

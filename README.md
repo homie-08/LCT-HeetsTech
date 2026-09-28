@@ -16,7 +16,8 @@
 [`MODELS.md`](MODELS.md), [`AUDIT.md`](AUDIT.md), [`docs/10-api.md`](docs/10-api.md);
 презентация — [`materials/pitch-heets-tech.pdf`](materials/pitch-heets-tech.pdf);
 демонстрация работы — [`materials/demo-6m37.mp4`](materials/demo-6m37.mp4);
-запуск стенда — [`run.cmd`](run.cmd) или [`run.sh`](run.sh), ниже в «Быстром старте».
+запуск стенда — [`run.cmd`](run.cmd) или [`run.sh`](run.sh), подробно —
+[`docs/11-install.md`](docs/11-install.md).
 
 ## Статус
 
@@ -24,12 +25,13 @@
 текста получаются три варианта колоды с аудитом по чек-листу ТЗ и экспортом
 в `.pptx` / `.pdf` / `.html`. На трёх шаблонах организаторов таблицы и
 графики — нативные объекты, шрифты и палитра 100 % из шаблона. Бэкенд —
-628 тестов, интерфейс — 37.
+629 тестов, интерфейс — 37.
 
 Документы по ТЗ: [`ARCHITECTURE.md`](ARCHITECTURE.md) · [`MODELS.md`](MODELS.md) ·
 [`AUDIT.md`](AUDIT.md) · [`docs/07-variants.md`](docs/07-variants.md) ·
 [`docs/08-video.md`](docs/08-video.md) · [`docs/09-pitch.md`](docs/09-pitch.md) ·
-[`docs/10-api.md`](docs/10-api.md) · промпты и конфиги агентов —
+[`docs/10-api.md`](docs/10-api.md) · [`docs/11-install.md`](docs/11-install.md) ·
+промпты и конфиги агентов —
 [`backend/prompts/`](backend/prompts/README.md).
 
 - [x] Разбор задачи, критерии, риски — [`docs/01-task-analysis.md`](docs/01-task-analysis.md)
@@ -92,8 +94,9 @@ VK Education — на них идёт основная проверка
 run.cmd
 ```
 
-На macOS/Linux — `./run.sh`. Дальше — то же по шагам, если нужен только
-бэкенд или CLI.
+На macOS/Linux — `./run.sh`. Что нужно заранее, сколько это занимает и что
+делать, если шаг упал, — [`docs/11-install.md`](docs/11-install.md). Дальше —
+то же по шагам, если нужен только бэкенд или CLI.
 
 Окружение (один раз):
 

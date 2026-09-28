@@ -24,8 +24,9 @@ if [ ! -f .env ]; then
 fi
 
 echo "[3/4] Фронтенд"
-[ -d frontend/node_modules ] || npm install --prefix frontend
-npm run build --prefix frontend
+# npm читает package.json из текущего каталога, а не из --prefix.
+[ -d frontend/node_modules ] || (cd frontend && npm install)
+(cd frontend && npm run build)
 
 echo "[4/4] Сервер: http://127.0.0.1:${PORT}/  (Ctrl+C — остановить)"
 exec "$PYTHON" -m uvicorn sd.api:app --host 127.0.0.1 --port "$PORT"

@@ -61,6 +61,7 @@ def set_text(tx_body: etree._Element, lines: list[str],
         for child in list(blank):
             if child.tag in (qn("a:r"), qn("a:fld"), qn("a:br"), qn("a:endParaRPr")):
                 blank.remove(child)
+        _single_paragraph_properties(blank)
     else:
         blank = etree.Element(qn("a:p"))
 
@@ -72,6 +73,23 @@ def set_text(tx_body: etree._Element, lines: list[str],
         size = first_size_pt if index == 0 and first_size_pt else size_pt
         paragraph.append(_make_run(template_run, line, size))
         tx_body.append(paragraph)
+
+
+def _single_paragraph_properties(paragraph: etree._Element) -> None:
+    """Оставляет в абзаце один `a:pPr` и ставит его первым.
+
+    Схема допускает ровно одни свойства абзаца, и только в начале. Шаблоны,
+    собранные чужим экспортом, иногда содержат их дважды; мы копируем абзац
+    как образец и размножаем ошибку дальше. python-pptx такое сохраняет
+    молча, а PowerPoint отказывается открывать файл целиком — «PowerPoint
+    could not open the file», без указания места.
+    """
+    properties = paragraph.findall(qn("a:pPr"))
+    for extra in properties[1:]:
+        paragraph.remove(extra)
+    if properties:
+        paragraph.remove(properties[0])
+        paragraph.insert(0, properties[0])
 
 
 def read_text(tx_body: etree._Element | None) -> str:

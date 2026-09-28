@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;700&family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <style>body{margin:0;background:#dedad2} a{color:#ff5a1f} a:hover{color:#c23f10}</style>
+</helmet>
+<x-import component-from-global-scope="deck-stage" from="./deck-stage.js" width="1920" height="1080" hint-size="100%,100%">
+  <section data-label="Обложка" style="background:#f5f2ec; font-family:'PT Sans',sans-serif; color:#1c1c1c; display:flex; flex-direction:column; justify-content:space-between; padding:80px 100px;">
+    <div style="display:flex; justify-content:space-between; align-items:center; font-size:26px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase;"><span>Архитектурное бюро</span><span style="color:#ff5a1f;">Портфолио · 2026</span></div>
+    <div>
+      <h1 style="font-family:Spectral,serif; font-size:200px; margin:0; font-weight:500; line-height:0.95; letter-spacing:-0.02em;">Масштаб</h1>
+      <p style="font-size:32px; margin:48px 0 0; max-width:900px; line-height:1.5; color:#5b5750;">Жильё, общественные пространства и реконструкция промышленных территорий</p>
+    </div>
+    <div style="display:flex; align-items:center; gap:24px;"><span style="width:120px; height:8px; background:#ff5a1f;"></span><span style="width:8px; height:8px; border-radius:50%; background:#1c1c1c;"></span><span style="flex:1; height:1px; background:#1c1c1c;"></span><span style="font-size:26px; font-weight:700;">12 проектов · 3 города</span></div>
+  </section>
+  <section data-label="Содержание" style="background:#f5f2ec; font-family:'PT Sans',sans-serif; color:#1c1c1c; display:flex; flex-direction:column; padding:90px 100px;">
+    <h2 style="font-family:Spectral,serif; font-size:84px; margin:0 0 70px; font-weight:500;">Содержание</h2>
+    <div style="display:flex; flex-direction:column; border-top:2px solid #1c1c1c;">
+      <div style="display:grid; grid-template-columns:120px 1fr 400px; align-items:center; padding:36px 0; border-bottom:1px solid #c9c4b8;"><span style="font-family:Spectral,serif; font-size:36px; color:#ff5a1f;">01</span><span style="font-size:34px; font-weight:700;">Подход бюро</span><span style="font-size:26px; color:#8a857b;">Метод, команда, принципы</span></div>
+      <div style="display:grid; grid-template-columns:120px 1fr 400px; align-items:center; padding:36px 0; border-bottom:1px solid #c9c4b8;"><span style="font-family:Spectral,serif; font-size:36px; color:#ff5a1f;">02</span><span style="font-size:34px; font-weight:700;">Избранные проекты</span><span style="font-size:26px; color:#8a857b;">Жильё и общественные здания</span></div>
+      <div style="display:grid; grid-template-columns:120px 1fr 400px; align-items:center; padding:36px 0; border-bottom:1px solid #c9c4b8;"><span style="font-family:Spectral,serif; font-size:36px; color:#ff5a1f;">03</span><span style="font-size:34px; font-weight:700;">Промзоны</span><span style="font-size:26px; color:#8a857b;">Реконструкция и новая жизнь</span></div>
+      <div style="display:grid; grid-template-columns:120px 1fr 400px; align-items:center; padding:36px 0;"><span style="font-family:Spectral,serif; font-size:36px; color:#ff5a1f;">04</span><span style="font-size:34px; font-weight:700;">Как мы работаем с заказчиком</span><span style="font-size:26px; color:#8a857b;">Этапы, сроки, состав работ</span></div>
+    </div>
+  </section>
+  <section data-label="Раздел 01" style="background:#1c1c1c; font-family:'PT Sans',sans-serif; color:#f5f2ec; display:flex; flex-direction:column; justify-content:flex-end; padding:80px 100px;">
+    <span style="font-family:Spectral,serif; font-size:40px; color:#ff5a1f;">01</span>
+    <h2 style="font-family:Spectral,serif; font-size:150px; margin:24px 0 0; font-weight:500; line-height:1;">Подход бюро</h2>
+    <div style="display:flex; align-items:center; gap:24px; margin-top:52px;"><span style="width:120px; height:8px; background:#ff5a1f;"></span><span style="flex:1; height:1px; background:#4a463f;"></span></div>
+  </section>
+  <section data-label="Панели" style="background:#f5f2ec; font-family:'PT Sans',sans-serif; color:#1c1c1c; display:flex; flex-direction:column; padding:90px 100px; gap:40px;">
+    <h2 style="font-family:Spectral,serif; font-size:84px; margin:0 0 20px; font-weight:500;">Три принципа</h2>
+    <div style="display:grid; grid-template-columns:260px 1fr; gap:52px; align-items:center;">
+      <div style="background:#1c1c1c; border-radius:6px; height:170px; display:flex; align-items:center; justify-content:center;"><svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#ff5a1f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10.5V21H3V10.5"/><path d="m1 11 11-8 11 8"/><path d="M9 21v-6h6v6"/></svg></div>
+      <div style="border-bottom:1px solid #c9c4b8; padding-bottom:36px;"><h3 style="font-family:Spectral,serif; font-size:40px; margin:0 0 14px; font-weight:700;">Контекст важнее жеста</h3><p style="font-size:28px; margin:0; color:#5b5750; line-height:1.55;">Здание продолжает улицу, а не спорит с ней: высотность, ритм и материалы берём из места</p></div>
+    </div>
+    <div style="display:grid; grid-template-columns:260px 1fr; gap:52px; align-items:center;">
+      <div style="background:#ff5a1f; border-radius:6px; height:170px; display:flex; align-items:center; justify-content:center;"><svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#f5f2ec" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+      <div style="border-bottom:1px solid #c9c4b8; padding-bottom:36px;"><h3 style="font-family:Spectral,serif; font-size:40px; margin:0 0 14px; font-weight:700;">Первый этаж — городу</h3><p style="font-size:28px; margin:0; color:#5b5750; line-height:1.55;">В каждом проекте нижний уровень открыт: сервисы, дворы без машин, сквозные проходы</p></div>
+    </div>
+    <div style="display:grid; grid-template-columns:260px 1fr; gap:52px; align-items:center;">
+      <div style="background:#1c1c1c; border-radius:6px; height:170px; display:flex; align-items:center; justify-content:center;"><svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#ff5a1f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a10 10 0 1 1 10-10"/><path d="M12 6v6l3 3"/><path d="m16 20 2 2 4-4"/></svg></div>
+      <div><h3 style="font-family:Spectral,serif; font-size:40px; margin:0 0 14px; font-weight:700;">Долгая жизнь здания</h3><p style="font-size:28px; margin:0; color:#5b5750; line-height:1.55;">Планировки допускают смену функции: жильё, офис и школа в одном каркасе</p></div>
+    </div>
+  </section>
+  <section data-label="Большая цифра" style="background:#f5f2ec; font-family:'PT Sans',sans-serif; color:#1c1c1c; display:flex; flex-direction:column; justify-content:center; padding:90px 100px;">
+    <span style="font-family:Spectral,serif; font-size:320px; line-height:1; font-weight:500; color:#ff5a1f;">340 000</span>
+    <p style="font-size:38px; margin:44px 0 0; max-width:1300px; line-height:1.45; color:#5b5750;">квадратных метров построено по проектам бюро за десять лет — от таунхаусов до концертного зала</p>
+  </section>
+  <section data-label="Таймлайн" style="background:#f5f2ec; font-family:'PT Sans',sans-serif; color:#1c1c1c; display:flex; flex-direction:column; padding:90px 100px;">
+    <h2 style="font-family:Spectral,serif; font-size:84px; margin:0 0 80px; font-weight:500;">Этапы работы с заказчиком</h2>
+    <div style="display:grid; grid-template-columns:100px 1fr; row-gap:0;">
+      <div style="display:flex; flex-direction:column; align-items:center;"><span style="width:56px; height:56px; border-radius:6px; background:#ff5a1f; color:#f5f2ec; display:flex; align-items:center; justify-content:center; font-size:28px; font-weight:700;">1</span><span style="width:2px; flex:1; background:#1c1c1c;"></span></div>
+      <div style="padding:0 0 48px 44px;"><h3 style="font-size:34px; margin:4px 0 10px; font-weight:700;">Исследование · 1 месяц</h3><p style="font-size:26px; margin:0; color:#5b5750; line-height:1.5;">Анализ участка, инсоляция, транспорт, интервью с будущими жителями</p></div>
+      <div style="display:flex; flex-direction:column; align-items:center;"><span style="width:56px; height:56px; border-radius:6px; background:#1c1c1c; color:#f5f2ec; display:flex; align-items:center; justify-content:center; font-size:28px; font-weight:700;">2</span><span style="width:2px; flex:1; background:#1c1c1c;"></span></div>
+      <div style="padding:0 0 48px 44px;"><h3 style="font-size:34px; margin:4px 0 10px; font-weight:700;">Концепция · 2 месяца</h3><p style="font-size:26px; margin:0; color:#5b5750; line-height:1.5;">Три сценария застройки с экономикой каждого; защита перед советом</p></div>
+      <div style="display:flex; flex-direction:column; align-items:center;"><span style="width:56px; height:56px; border-radius:6px; background:#1c1c1c; color:#f5f2ec; display:flex; align-items:center; justify-content:center; font-size:28px; font-weight:700;">3</span><span style="width:2px; flex:1; background:#1c1c1c;"></span></div>
+      <div style="padding:0 0 48px 44px;"><h3 style="font-size:34px; margin:4px 0 10px; font-weight:700;">Проект · 6–9 месяцев</h3><p style="font-size:26px; margin:0; color:#5b5750; line-height:1.5;">Стадии П и Р, прохождение экспертизы, рабочая документация</p></div>
+      <div style="display:flex; flex-direction:column; align-items:center;"><span style="width:56px; height:56px; border-radius:6px; background:#ff5a1f; color:#f5f2ec; display:flex; align-items:center; justify-content:center; font-size:28px; font-weight:700;">4</span></div>
+      <div style="padding:0 0 0 44px;"><h3 style="font-size:34px; margin:4px 0 10px; font-weight:700;">Авторский надзор · до сдачи</h3><p style="font-size:26px; margin:0; color:#5b5750; line-height:1.5;">Еженедельные выезды на площадку и контроль узлов до ввода в эксплуатацию</p></div>
+    </div>
+  </section>
+  <section data-label="Донат" style="background:#1c1c1c; font-family:'PT Sans',sans-serif; color:#f5f2ec; display:grid; grid-template-columns:1fr 600px 1fr; align-items:center; column-gap:56px; padding:80px 100px;">
+    <div style="display:flex; flex-direction:column; gap:80px; text-align:right;">
+      <div><h3 style="font-family:Spectral,serif; font-size:36px; margin:0 0 12px; font-weight:700;">Жильё</h3><p style="font-size:26px; margin:0; color:#8a857b; line-height:1.5;">Кварталы средней этажности, 46% портфеля</p></div>
+      <div><h3 style="font-family:Spectral,serif; font-size:36px; margin:0 0 12px; font-weight:700;">Общественные здания</h3><p style="font-size:26px; margin:0; color:#8a857b; line-height:1.5;">Школы, культурные центры — 27%</p></div>
+    </div>
+    <svg width="600" height="600" viewBox="0 0 200 200">
+      <g>
+        <path d="M20.8 88.8 A80 80 0 0 1 88.8 20.8 A7 7 0 0 1 96.2 27.1 L97.3 48.1 A7 7 0 0 1 90.7 56.0 A45 45 0 0 0 56.0 90.7 A7 7 0 0 1 48.1 97.3 L27.1 96.2 A7 7 0 0 1 20.8 88.8 Z" fill="#ff5a1f"/>
+        <path d="M88.8 179.2 A80 80 0 0 1 20.8 111.2 A7 7 0 0 1 27.1 103.8 L48.1 102.7 A7 7 0 0 1 56.0 109.3 A45 45 0 0 0 90.7 144.0 A7 7 0 0 1 97.3 151.9 L96.2 172.9 A7 7 0 0 1 88.8 179.2 Z" fill="#c9c4b8"/>
+        <path d="M111.2 20.8 A80 80 0 0 1 179.2 88.8 A7 7 0 0 1 172.9 96.2 L151.9 97.3 A7 7 0 0 1 144.0 90.7 A45 45 0 0 0 109.3 56.0 A7 7 0 0 1 102.7 48.1 L103.8 27.1 A7 7 0 0 1 111.2 20.8 Z" fill="#8a857b"/>
+        <path d="M179.2 111.2 A80 80 0 0 1 111.2 179.2 A7 7 0 0 1 103.8 172.9 L102.7 151.9 A7 7 0 0 1 109.3 144.0 A45 45 0 0 0 144.0 109.3 A7 7 0 0 1 151.9 102.7 L172.9 103.8 A7 7 0 0 1 179.2 111.2 Z" fill="#f5f2ec"/>
+        </g>
+      <g font-family="PT Sans,sans-serif" font-size="13" font-weight="700" text-anchor="middle" dominant-baseline="middle">
+        <text x="56.2" y="56.2" fill="#f5f2ec">46%</text>
+        <text x="56.2" y="143.8" fill="#1c1c1c">27%</text>
+        <text x="143.8" y="56.2" fill="#f5f2ec">17%</text>
+        <text x="143.8" y="143.8" fill="#1c1c1c">10%</text>
+      </g>
+    </svg>
+    <div style="display:flex; flex-direction:column; gap:80px;">
+      <div><h3 style="font-family:Spectral,serif; font-size:36px; margin:0 0 12px; font-weight:700;">Промзоны</h3><p style="font-size:26px; margin:0; color:#8a857b; line-height:1.5;">Реконструкция фабрик и депо — 17%</p></div>
+      <div><h3 style="font-family:Spectral,serif; font-size:36px; margin:0 0 12px; font-weight:700;">Исследования</h3><p style="font-size:26px; margin:0; color:#8a857b; line-height:1.5;">Мастер-планы и градостроительные конкурсы — 10%</p></div>
+    </div>
+  </section>
+  <section data-label="Таблица" style="background:#f5f2ec; font-family:'PT Sans',sans-serif; color:#1c1c1c; display:flex; flex-direction:column; padding:90px 100px;">
+    <h2 style="font-family:Spectral,serif; font-size:84px; margin:0 0 60px; font-weight:500;">Избранные проекты</h2>
+    <div style="display:grid; grid-template-columns:1.6fr 1fr 1fr 1fr; font-size:28px; border-top:2px solid #1c1c1c;">
+      <div style="padding:26px 0; font-weight:700; border-bottom:1px solid #c9c4b8; color:#8a857b;">Проект</div><div style="padding:26px 0; font-weight:700; border-bottom:1px solid #c9c4b8; color:#8a857b;">Город</div><div style="padding:26px 0; font-weight:700; border-bottom:1px solid #c9c4b8; color:#8a857b;">Площадь</div><div style="padding:26px 0; font-weight:700; border-bottom:1px solid #c9c4b8; color:#8a857b;">Статус</div>
+      <div style="padding:28px 0; border-bottom:1px solid #c9c4b8; font-weight:700;">Квартал «Гончары»</div><div style="padding:28px 0; border-bottom:1px solid #c9c4b8;">Ярославль</div><div style="padding:28px 0; border-bottom:1px solid #c9c4b8;">84 000 м²</div><div style="padding:28px 0; border-bottom:1px solid #c9c4b8; color:#ff5a1f; font-weight:700;">Строится</div>
+      <div style="padding:28px 0; border-bottom:1px solid #c9c4b8; font-weight:700;">Депо «Восток»</div><div style="padding:28px 0; border-bottom:1px solid #c9c4b8;">Екатеринбург</div><div style="padding:28px 0; border-bottom:1px solid #c9c4b8;">31 000 м²</div><div style="padding:28px 0; border-bottom:1px solid #c9c4b8;">Сдан · 2024</div>
+      <div style="padding:28px 0; font-weight:700;">Школа на набережной</div><div style="padding:28px 0;">Казань</div><div style="padding:28px 0;">18 500 м²</div><div style="padding:28px 0;">Сдана · 2025</div>
+    </div>
+  </section>
+  <section data-label="Цитата" style="background:#f5f2ec; font-family:'PT Sans',sans-serif; color:#1c1c1c; display:flex; flex-direction:column; justify-content:center; padding:90px 140px;">
+    <span style="width:120px; height:8px; background:#ff5a1f;"></span>
+    <p style="font-family:Spectral,serif; font-size:72px; font-weight:500; line-height:1.25; margin:56px 0 0; max-width:1550px;">Хорошее здание не фотографируют — в нём живут. Слава приходит к дому лет через двадцать.</p>
+    <p style="font-size:28px; margin:56px 0 0; color:#8a857b;">Основатель бюро · лекция в архитектурной школе</p>
+  </section>
+  <section data-label="Задел" style="background:#f5f2ec; font-family:'PT Sans',sans-serif; color:#1c1c1c; display:flex; flex-direction:column; padding:90px 100px;">
+    <h2 style="font-family:Spectral,serif; font-size:80px; margin:0 0 56px; font-weight:500;">Почему нам доверяют</h2>
+    <div style="border:2px solid #1c1c1c; border-radius:6px; padding:8px 56px; display:flex; flex-direction:column; background:#fff;">
+      <div style="display:grid; grid-template-columns:110px 1fr 64px; gap:44px; align-items:center; padding:38px 0; border-bottom:1px solid #c9c4b8;"><span style="width:86px; height:86px; border-radius:6px; background:#1c1c1c; color:#ff5a1f; display:flex; align-items:center; justify-content:center; font-family:Spectral,serif; font-size:44px; font-weight:700;">1</span><div><h3 style="font-family:Spectral,serif; font-size:36px; margin:0 0 10px; font-weight:700;">Шесть конкурсных побед</h3><p style="font-size:26px; margin:0; color:#5b5750; line-height:1.5;">Включая два открытых международных конкурса на общественные здания</p></div><svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#ff5a1f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m7 5 7 7-7 7"/><path d="m14 5 7 7-7 7"/></svg></div>
+      <div style="display:grid; grid-template-columns:110px 1fr 64px; gap:44px; align-items:center; padding:38px 0; border-bottom:1px solid #c9c4b8;"><span style="width:86px; height:86px; border-radius:6px; background:#1c1c1c; color:#ff5a1f; display:flex; align-items:center; justify-content:center; font-family:Spectral,serif; font-size:44px; font-weight:700;">2</span><div><h3 style="font-family:Spectral,serif; font-size:36px; margin:0 0 10px; font-weight:700;">Собственный конструктив</h3><p style="font-size:26px; margin:0; color:#5b5750; line-height:1.5;">Инженерный отдел в штате: конструкции и сети без субподряда</p></div><svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#ff5a1f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m7 5 7 7-7 7"/><path d="m14 5 7 7-7 7"/></svg></div>
+      <div style="display:grid; grid-template-columns:110px 1fr 64px; gap:44px; align-items:center; padding:38px 0;"><span style="width:86px; height:86px; border-radius:6px; background:#ff5a1f; color:#f5f2ec; display:flex; align-items:center; justify-content:center; font-family:Spectral,serif; font-size:44px; font-weight:700;">3</span><div><h3 style="font-family:Spectral,serif; font-size:36px; margin:0 0 10px; font-weight:700;">Ноль срывов экспертизы</h3><p style="font-size:26px; margin:0; color:#5b5750; line-height:1.5;">Все двенадцать проектов прошли госэкспертизу с первого захода</p></div><svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#ff5a1f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m7 5 7 7-7 7"/><path d="m14 5 7 7-7 7"/></svg></div>
+    </div>
+  </section>
+  <section data-label="Сравнение" style="background:#f5f2ec; font-family:'PT Sans',sans-serif; color:#1c1c1c; display:flex; flex-direction:column; padding:90px 100px;">
+    <h2 style="font-family:Spectral,serif; font-size:80px; margin:0 0 56px; font-weight:500;">Место бюро на рынке</h2>
+    <div style="display:grid; grid-template-columns:1.6fr 1fr 1fr 1fr; font-size:27px; border-top:2px solid #1c1c1c;">
+      <div style="padding:26px 0; font-weight:700; border-bottom:1px solid #c9c4b8; color:#8a857b;">Критерий</div><div style="padding:26px 0; font-weight:700; border-bottom:1px solid #c9c4b8; color:#ff5a1f;">«Масштаб»</div><div style="padding:26px 0; font-weight:700; border-bottom:1px solid #c9c4b8; color:#8a857b;">Типовой проектировщик</div><div style="padding:26px 0; font-weight:700; border-bottom:1px solid #c9c4b8; color:#8a857b;">Звёздное бюро</div>
+      <div style="padding:26px 0; border-bottom:1px solid #c9c4b8;">Авторская архитектура</div><div style="padding:26px 0; border-bottom:1px solid #c9c4b8; color:#ff5a1f; font-weight:700;">✓</div><div style="padding:26px 0; border-bottom:1px solid #c9c4b8; color:#b3aea2;">—</div><div style="padding:26px 0; border-bottom:1px solid #c9c4b8;">✓</div>
+      <div style="padding:26px 0; border-bottom:1px solid #c9c4b8;">Цена в рынке девелопера</div><div style="padding:26px 0; border-bottom:1px solid #c9c4b8; color:#ff5a1f; font-weight:700;">✓</div><div style="padding:26px 0; border-bottom:1px solid #c9c4b8;">✓</div><div style="padding:26px 0; border-bottom:1px solid #c9c4b8; color:#b3aea2;">—</div>
+      <div style="padding:26px 0;">Полный цикл до надзора</div><div style="padding:26px 0; color:#ff5a1f; font-weight:700;">✓</div><div style="padding:26px 0; color:#8a857b;">частично</div><div style="padding:26px 0; color:#8a857b;">частично</div>
+    </div>
+  </section>
+  <section data-label="Показатели" style="background:#f5f2ec; font-family:'PT Sans',sans-serif; color:#1c1c1c; display:flex; flex-direction:column; padding:90px 100px;">
+    <h2 style="font-family:Spectral,serif; font-size:84px; margin:0 0 80px; font-weight:500;">Бюро в цифрах</h2>
+    <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:52px;">
+      <div style="border-top:2px solid #ff5a1f; padding-top:32px; display:flex; flex-direction:column; gap:16px;"><span style="font-family:Spectral,serif; font-size:96px; color:#ff5a1f;">10</span><span style="font-size:26px; color:#5b5750; line-height:1.45;">лет практики</span></div>
+      <div style="border-top:2px solid #1c1c1c; padding-top:32px; display:flex; flex-direction:column; gap:16px;"><span style="font-family:Spectral,serif; font-size:96px;">47</span><span style="font-size:26px; color:#5b5750; line-height:1.45;">архитекторов и инженеров</span></div>
+      <div style="border-top:2px solid #1c1c1c; padding-top:32px; display:flex; flex-direction:column; gap:16px;"><span style="font-family:Spectral,serif; font-size:96px;">12</span><span style="font-size:26px; color:#5b5750; line-height:1.45;">реализованных проектов</span></div>
+      <div style="border-top:2px solid #ff5a1f; padding-top:32px; display:flex; flex-direction:column; gap:16px;"><span style="font-family:Spectral,serif; font-size:96px; color:#ff5a1f;">6</span><span style="font-size:26px; color:#5b5750; line-height:1.45;">побед в открытых конкурсах</span></div>
+    </div>
+  </section>
+  <section data-label="Финал" style="background:#1c1c1c; font-family:'PT Sans',sans-serif; color:#f5f2ec; display:flex; flex-direction:column; justify-content:space-between; padding:80px 100px;">
+    <div style="display:flex; justify-content:space-between; font-size:26px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase;"><span>Бюро «Масштаб»</span><span style="color:#ff5a1f;">2026</span></div>
+    <h2 style="font-family:Spectral,serif; font-size:150px; margin:0; font-weight:500; line-height:1;">Обсудим ваш участок</h2>
+    <div style="display:flex; align-items:center; gap:24px;"><span style="width:120px; height:8px; background:#ff5a1f;"></span><span style="flex:1; height:1px; background:#4a463f;"></span><span style="font-size:26px;">hello@masshtab.example</span></div>
+  </section>
+</x-import>
+</x-dc>
+</body>
+</html>

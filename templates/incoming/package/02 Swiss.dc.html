@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+  <style>body{margin:0;background:#e8e8e8} a{color:#e30613} a:hover{color:#a3040d}</style>
+</helmet>
+<x-import component-from-global-scope="deck-stage" from="./deck-stage.js" width="1920" height="1080" hint-size="100%,100%">
+  <section data-label="Обложка" style="background:#fff; font-family:'Golos Text',sans-serif; color:#111; display:flex; flex-direction:column; justify-content:space-between; padding:80px 100px;">
+    <div style="display:flex; justify-content:space-between; font-size:26px; font-weight:500; text-transform:uppercase; letter-spacing:0.08em;"><span>Лекторий «Сетка»</span><span>04 / 2026</span></div>
+    <h1 style="font-size:170px; line-height:0.95; margin:0; font-weight:700; letter-spacing:-0.03em; text-transform:uppercase;">Швейцарская<br>типографика<span style="color:#e30613;">.</span></h1>
+    <div style="display:flex; justify-content:space-between; align-items:flex-end;"><span style="font-size:28px; max-width:640px; line-height:1.4;">Сетка, порядок и объективность: как один стиль определил графический дизайн XX века</span><span style="width:120px; height:120px; background:#e30613;"></span></div>
+  </section>
+  <section data-label="Содержание" style="background:#fff; font-family:'Golos Text',sans-serif; color:#111; display:flex; flex-direction:column; padding:80px 100px;">
+    <h2 style="font-size:64px; margin:0 0 70px; font-weight:700; text-transform:uppercase; letter-spacing:-0.02em;">Содержание</h2>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:0; border-top:4px solid #111;">
+      <div style="display:flex; gap:36px; padding:36px 0; border-bottom:2px solid #111;"><span style="font-size:32px; color:#e30613; font-weight:700;">01</span><span style="font-size:34px; font-weight:500;">Истоки: Базель и Цюрих</span></div>
+      <div style="display:flex; gap:36px; padding:36px 0 36px 48px; border-bottom:2px solid #111; border-left:2px solid #111;"><span style="font-size:32px; color:#e30613; font-weight:700;">02</span><span style="font-size:34px; font-weight:500;">Модульная сетка</span></div>
+      <div style="display:flex; gap:36px; padding:36px 0; border-bottom:2px solid #111;"><span style="font-size:32px; color:#e30613; font-weight:700;">03</span><span style="font-size:34px; font-weight:500;">Гротески и асимметрия</span></div>
+      <div style="display:flex; gap:36px; padding:36px 0 36px 48px; border-bottom:2px solid #111; border-left:2px solid #111;"><span style="font-size:32px; color:#e30613; font-weight:700;">04</span><span style="font-size:34px; font-weight:500;">Наследие в цифре</span></div>
+    </div>
+  </section>
+  <section data-label="Раздел 1" style="background:#e30613; font-family:'Golos Text',sans-serif; color:#fff; display:flex; flex-direction:column; justify-content:flex-end; padding:80px 100px;">
+    <span style="font-size:32px; font-weight:700;">01</span>
+    <h2 style="font-size:150px; margin:20px 0 0; font-weight:700; letter-spacing:-0.03em; text-transform:uppercase; line-height:0.95;">Истоки:<br>Базель и Цюрих</h2>
+  </section>
+  <section data-label="Три колонки" style="background:#fff; font-family:'Golos Text',sans-serif; color:#111; display:flex; flex-direction:column; padding:80px 100px;">
+    <h2 style="font-size:64px; margin:0 0 70px; font-weight:700; text-transform:uppercase;">Три принципа стиля</h2>
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:60px; border-top:4px solid #111; padding-top:48px;">
+      <div style="display:flex; flex-direction:column; gap:24px;"><svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#e30613" stroke-width="2" stroke-linecap="square"><rect x="3" y="3" width="18" height="18"/><path d="M3 9h18"/><path d="M3 15h18"/><path d="M9 3v18"/><path d="M15 3v18"/></svg><h3 style="font-size:36px; margin:0; font-weight:700;">Сетка</h3><p style="font-size:27px; margin:0; line-height:1.5; color:#444;">Модульная структура задаёт место каждому элементу до того, как он появился</p></div>
+      <div style="display:flex; flex-direction:column; gap:24px;"><svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#e30613" stroke-width="2" stroke-linecap="square"><path d="M4 20h16"/><path d="M6 16 12 4l6 12"/><path d="M8.5 12h7"/></svg><h3 style="font-size:36px; margin:0; font-weight:700;">Гротеск</h3><p style="font-size:27px; margin:0; line-height:1.5; color:#444;">Один шрифт без засечек, два-три кегля — иерархия строится размером и весом</p></div>
+      <div style="display:flex; flex-direction:column; gap:24px;"><svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#e30613" stroke-width="2" stroke-linecap="square"><path d="M4 4h10v10H4z"/><path d="M14 14h6v6h-6z"/></svg><h3 style="font-size:36px; margin:0; font-weight:700;">Асимметрия</h3><p style="font-size:27px; margin:0; line-height:1.5; color:#444;">Флаговый набор и активное пустое поле вместо центральной оси</p></div>
+    </div>
+  </section>
+  <section data-label="Большая цифра" style="background:#111; font-family:'Golos Text',sans-serif; color:#fff; display:flex; flex-direction:column; justify-content:center; padding:80px 100px;">
+    <span style="font-size:300px; font-weight:700; letter-spacing:-0.04em; line-height:1; color:#e30613;">1957</span>
+    <p style="font-size:40px; margin:40px 0 0; max-width:1100px; line-height:1.4;">Год выпуска Helvetica — шрифта, который стал синонимом нейтральности</p>
+  </section>
+  <section data-label="Таймлайн" style="background:#fff; font-family:'Golos Text',sans-serif; color:#111; display:flex; flex-direction:column; padding:80px 100px;">
+    <h2 style="font-size:64px; margin:0 0 90px; font-weight:700; text-transform:uppercase;">Хронология</h2>
+    <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:48px;">
+      <div style="display:flex; flex-direction:column; gap:20px; border-top:6px solid #e30613; padding-top:28px;"><span style="font-size:44px; font-weight:700;">1928</span><p style="font-size:26px; margin:0; line-height:1.5; color:#444;">Ян Чихольд издаёт «Новую типографику»</p></div>
+      <div style="display:flex; flex-direction:column; gap:20px; border-top:6px solid #111; padding-top:28px;"><span style="font-size:44px; font-weight:700;">1957</span><p style="font-size:26px; margin:0; line-height:1.5; color:#444;">Helvetica и Univers выходят в один год</p></div>
+      <div style="display:flex; flex-direction:column; gap:20px; border-top:6px solid #111; padding-top:28px;"><span style="font-size:44px; font-weight:700;">1961</span><p style="font-size:26px; margin:0; line-height:1.5; color:#444;">Мюллер-Брокманн формулирует систему сеток</p></div>
+      <div style="display:flex; flex-direction:column; gap:20px; border-top:6px solid #111; padding-top:28px;"><span style="font-size:44px; font-weight:700;">1984</span><p style="font-size:26px; margin:0; line-height:1.5; color:#444;">Macintosh переносит стиль на экраны</p></div>
+    </div>
+  </section>
+  <section data-label="Таблица" style="background:#fff; font-family:'Golos Text',sans-serif; color:#111; display:flex; flex-direction:column; padding:80px 100px;">
+    <h2 style="font-size:64px; margin:0 0 60px; font-weight:700; text-transform:uppercase;">До и после</h2>
+    <div style="display:grid; grid-template-columns:1.2fr 1fr 1fr; font-size:29px; border-top:4px solid #111;">
+      <div style="padding:28px 0; font-weight:700; border-bottom:2px solid #111;">Критерий</div><div style="padding:28px 0; font-weight:700; border-bottom:2px solid #111; color:#888;">Классика</div><div style="padding:28px 0; font-weight:700; border-bottom:2px solid #111; color:#e30613;">Свисс-стиль</div>
+      <div style="padding:28px 0; border-bottom:2px solid #ddd; font-weight:500;">Композиция</div><div style="padding:28px 0; border-bottom:2px solid #ddd; color:#444;">Центральная ось</div><div style="padding:28px 0; border-bottom:2px solid #ddd;">Асимметрия по сетке</div>
+      <div style="padding:28px 0; border-bottom:2px solid #ddd; font-weight:500;">Шрифт</div><div style="padding:28px 0; border-bottom:2px solid #ddd; color:#444;">Антиква, курсивы</div><div style="padding:28px 0; border-bottom:2px solid #ddd;">Один гротеск</div>
+      <div style="padding:28px 0; font-weight:500;">Иллюстрация</div><div style="padding:28px 0; color:#444;">Рисунок, орнамент</div><div style="padding:28px 0;">Фотография</div>
+    </div>
+  </section>
+  <section data-label="Цитата" style="background:#fff; font-family:'Golos Text',sans-serif; color:#111; display:flex; flex-direction:column; justify-content:center; padding:80px 140px;">
+    <span style="width:120px; height:12px; background:#e30613;"></span>
+    <p style="font-size:76px; font-weight:500; line-height:1.2; margin:56px 0 0; letter-spacing:-0.02em; max-width:1500px;">Сетка — это не клетка. Это система, внутри которой свобода становится осмысленной.</p>
+    <p style="font-size:28px; margin:56px 0 0; color:#888; text-transform:uppercase; letter-spacing:0.08em;">Йозеф Мюллер-Брокманн — по мотивам</p>
+  </section>
+  <section data-label="Две колонки" style="background:#fff; font-family:'Golos Text',sans-serif; color:#111; display:grid; grid-template-columns:1fr 1fr; align-items:stretch;">
+    <div style="display:flex; flex-direction:column; justify-content:center; padding:80px 100px; gap:36px;">
+      <h2 style="font-size:64px; margin:0; font-weight:700; text-transform:uppercase; line-height:1.05;">Наследие<br>в интерфейсах</h2>
+      <p style="font-size:29px; margin:0; line-height:1.55; color:#444;">Дизайн-системы, колонки CSS-грида и токены типографики — прямые потомки модульной сетки. Каждый макет из 12 колонок цитирует Цюрих шестидесятых.</p>
+    </div>
+    <div style="background:#e30613; display:grid; grid-template-columns:repeat(3,1fr); grid-template-rows:repeat(3,1fr); gap:4px; padding:4px;">
+      <span style="background:#fff;"></span><span style="background:#e30613;"></span><span style="background:#fff;"></span>
+      <span style="background:#e30613;"></span><span style="background:#111;"></span><span style="background:#e30613;"></span>
+      <span style="background:#fff;"></span><span style="background:#e30613;"></span><span style="background:#fff;"></span>
+    </div>
+  </section>
+  <section data-label="Раздел 2" style="background:#111; font-family:'Golos Text',sans-serif; color:#fff; display:flex; flex-direction:column; justify-content:flex-end; padding:80px 100px;">
+    <span style="font-size:32px; font-weight:700; color:#e30613;">04</span>
+    <h2 style="font-size:150px; margin:20px 0 0; font-weight:700; letter-spacing:-0.03em; text-transform:uppercase; line-height:0.95;">Наследие<br>в цифре</h2>
+  </section>
+  <section data-label="Показатели" style="background:#fff; font-family:'Golos Text',sans-serif; color:#111; display:flex; flex-direction:column; padding:80px 100px;">
+    <h2 style="font-size:64px; margin:0 0 80px; font-weight:700; text-transform:uppercase;">Стиль в цифрах</h2>
+    <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:60px; border-top:4px solid #111; padding-top:56px;">
+      <div style="display:flex; flex-direction:column; gap:16px;"><span style="font-size:96px; font-weight:700; letter-spacing:-0.03em; color:#e30613;">12</span><span style="font-size:26px; color:#444; line-height:1.4;">колонок в классической сетке</span></div>
+      <div style="display:flex; flex-direction:column; gap:16px;"><span style="font-size:96px; font-weight:700; letter-spacing:-0.03em;">2–3</span><span style="font-size:26px; color:#444; line-height:1.4;">кегля на макет — не больше</span></div>
+      <div style="display:flex; flex-direction:column; gap:16px;"><span style="font-size:96px; font-weight:700; letter-spacing:-0.03em;">1</span><span style="font-size:26px; color:#444; line-height:1.4;">гарнитура на всю систему</span></div>
+      <div style="display:flex; flex-direction:column; gap:16px;"><span style="font-size:96px; font-weight:700; letter-spacing:-0.03em; color:#e30613;">60+</span><span style="font-size:26px; color:#444; line-height:1.4;">лет стилю — и он всё ещё норма</span></div>
+    </div>
+  </section>
+  <section data-label="Финал" style="background:#e30613; font-family:'Golos Text',sans-serif; color:#fff; display:flex; flex-direction:column; justify-content:space-between; padding:80px 100px;">
+    <span style="font-size:26px; font-weight:500; text-transform:uppercase; letter-spacing:0.08em;">Лекторий «Сетка»</span>
+    <h2 style="font-size:160px; margin:0; font-weight:700; letter-spacing:-0.03em; text-transform:uppercase; line-height:0.95;">Спасибо<span style="color:#111;">.</span></h2>
+    <div style="display:flex; justify-content:space-between; font-size:28px;"><span>Вопросы — сейчас или в кулуарах</span><span style="font-weight:700;">setka.example</span></div>
+  </section>
+</x-import>
+</x-dc>
+</body>
+</html>

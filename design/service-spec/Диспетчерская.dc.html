@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700;800&display=swap">
+<style>
+html,body{margin:0;height:100%}
+body{background:#131316;color:#f2f2f4;font-family:'Golos Text',system-ui,sans-serif;font-size:14px}
+a{color:#ffce33;text-decoration:none}a:hover{color:#ffe08a}
+::selection{background:#ffce33;color:#17171a}
+*{box-sizing:border-box}
+::-webkit-scrollbar{width:10px;height:10px}::-webkit-scrollbar-thumb{background:#2e2e35;border-radius:8px}::-webkit-scrollbar-track{background:transparent}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+@keyframes spin{to{transform:rotate(360deg)}}
+button{font-family:'Golos Text',system-ui,sans-serif}
+input{font-family:'Golos Text',system-ui,sans-serif}
+</style>
+</helmet>
+<div style="display:flex;flex-direction:column;height:100vh;min-width:1280px">
+  <header style="display:flex;align-items:center;gap:16px;padding:12px 24px;background:#1b1b20;border-bottom:1px solid rgba(255,255,255,.08);flex:none">
+    <sc-if value="{{ navTopFalse }}" hint-placeholder-val="{{ true }}">
+      <button onClick="{{ toggleRail }}" title="Свернуть меню" style="all:unset;cursor:pointer;flex:none;width:36px;height:36px;border-radius:10px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:4px;border:1px solid rgba(255,255,255,.1)" style-hover="border-color:#ffce33">
+        <span style="width:16px;height:2px;background:#f2f2f4;border-radius:2px"></span><span style="width:16px;height:2px;background:#f2f2f4;border-radius:2px"></span><span style="width:16px;height:2px;background:#f2f2f4;border-radius:2px"></span>
+      </button>
+    </sc-if>
+    <a href="#/" style="display:flex;align-items:center;gap:10px;color:#f2f2f4;min-width:0;overflow:hidden">
+      <span style="width:34px;height:34px;border-radius:50%;background:#ffce33;display:flex;align-items:center;justify-content:center;color:#17171a;font-weight:800;font-size:15px">ВС</span>
+      <span style="line-height:1.15"><span style="display:block;font-weight:700;font-size:15px">Выездная служба</span><span style="display:block;font-size:11.5px;color:rgba(255,255,255,.5);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">диспетчерская · Москва · чт, 12 марта</span></span>
+    </a>
+    <div style="display:flex;align-items:center;gap:10px;margin-left:8px">
+      <span style="background:#131316;border:1px solid rgba(255,255,255,.1);border-radius:999px;white-space:nowrap;flex:none;padding:7px 16px;font-weight:700;font-size:16px;letter-spacing:.5px;font-variant-numeric:tabular-nums">{{ nowLabel }}</span>
+      <span style="border:1px solid rgba(255,255,255,.1);border-radius:999px;white-space:nowrap;flex:none;padding:7px 14px;font-size:12.5px;color:rgba(255,255,255,.7)">закреплено · <b style="color:#ffce33">{{ pinnedCount }}</b></span>
+      <sc-if value="{{ recalc }}" hint-placeholder-val="{{ false }}">
+        <span style="display:flex;align-items:center;gap:8px;border:1px solid rgba(255,206,51,.4);background:rgba(255,206,51,.08);border-radius:999px;white-space:nowrap;flex:none;padding:7px 14px;font-size:12.5px;color:#ffce33"><span style="width:12px;height:12px;border:2px solid #ffce33;border-top-color:transparent;border-radius:50%;animation:spin .8s linear infinite"></span>{{ recalc }}</span>
+      </sc-if>
+    </div>
+    <div style="display:flex;gap:8px;margin-left:auto;flex:none">
+      <button onClick="{{ buildPlan }}" style="background:#ffce33;color:#17171a;border:none;border-radius:999px;white-space:nowrap;flex:none;padding:9px 18px;font-weight:700;font-size:13px;cursor:pointer" style-hover="background:#ffd85c">Построить план</button>
+      <button onClick="{{ nextEvent }}" style="background:transparent;color:#f2f2f4;border:1px solid rgba(255,255,255,.2);border-radius:999px;white-space:nowrap;flex:none;padding:9px 16px;font-weight:600;font-size:13px;cursor:pointer" style-hover="border-color:#ffce33;color:#ffce33">Следующее событие ›</button>
+      <button onClick="{{ playDay }}" style="background:transparent;color:#f2f2f4;border:1px solid rgba(255,255,255,.2);border-radius:999px;white-space:nowrap;flex:none;padding:9px 16px;font-weight:600;font-size:13px;cursor:pointer" style-hover="border-color:#ffce33;color:#ffce33">{{ playLabel }}</button>
+      <button onClick="{{ resetDay }}" style="background:transparent;color:rgba(255,255,255,.55);border:1px solid rgba(255,255,255,.12);border-radius:999px;white-space:nowrap;flex:none;padding:9px 14px;font-size:13px;cursor:pointer" style-hover="color:#ff6b5e;border-color:#ff6b5e">Сброс</button>
+    </div>
+  </header>
+  <sc-if value="{{ navTop }}" hint-placeholder-val="{{ false }}">
+    <nav style="display:flex;gap:4px;padding:8px 24px;background:#17171b;border-bottom:1px solid rgba(255,255,255,.07);flex:none">
+      <sc-for list="{{ navItems }}" as="n" hint-placeholder-count="7">
+        <a href="{{ n.href }}" style="padding:8px 16px;border-radius:999px;white-space:nowrap;flex:none;font-weight:600;font-size:13px;color:{{ n.color }};background:{{ n.bg }}">{{ n.label }}<span style="margin-left:6px;font-size:11px;opacity:.6">{{ n.badge }}</span></a>
+      </sc-for>
+    </nav>
+  </sc-if>
+  <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ closeMenu }}" style="position:fixed;inset:0;z-index:30"></div>
+  </sc-if>
+  <div style="display:flex;flex:1;min-height:0">
+    <sc-if value="{{ navRail }}" hint-placeholder-val="{{ true }}">
+      <nav style="width:{{ railW }};flex:none;background:#17171b;border-right:1px solid rgba(255,255,255,.07);padding:14px 10px;display:flex;flex-direction:column;gap:3px;transition:width .2s">
+        <sc-for list="{{ navItems }}" as="n" hint-placeholder-count="7">
+          <a href="{{ n.href }}" title="{{ n.label }}" style="display:flex;align-items:center;justify-content:{{ railJustify }};gap:10px;padding:9px 14px;border-radius:12px;font-weight:600;font-size:13.5px;white-space:nowrap;overflow:hidden;color:{{ n.color }};background:{{ n.bg }}" style-hover="background:rgba(255,255,255,.06)">
+            <span style="flex:none;width:22px;height:22px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;background:{{ n.iconBg }};color:{{ n.iconColor }}">{{ n.icon }}</span>
+            <sc-if value="{{ railExpanded }}" hint-placeholder-val="{{ true }}"><span style="flex:1">{{ n.label }}</span></sc-if>
+            <sc-if value="{{ railExpanded }}" hint-placeholder-val="{{ true }}"><span style="font-size:11px;opacity:.6">{{ n.badge }}</span></sc-if>
+          </a>
+        </sc-for>
+        <sc-if value="{{ railExpanded }}" hint-placeholder-val="{{ true }}">
+          <div style="margin-top:auto;padding:12px 14px;font-size:11px;color:rgba(255,255,255,.35);line-height:1.5">План: 17,4 с · пересчёт: 3 с<br>1440×900 · прототип</div>
+        </sc-if>
+      </nav>
+    </sc-if>
+    <main style="flex:1;overflow:auto;padding:22px 26px 40px">
+
+      <sc-if value="{{ isOverview }}" hint-placeholder-val="{{ true }}">
+        <sc-if value="{{ noPlan }}" hint-placeholder-val="{{ false }}">
+          <div style="max-width:620px;margin:80px auto;background:#1b1b20;border:1px solid rgba(255,255,255,.08);border-radius:24px;padding:40px 44px;text-align:center">
+            <div style="width:56px;height:56px;border-radius:50%;background:rgba(255,206,51,.12);color:#ffce33;display:flex;align-items:center;justify-content:center;margin:0 auto 18px;font-size:24px;font-weight:800">→</div>
+            <h1 style="margin:0 0 10px;font-size:24px;font-weight:800">План на день ещё не построен</h1>
+            <p style="margin:0 0 6px;color:rgba(255,255,255,.65);line-height:1.55">Сервис распределит 52 утренние заявки между 18 инженерами: квалификация, инструмент, транспорт, окна клиентов, SLA, смены и обед — всё сразу.</p>
+            <p style="margin:0 0 24px;color:rgba(255,255,255,.45);font-size:12.5px">Расчёт занимает 15–20 секунд — прогресс будет виден здесь.</p>
+            <button onClick="{{ buildPlan }}" style="background:#ffce33;color:#17171a;border:none;border-radius:999px;white-space:nowrap;flex:none;padding:13px 30px;font-weight:700;font-size:15px;cursor:pointer" style-hover="background:#ffd85c">Построить план на день</button>
+          </div>
+        </sc-if>
+        <sc-if value="{{ hasPlan }}" hint-placeholder-val="{{ true }}">
+          <div style="display:grid;grid-template-columns:repeat(9,1fr);gap:10px;margin-bottom:16px">
+            <sc-for list="{{ kpis }}" as="k" hint-placeholder-count="9">
+              <div style="background:#1b1b20;border:1px solid rgba(255,255,255,.07);border-radius:16px;padding:12px 14px">
+                <div style="font-size:19px;font-weight:800;color:{{ k.color }};font-variant-numeric:tabular-nums;white-space:nowrap">{{ k.v }}</div>
+                <div style="font-size:11px;color:rgba(255,255,255,.5);margin-top:3px;line-height:1.3">{{ k.l }}</div>
+              </div>
+            </sc-for>
+          </div>
+          <div style="display:flex;gap:16px;align-items:stretch">
+            <div style="flex:1;background:#1b1b20;border:1px solid rgba(255,255,255,.07);border-radius:20px;padding:16px;min-width:0">
+              <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:10px">
+                <h2 style="margin:0;font-size:15px;font-weight:700">Карта маршрутов</h2>
+                <span style="font-size:11.5px;color:rgba(255,255,255,.45)">линии нейтральные — цвет инженера при наведении и на его карточке</span>
+              </div>
+              <svg viewBox="0 0 1000 560" style="width:100%;height:auto;display:block;border-radius:14px;background:#ecebe4">
+                <path d="{{ streetsD }}" stroke="#dcd9cf" stroke-width="6" fill="none"></path>
+                <path d="{{ streetsD2 }}" stroke="#e3e1d8" stroke-width="2.5" fill="none"></path>
+                <sc-for list="{{ mapRoutes }}" as="r" hint-placeholder-count="13">
+                  <path d="{{ r.d }}" fill="none" stroke="{{ r.stroke }}" stroke-width="3" stroke-linejoin="round" opacity="0.75" style="cursor:pointer;transition:stroke .15s" style-hover="stroke:{{ r.color }};stroke-width:5;opacity:1" onClick="{{ r.open }}"></path>
+                </sc-for>
+                <sc-for list="{{ mapWhs }}" as="w" hint-placeholder-count="3">
+                  <rect x="{{ w.x }}" y="{{ w.y }}" width="16" height="16" rx="4" fill="#17171a" stroke="#ffce33" stroke-width="2.5"></rect>
+                </sc-for>
+                <sc-for list="{{ mapDots }}" as="p" hint-placeholder-count="51">
+                  <circle cx="{{ p.x }}" cy="{{ p.y }}" r="6" fill="{{ p.fill }}" stroke="#f7f6f1" stroke-width="2" style="cursor:pointer" onClick="{{ p.open }}"></circle>
+                </sc-for>
+                <circle cx="{{ unassignedPt.x }}" cy="{{ unassignedPt.y }}" r="9" fill="#ff5f52" stroke="#fff" stroke-width="2.5" style="animation:pulse 1.6s infinite;cursor:pointer" onClick="{{ openUnassigned }}"></circle>
+              </svg>
+              <div style="display:flex;gap:18px;margin-top:10px;font-size:11.5px;color:rgba(255,255,255,.55)">
+                <span><span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:#8b857a;margin-right:6px"></span>визит</span>
+                <span><span style="display:inline-block;width:9px;height:9px;border-radius:3px;background:#17171a;border:2px solid #ffce33;margin-right:6px"></span>склад</span>
+                <span><span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:#ff5f52;margin-right:6px"></span>не назначено</span>
+                <span><span style="display:inline-block;width:18px;height:3px;background:#a9a294;margin-right:6px;vertical-align:middle"></span>маршрут (13)</span>
+              </div>
+            </div>
+            <div style="width:330px;flex:none;background:#1b1b20;border:1px solid rgba(255,255,255,.07);border-radius:20px;padding:16px;display:flex;flex-direction:column;min-height:0">
+              <h2 style="margin:0 0 10px;font-size:15px;font-weight:700">Лента событий <span style="color:rgba(255,255,255,.4);font-weight:500;font-size:12px">· {{ eventsPassedLabel }}</span></h2>
+              <div style="overflow:auto;max-height:520px;display:flex;flex-direction:column;gap:6px;padding-right:4px">
+                <sc-for list="{{ eventRows }}" as="ev" hint-placeholder-count="10">
+                  <div style="display:flex;gap:10px;padding:8px 10px;border-radius:12px;background:{{ ev.bg }};opacity:{{ ev.op }}">
+                    <span style="font-variant-numeric:tabular-nums;font-weight:700;font-size:12px;color:{{ ev.tColor }};flex:none;width:38px">{{ ev.ts }}</span>
+                    <span style="min-width:0"><span style="display:block;font-size:11px;font-weight:700;color:{{ ev.kColor }};text-transform:uppercase;letter-spacing:.4px">{{ ev.kind }}</span><span style="display:block;font-size:12.5px;color:rgba(255,255,255,.75);line-height:1.4">{{ ev.text }}</span></span>
+                  </div>
+                </sc-for>
+              </div>
+            </div>
+          </div>
+          <div style="background:#1b1b20;border:1px solid rgba(255,255,255,.07);border-radius:20px;padding:16px 18px;margin-top:16px">
+            <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:14px">
+              <h2 style="margin:0;font-size:15px;font-weight:700">Все инженеры</h2>
+              <span style="font-size:11.5px;color:rgba(255,255,255,.45)">кто чем занят сейчас и как загружен · клик по строке — карточка</span>
+              <div style="margin-left:auto;display:flex;gap:16px;font-size:11px;color:rgba(255,255,255,.55)">
+                <span><span style="display:inline-block;width:12px;height:10px;border-radius:3px;background:#4d7cff;margin-right:6px;vertical-align:middle"></span>работа</span>
+                <span><span style="display:inline-block;width:12px;height:10px;border-radius:3px;background:#565661;margin-right:6px;vertical-align:middle"></span>дорога</span>
+                <span><span style="display:inline-block;width:12px;height:10px;border-radius:3px;background:#e8933a;margin-right:6px;vertical-align:middle"></span>простой</span>
+              </div>
+            </div>
+            <div style="border:1px solid rgba(255,255,255,.09);border-radius:12px;overflow:hidden">
+              <div style="display:grid;grid-template-columns:minmax(170px,1.4fr) 130px 96px 58px 150px minmax(200px,1.6fr) 92px;background:#202027;border-bottom:1px solid rgba(255,255,255,.12);font-size:11px;text-transform:uppercase;letter-spacing:.4px;color:rgba(255,255,255,.5);font-weight:600">
+                <span style="padding:10px 14px;border-right:1px solid rgba(255,255,255,.07)">Инженер</span>
+                <span style="padding:10px 14px;border-right:1px solid rgba(255,255,255,.07)">Транспорт</span>
+                <span style="padding:10px 14px;border-right:1px solid rgba(255,255,255,.07)">Смена</span>
+                <span style="padding:10px 14px;border-right:1px solid rgba(255,255,255,.07);text-align:center">Заявок</span>
+                <span style="padding:10px 14px;border-right:1px solid rgba(255,255,255,.07)">Сейчас</span>
+                <span style="padding:10px 14px;border-right:1px solid rgba(255,255,255,.07)">Загрузка за день</span>
+                <span style="padding:10px 14px;text-align:right">Занятость</span>
+              </div>
+              <sc-for list="{{ engTable }}" as="g" hint-placeholder-count="18">
+                <a href="{{ g.href }}" style="display:grid;grid-template-columns:minmax(170px,1.4fr) 130px 96px 58px 150px minmax(200px,1.6fr) 92px;color:#f2f2f4;font-size:13px;background:{{ g.rowBg }};border-bottom:1px solid rgba(255,255,255,.07)" style-hover="background:rgba(77,124,255,.09)">
+                  <span style="display:flex;align-items:center;gap:10px;min-width:0;padding:11px 14px;border-right:1px solid rgba(255,255,255,.06)">
+                    <span style="width:9px;height:9px;border-radius:50%;background:{{ g.color }};flex:none"></span>
+                    <span style="font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ g.name }}</span>
+                  </span>
+                  <span style="display:flex;align-items:center;color:rgba(255,255,255,.62);font-size:12.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding:11px 14px;border-right:1px solid rgba(255,255,255,.06)">{{ g.transport }}</span>
+                  <span style="display:flex;align-items:center;color:rgba(255,255,255,.62);font-variant-numeric:tabular-nums;font-size:12.5px;padding:11px 14px;border-right:1px solid rgba(255,255,255,.06)">{{ g.shift }}</span>
+                  <span style="display:flex;align-items:center;justify-content:center;font-weight:700;color:{{ g.jobsColor }};font-variant-numeric:tabular-nums;padding:11px 14px;border-right:1px solid rgba(255,255,255,.06)">{{ g.jobs }}</span>
+                  <span style="display:flex;align-items:center;gap:7px;min-width:0;padding:11px 14px;border-right:1px solid rgba(255,255,255,.06)">
+                    <span style="width:8px;height:8px;border-radius:50%;background:{{ g.stColor }};flex:none;box-shadow:{{ g.stGlow }}"></span>
+                    <span style="font-size:12.5px;color:{{ g.stText }};white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ g.status }}</span>
+                  </span>
+                  <span style="display:flex;align-items:center;gap:10px;padding:11px 14px;border-right:1px solid rgba(255,255,255,.06)">
+                    <span style="flex:1;height:12px;background:#101014;border-radius:6px;overflow:hidden;display:flex">
+                      <sc-for list="{{ g.load }}" as="l" hint-placeholder-count="3">
+                        <span style="width:{{ l.w }}%;background:{{ l.bg }}"></span>
+                      </sc-for>
+                    </span>
+                  </span>
+                  <span style="display:flex;align-items:center;justify-content:flex-end;font-variant-numeric:tabular-nums;font-weight:600;color:{{ g.busyColor }};white-space:nowrap;padding:11px 14px">{{ g.busyLabel }}</span>
+                </a>
+              </sc-for>
+            </div>
+          </div>
+        </sc-if>
+      </sc-if>
+
+      <sc-if value="{{ isEngineers }}" hint-placeholder-val="{{ false }}">
+        <h1 style="margin:0 0 4px;font-size:22px;font-weight:800">Инженеры</h1>
+        <p style="margin:0 0 14px;color:rgba(255,255,255,.5);font-size:13px">13 из 18 с заявками · 5 без — показаны явно. Строка ведёт на карточку.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:14px;align-items:center">
+          <div style="display:flex;align-items:center;gap:6px;position:relative">
+            <span style="font-size:11px;text-transform:uppercase;letter-spacing:.4px;color:rgba(255,255,255,.4)">Сортировка</span>
+            <button onClick="{{ esortMenu.toggle }}" style="display:flex;align-items:center;gap:8px;border-radius:999px;white-space:nowrap;padding:7px 14px;font-size:12.5px;font-weight:600;cursor:pointer;border:1px solid {{ esortActiveBorder }};background:{{ esortActiveBg }};color:{{ esortActiveColor }}" style-hover="border-color:#ffce33">{{ esortMenu.label }} <span style="opacity:.6">▾</span></button>
+            <sc-if value="{{ esortMenu.open }}" hint-placeholder-val="{{ false }}">
+              <div style="position:absolute;top:calc(100% + 8px);left:64px;z-index:40;min-width:200px;background:#1f1f25;border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:6px;box-shadow:0 16px 48px rgba(0,0,0,.55)">
+                <sc-for list="{{ esortMenu.items }}" as="it" hint-placeholder-count="7">
+                  <button onClick="{{ it.set }}" style="display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;text-align:left;background:{{ it.bg }};border:none;border-radius:9px;padding:8px 12px;font-size:13px;color:{{ it.color }};cursor:pointer" style-hover="background:rgba(255,255,255,.06)">{{ it.label }}<span style="font-weight:700">{{ it.mark }}</span></button>
+                </sc-for>
+              </div>
+            </sc-if>
+          </div>
+          <div style="display:flex;align-items:center;gap:6px;position:relative">
+            <span style="font-size:11px;text-transform:uppercase;letter-spacing:.4px;color:rgba(255,255,255,.4)">Фильтр</span>
+            <button onClick="{{ efilterMenu.toggle }}" style="display:flex;align-items:center;gap:8px;border-radius:999px;white-space:nowrap;padding:7px 14px;font-size:12.5px;font-weight:600;cursor:pointer;border:1px solid {{ efilterActiveBorder }};background:{{ efilterActiveBg }};color:{{ efilterActiveColor }}" style-hover="border-color:#ffce33">{{ efilterMenu.label }} <span style="opacity:.6">▾</span></button>
+            <sc-if value="{{ efilterMenu.open }}" hint-placeholder-val="{{ false }}">
+              <div style="position:absolute;top:calc(100% + 8px);left:48px;z-index:40;min-width:220px;background:#1f1f25;border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:6px;box-shadow:0 16px 48px rgba(0,0,0,.55)">
+                <sc-for list="{{ efilterMenu.items }}" as="it" hint-placeholder-count="6">
+                  <button onClick="{{ it.set }}" style="display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;text-align:left;background:{{ it.bg }};border:none;border-radius:9px;padding:8px 12px;font-size:13px;color:{{ it.color }};cursor:pointer" style-hover="background:rgba(255,255,255,.06)">{{ it.label }}<span style="font-weight:700">{{ it.mark }}</span></button>
+                </sc-for>
+                <sc-if value="{{ engFiltersOn }}" hint-placeholder-val="{{ false }}">
+                  <button onClick="{{ clearEngFilters }}" style="width:100%;text-align:left;background:transparent;border:none;border-top:1px solid rgba(255,255,255,.08);margin-top:4px;padding:8px 12px;font-size:12.5px;color:rgba(255,255,255,.5);cursor:pointer" style-hover="color:#ff6b5e">Сбросить фильтры ×</button>
+                </sc-if>
+              </div>
+            </sc-if>
+          </div>
+          <span style="margin-left:auto;font-size:12px;color:rgba(255,255,255,.45)">показано {{ engShown }} из 18</span>
+        </div>
+        <div style="background:#1b1b20;border:1px solid rgba(255,255,255,.07);border-radius:20px;overflow:hidden">
+          <div style="display:grid;grid-template-columns:22px 140px minmax(180px,1fr) 92px 88px 58px 64px 64px 110px 44px 110px;gap:8px;padding:10px 16px;border-bottom:1px solid rgba(255,255,255,.08);font-size:11px;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.4px">
+            <span></span>
+            <button onClick="{{ sortByName }}" style="all:unset;cursor:pointer;font-size:11px;text-transform:uppercase;letter-spacing:.4px;color:rgba(255,255,255,.5)" style-hover="color:#ffce33">ФИО ⇅</button>
+            <span>Специализации</span><span>Транспорт</span><span>Смена</span>
+            <button onClick="{{ sortByJobs }}" style="all:unset;cursor:pointer;font-size:11px;text-transform:uppercase;letter-spacing:.4px;color:rgba(255,255,255,.5)" style-hover="color:#ffce33">Заявок ⇅</button>
+            <button onClick="{{ sortByWork }}" style="all:unset;cursor:pointer;font-size:11px;text-transform:uppercase;letter-spacing:.4px;color:rgba(255,255,255,.5)" style-hover="color:#ffce33">Работа ⇅</button>
+            <button onClick="{{ sortByRoad }}" style="all:unset;cursor:pointer;font-size:11px;text-transform:uppercase;letter-spacing:.4px;color:rgba(255,255,255,.5)" style-hover="color:#ffce33">Дорога ⇅</button>
+            <button onClick="{{ sortByLoad }}" style="all:unset;cursor:pointer;font-size:11px;text-transform:uppercase;letter-spacing:.4px;color:rgba(255,255,255,.5)" style-hover="color:#ffce33">Занятость ⇅</button>
+            <span>SLA</span><span>Склад</span>
+          </div>
+          <sc-for list="{{ engRows }}" as="e" hint-placeholder-count="18">
+            <a href="{{ e.href }}" style="display:grid;grid-template-columns:22px 140px minmax(180px,1fr) 92px 88px 58px 64px 64px 110px 44px 110px;gap:8px;padding:11px 16px;border-bottom:1px solid rgba(255,255,255,.05);align-items:center;color:#f2f2f4;font-size:13px;background:{{ e.bg }}" style-hover="background:rgba(255,255,255,.05)">
+              <span style="width:12px;height:12px;border-radius:50%;background:{{ e.color }}"></span>
+              <span style="font-weight:600">{{ e.name }}</span>
+              <span style="color:rgba(255,255,255,.65);font-size:12.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ e.skills }}</span>
+              <span style="color:rgba(255,255,255,.65)">{{ e.transport }}</span>
+              <span style="font-variant-numeric:tabular-nums;color:rgba(255,255,255,.65)">{{ e.shift }}</span>
+              <span style="font-weight:700;color:{{ e.jobsColor }}">{{ e.jobs }}</span>
+              <span style="font-variant-numeric:tabular-nums">{{ e.work }}</span>
+              <span style="font-variant-numeric:tabular-nums;color:rgba(255,255,255,.65)">{{ e.road }}</span>
+              <span style="position:relative;height:10px;background:#141419;border-radius:5px;overflow:hidden"><span style="position:absolute;inset:0;width:{{ e.loadPct }}%;background:{{ e.loadColor }};border-radius:5px"></span></span>
+              <span style="font-weight:700;color:{{ e.slaColor }}">{{ e.sla }}</span>
+              <span style="color:rgba(255,255,255,.5);font-size:12px">{{ e.wh }}</span>
+            </a>
+          </sc-for>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ isEngineer }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px">
+          <a href="#/engineers" style="font-size:13px;color:rgba(255,255,255,.55)" style-hover="color:#ffce33">← Все инженеры</a>
+          <span style="flex:1"></span>
+          <input value="{{ engSearch }}" onInput="{{ onEngSearch }}" placeholder="Найти инженера…" style="background:#1b1b20;border:1px solid rgba(255,255,255,.12);border-radius:999px;white-space:nowrap;flex:none;padding:8px 16px;color:#f2f2f4;font-size:13px;width:220px;outline:none" style-focus="border-color:#ffce33">
+          <a href="{{ prevEngHref }}" style="border:1px solid rgba(255,255,255,.15);border-radius:999px;white-space:nowrap;flex:none;padding:8px 14px;font-size:13px;color:#f2f2f4" style-hover="border-color:#ffce33;color:#ffce33">‹ Пред.</a>
+          <a href="{{ nextEngHref }}" style="border:1px solid rgba(255,255,255,.15);border-radius:999px;white-space:nowrap;flex:none;padding:8px 14px;font-size:13px;color:#f2f2f4" style-hover="border-color:#ffce33;color:#ffce33">След. ›</a>
+        </div>
+        <sc-if value="{{ engSearchOpen }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-wrap:wrap;gap:6px;margin:-6px 0 14px">
+            <sc-for list="{{ engSearchResults }}" as="s" hint-placeholder-count="4">
+              <a href="{{ s.href }}" style="display:flex;align-items:center;gap:7px;border:1px solid rgba(255,255,255,.14);border-radius:999px;white-space:nowrap;flex:none;padding:5px 12px;font-size:12.5px;color:#f2f2f4" style-hover="border-color:#ffce33"><span style="width:8px;height:8px;border-radius:50%;background:{{ s.color }}"></span>{{ s.name }}</a>
+            </sc-for>
+          </div>
+        </sc-if>
+        <div style="display:flex;align-items:center;gap:16px;background:#1b1b20;border:1px solid rgba(255,255,255,.07);border-radius:20px;padding:18px 22px;margin-bottom:16px">
+          <span style="width:46px;height:46px;border-radius:50%;background:{{ ce.color }};flex:none;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:16px;color:#17171a">{{ ce.initials }}</span>
+          <div>
+            <h1 style="margin:0;font-size:21px;font-weight:800">{{ ce.name }}</h1>
+            <div style="display:flex;gap:8px;margin-top:7px;flex-wrap:wrap">
+              <span style="border:1px solid rgba(255,255,255,.14);border-radius:999px;white-space:nowrap;flex:none;padding:4px 12px;font-size:12px;color:rgba(255,255,255,.75)">{{ ce.transportLabel }}</span>
+              <span style="border:1px solid rgba(255,255,255,.14);border-radius:999px;white-space:nowrap;flex:none;padding:4px 12px;font-size:12px;color:rgba(255,255,255,.75);font-variant-numeric:tabular-nums">смена {{ ce.shift }}</span>
+              <sc-for list="{{ ce.skills }}" as="s" hint-placeholder-count="2">
+                <span style="background:rgba(255,206,51,.1);border:1px solid rgba(255,206,51,.35);color:#ffce33;border-radius:999px;white-space:nowrap;flex:none;padding:4px 12px;font-size:12px;font-weight:600">{{ s.name }}</span>
+              </sc-for>
+              <sc-if value="{{ ce.wh }}" hint-placeholder-val="{{ false }}">
+                <span style="border:1px solid rgba(255,255,255,.14);border-radius:999px;white-space:nowrap;flex:none;padding:4px 12px;font-size:12px;color:rgba(255,255,255,.75)">утром: {{ ce.wh }}</span>
+              </sc-if>
+            </div>
+          </div>
+          <span style="margin-left:auto;text-align:right;font-size:12px;color:rgba(255,255,255,.5)">визитов<br><b style="font-size:20px;color:#f2f2f4">{{ ce.visitCount }}</b></span>
+        </div>
+        <sc-if value="{{ ceIdle }}" hint-placeholder-val="{{ false }}">
+          <div style="background:#1b1b20;border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:34px;max-width:640px">
+            <h2 style="margin:0 0 8px;font-size:17px;font-weight:700">Сегодня без заявок — и это не ошибка</h2>
+            <p style="margin:0 0 14px;color:rgba(255,255,255,.65);line-height:1.55">{{ ce.idleReason }}</p>
+            <a href="#/jobs" style="font-weight:600;font-size:13px">Посмотреть входящие заявки →</a>
+          </div>
+        </sc-if>
+        <sc-if value="{{ ceBusy }}" hint-placeholder-val="{{ true }}">
+          <div style="background:#1b1b20;border:1px solid rgba(255,255,255,.07);border-radius:20px;padding:16px 20px;margin-bottom:16px">
+            <h2 style="margin:0 0 16px;font-size:15px;font-weight:700">Лента дня <span style="font-weight:500;font-size:12px;color:rgba(255,255,255,.45)">· синие карточки — визиты, между ними перегоны</span></h2>
+            <div style="position:relative;height:104px;margin:0 4px">
+              <sc-for list="{{ ticks }}" as="t" hint-placeholder-count="13">
+                <span style="position:absolute;left:{{ t.left }}%;top:0;bottom:20px;width:1px;background:rgba(255,255,255,.05)"></span>
+                <span style="position:absolute;left:{{ t.left }}%;bottom:0;font-size:10.5px;color:rgba(255,255,255,.42);transform:translateX(-50%);font-variant-numeric:tabular-nums">{{ t.label }}</span>
+              </sc-for>
+              <span style="position:absolute;left:0;right:0;top:61px;height:1px;background:rgba(255,255,255,.08)"></span>
+              <sc-for list="{{ ceTrack }}" as="s" hint-placeholder-count="10">
+                <span title="{{ s.title }}" style="position:absolute;left:{{ s.left }}%;width:{{ s.width }}%;top:{{ s.top }};height:{{ s.h }};background:{{ s.bg }};border-radius:4px;overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:600;color:{{ s.labelColor }};white-space:nowrap">{{ s.label }}</span>
+              </sc-for>
+              <sc-for list="{{ ceVisitBlocks }}" as="v" hint-placeholder-count="6">
+                <a href="{{ v.href }}" title="{{ v.title }}" style="position:absolute;left:{{ v.left }}%;width:{{ v.width }}%;top:4px;height:52px;min-width:26px;background:#2d3f6b;border:{{ v.border }};border-radius:9px;overflow:hidden;display:flex;flex-direction:column;justify-content:center;gap:1px;padding:5px 7px;box-sizing:border-box;color:#eaf0ff" style-hover="background:#34497d">
+                  <span style="display:flex;align-items:center;gap:5px;min-width:0">
+                    <span style="flex:none;width:15px;height:15px;border-radius:50%;background:#4d7cff;color:#fff;font-size:10px;font-weight:800;display:flex;align-items:center;justify-content:center">{{ v.n }}</span>
+                    <span style="font-size:10px;color:rgba(234,240,255,.7);font-variant-numeric:tabular-nums;white-space:nowrap">{{ v.timeLabel }}</span>
+                  </span>
+                  <span style="font-size:11px;font-weight:600;line-height:1.15;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical">{{ v.customer }}</span>
+                </a>
+              </sc-for>
+              <span style="position:absolute;top:0;bottom:20px;left:{{ nowPct }}%;width:2px;background:#ffce33;box-shadow:0 0 8px rgba(255,206,51,.6)"></span>
+              <span style="position:absolute;bottom:20px;left:{{ nowPct }}%;transform:translateX(-50%);font-size:9px;font-weight:800;color:#17171a;background:#ffce33;border-radius:4px;padding:1px 5px;white-space:nowrap">сейчас {{ nowLabel }}</span>
+            </div>
+            <div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:12px;font-size:11px;color:rgba(255,255,255,.55)">
+              <span><span style="display:inline-block;width:14px;height:10px;border-radius:3px;background:#2d3f6b;border:1px solid rgba(255,255,255,.14);margin-right:5px;vertical-align:middle"></span>визит</span>
+              <span><span style="display:inline-block;width:14px;height:4px;border-radius:2px;background:#4a4a52;margin-right:5px;vertical-align:middle"></span>в пути</span>
+              <span><span style="display:inline-block;width:14px;height:5px;border-radius:2px;background:repeating-linear-gradient(90deg,#7aa7ff 0 5px,transparent 5px 9px);margin-right:5px;vertical-align:middle"></span>метро</span>
+              <span><span style="display:inline-block;width:14px;height:9px;border-radius:3px;background:repeating-linear-gradient(135deg,#3a3a41 0 5px,#2a2a30 5px 10px);margin-right:5px;vertical-align:middle"></span>обед</span>
+              <span><span style="display:inline-block;width:14px;height:9px;border-radius:3px;background:#e8933a;margin-right:5px;vertical-align:middle"></span>ожидание</span>
+              <span><span style="display:inline-block;width:11px;height:9px;border-radius:3px;border:2px solid #ff5f52;margin-right:5px;box-sizing:border-box;vertical-align:middle"></span>SLA</span>
+              <span><span style="display:inline-block;width:11px;height:9px;border-radius:3px;border:2px solid #ffb35f;margin-right:5px;box-sizing:border-box;vertical-align:middle"></span>жёсткое окно</span>
+              <span><span style="display:inline-block;width:11px;height:9px;border-radius:3px;border:2px solid #ffce33;margin-right:5px;box-sizing:border-box;vertical-align:middle"></span>закреплена</span>
+            </div>
+          </div>
+          <div style="display:flex;gap:16px;margin-bottom:16px;align-items:stretch">
+            <div style="flex:1.35;background:#1b1b20;border:1px solid rgba(255,255,255,.07);border-radius:20px;padding:16px;min-width:0">
+              <h2 style="margin:0 0 10px;font-size:15px;font-weight:700">Маршрут <span style="font-weight:500;font-size:12px;color:rgba(255,255,255,.45)">· {{ ce.routeNote }}</span></h2>
+              <svg viewBox="{{ ceViewBox }}" style="width:100%;height:auto;display:block;border-radius:14px;background:#ecebe4">
+                <path d="{{ streetsD }}" stroke="#dcd9cf" stroke-width="6" fill="none"></path>
+                <sc-for list="{{ ceLegs }}" as="l" hint-placeholder-count="6">
+                  <path d="{{ l.d }}" fill="none" stroke="{{ l.stroke }}" stroke-width="4" stroke-linejoin="round" stroke-dasharray="{{ l.dash }}"></path>
+                </sc-for>
+                <sc-for list="{{ cePts }}" as="p" hint-placeholder-count="8">
+                  <circle cx="{{ p.x }}" cy="{{ p.y }}" r="{{ p.r }}" fill="{{ p.fill }}" stroke="{{ p.stroke }}" stroke-width="3"></circle>
+                  <text x="{{ p.x }}" y="{{ p.ty }}" text-anchor="middle" font-size="15" font-weight="700" fill="{{ p.tfill }}">{{ p.n }}</text>
+                </sc-for>
+              </svg>
+            </div>
+            <div style="flex:1;display:flex;flex-direction:column;gap:16px;min-width:0">
+              <div style="background:#1b1b20;border:1px solid rgba(255,255,255,.07);border-radius:20px;padding:16px 20px">
+                <h2 style="margin:0 0 12px;font-size:15px;font-weight:700">Загрузка <span style="font-weight:500;font-size:12px;color:rgba(255,255,255,.45)">· занятость {{ ce.busyMin }} мин</span></h2>
+                <div style="display:flex;height:22px;border-radius:8px;overflow:hidden;margin-bottom:6px">
+                  <span style="width:{{ ceLoad.workPct }}%;background:{{ ce.color }}"></span><span style="width:{{ ceLoad.roadPct }}%;background:#4a4a52"></span><span style="width:{{ ceLoad.lunchPct }}%;background:#2c2c33"></span><span style="width:{{ ceLoad.idlePct }}%;background:rgba(255,165,58,.5)"></span><span style="flex:1;background:#141419"></span>
+                </div>
+                <div style="font-size:11.5px;color:rgba(255,255,255,.55);margin-bottom:14px">работа {{ ceLoad.work }} · дорога {{ ceLoad.road }} · обед {{ ceLoad.lunch }} · простой {{ ceLoad.idle }} мин</div>
+                <div style="display:flex;height:10px;border-radius:6px;overflow:hidden;margin-bottom:6px;opacity:.55">
+                  <span style="width:{{ avgLoad.workPct }}%;background:#8b8b95"></span><span style="width:{{ avgLoad.roadPct }}%;background:#4a4a52"></span><span style="width:{{ avgLoad.lunchPct }}%;background:#2c2c33"></span><span style="width:{{ avgLoad.idlePct }}%;background:rgba(255,165,58,.5)"></span><span style="flex:1;background:#141419"></span>
+                </div>
+                <div style="font-size:11.5px;color:rgba(255,255,255,.45)">среднее по службе: работа {{ avgLoad.work }} · дорога {{ avgLoad.road }} мин. Разброс занятости по службе — 177–485 мин.</div>
+              </div>
+              <div style="background:#1b1b20;border:1px solid rgba(255,255,255,.07);border-radius:20px;padding:16px 20px">
+                <h2 style="margin:0 0 12px;font-size:15px;font-weight:700">Оборудование на руках <span style="font-weight:500;font-size:12px;color:rgba(255,255,255,.45)">· {{ ce.equipCount }}</span></h2>
+                <div style="display:flex;flex-wrap:wrap;gap:6px">
+                  <sc-for list="{{ ce.equip }}" as="q" hint-placeholder-count="7">
+                    <span style="border:1px solid rgba(255,255,255,.14);border-radius:999px;white-space:nowrap;flex:none;padding:4px 12px;font-size:12px;color:rgba(255,255,255,.8)">{{ q }}</span>
+                  </sc-for>
+                </div>
+                <sc-if value="{{ ce.cantTakeLabel }}" hint-placeholder-val="{{ false }}">
+                  <div style="margin-top:12px;padding:10px 14px;border-radius:12px;background:rgba(255,95,82,.08);border:1px solid rgba(255,95,82,.25);font-size:12px;color:#ff9d94;line-height:1.5">Не может взять без машины: {{ ce.cantTakeLabel }}</div>
+                </sc-if>
+              </div>
+            </div>
+          </div>
+          <div style="background:#1b1b20;border:1px solid rgba(255,255,255,.07);border-radius:20px;padding:16px 20px">
+            <h2 style="margin:0 0 12px;font-size:15px;font-weight:700">Визиты по порядку</h2>
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <sc-for list="{{ ceVisits }}" as="v" hint-placeholder-count="4">
+                <a href="{{ v.href }}" style="display:grid;grid-template-columns:34px 108px 1fr 200px 130px 110px;gap:14px;align-items:center;padding:12px 14px;border-radius:14px;background:#141419;border:1px solid {{ v.borderColor }};color:#f2f2f4" style-hover="border-color:#ffce33">
+                  <span style="width:30px;height:30px;border-radius:50%;background:{{ v.nBg }};color:{{ v.nColor }};display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px">{{ v.n }}</span>
+                  <span style="font-variant-numeric:tabular-nums;font-weight:700">{{ v.time }}</span>
+                  <span style="min-width:0"><span style="display:block;font-weight:600">{{ v.customer }} <span style="font-weight:700;font-size:11px;color:{{ v.prioColor }}">{{ v.prio }}</span></span><span style="display:block;font-size:12px;color:rgba(255,255,255,.55);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ v.typeLabel }} · {{ v.address }}</span></span>
+                  <span style="font-size:12px;color:rgba(255,255,255,.55)">окно {{ v.window }} <b style="color:{{ v.winColor }}">{{ v.winKind }}</b><br>{{ v.fromPrev }}{{ v.waitLabel }}</span>
+                  <span style="font-size:12px;color:{{ v.flagColor }};font-weight:600">{{ v.flags }}</span>
+                  <span style="justify-self:end;border-radius:999px;white-space:nowrap;flex:none;padding:4px 12px;font-size:11.5px;font-weight:700;background:{{ v.stBg }};color:{{ v.stColor }}">{{ v.status }}</span>
+                </a>
+              </sc-for>
+            </div>
+          </div>
+        </sc-if>
+      </sc-if>
+
+      <sc-if value="{{ isJobs }}" hint-placeholder-val="{{ false }}">
+        <h1 style="margin:0 0 4px;font-size:22px;font-weight:800">Заявки <span style="color:rgba(255,255,255,.4);font-weight:600;font-size:15px">· 70</span></h1>
+        <p style="margin:0 0 14px;color:rgba(255,255,255,.5);font-size:13px">в плане 51 · новых 18 · не назначена 1</p>
+        <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:14px;align-items:center">
+          <div style="display:flex;align-items:center;gap:6px;position:relative">
+            <span style="font-size:11px;text-transform:uppercase;letter-spacing:.4px;color:rgba(255,255,255,.4)">Статус</span>
+            <button onClick="{{ jobStatusMenu.toggle }}" style="display:flex;align-items:center;gap:8px;border-radius:999px;white-space:nowrap;padding:7px 14px;font-size:12.5px;font-weight:600;cursor:pointer;border:1px solid {{ jstatusBorder }};background:{{ jstatusBg }};color:{{ jstatusColor }}" style-hover="border-color:#ffce33">{{ jobStatusMenu.label }} <span style="opacity:.6">▾</span></button>
+            <sc-if value="{{ jobStatusMenu.open }}" hint-placeholder-val="{{ false }}">
+              <div style="position:absolute;top:calc(100% + 8px);left:52px;z-index:40;min-width:200px;background:#1f1f25;border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:6px;box-shadow:0 16px 48px rgba(0,0,0,.55)">
+                <sc-for list="{{ jobStatusMenu.items }}" as="it" hint-placeholder-count="4">
+                  <button onClick="{{ it.set }}" style="display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;text-align:left;background:{{ it.bg }};border:none;border-radius:9px;padding:8px 12px;font-size:13px;color:{{ it.color }};cursor:pointer" style-hover="background:rgba(255,255,255,.06)">{{ it.label }}<span style="font-weight:700">{{ it.mark }}</span></button>
+                </sc-for>
+              </div>
+            </sc-if>
+          </div>
+          <div style="display:flex;align-items:center;gap:6px;position:relative">
+            <span style="font-size:11px;text-transform:uppercase;letter-spacing:.4px;color:rgba(255,255,255,.4)">Приоритет</span>
+            <button onClick="{{ jobPrioMenu.toggle }}" style="display:flex;align-items:center;gap:8px;border-radius:999px;white-space:nowrap;padding:7px 14px;font-size:12.5px;font-weight:600;cursor:pointer;border:1px solid {{ jprioBorder }};background:{{ jprioBg }};color:{{ jprioColor }}" style-hover="border-color:#ffce33">{{ jobPrioMenu.label }} <span style="opacity:.6">▾</span></button>
+            <sc-if value="{{ jobPrioMenu.open }}" hint-placeholder-val="{{ false }}">
+              <div style="position:absolute;top:calc(100% + 8px);left:80px;z-index:40;min-width:160px;background:#1f1f25;border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:6px;box-shadow:0 16px 48px rgba(0,0,0,.55)">
+                <sc-for list="{{ jobPrioMenu.items }}" as="it" hint-placeholder-count="5">
+                  <button onClick="{{ it.set }}" style="display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;text-align:left;background:{{ it.bg }};border:none;border-radius:9px;padding:8px 12px;font-size:13px;color:{{ it.color }};cursor:pointer" style-hover="background:rgba(255,255,255,.06)">{{ it.label }}<span style="font-weight:700">{{ it.mark }}</span></button>
+                </sc-for>
+              </div>
+            </sc-if>
+          </div>
+        </div>
+        <div style="background:#1b1b20;border:1px solid rgba(255,255,255,.07);border-radius:20px;overflow:hidden">
+          <div style="display:grid;grid-template-columns:44px 190px 1fr 110px 130px 70px 140px 110px 104px;gap:10px;padding:10px 16px;border-bottom:1px solid rgba(255,255,255,.08);font-size:11px;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.4px">
+            <span>Прио</span><span>Заказчик</span><span>Тип работ · адрес</span><span>Район</span><span>Окно</span><span>SLA</span><span>Исполнитель</span><span>Время</span><span>Статус</span>
+          </div>
+          <div style="max-height:640px;overflow:auto">
+            <sc-for list="{{ jobRows }}" as="j" hint-placeholder-count="14">
+              <a href="{{ j.href }}" style="display:grid;grid-template-columns:44px 190px 1fr 110px 130px 70px 140px 110px 104px;gap:10px;padding:10px 16px;border-bottom:1px solid rgba(255,255,255,.05);align-items:center;color:#f2f2f4;font-size:12.5px;background:{{ j.bg }}" style-hover="background:rgba(255,255,255,.05)">
+                <span style="font-weight:800;color:{{ j.prioColor }}">{{ j.prio }}</span>
+                <span style="font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ j.customer }}</span>
+                <span style="min-width:0"><span style="display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ j.typeLabel }}</span><span style="display:block;font-size:11.5px;color:rgba(255,255,255,.45);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ j.address }}</span></span>
+                <span style="color:rgba(255,255,255,.6)">{{ j.district }}</span>
+                <span style="font-variant-numeric:tabular-nums;color:rgba(255,255,255,.7)">{{ j.window }} <b style="color:#ff9d94">{{ j.hardMark }}</b></span>
+                <span style="font-variant-numeric:tabular-nums;color:{{ j.slaColor }}">{{ j.sla }}</span>
+                <span style="color:{{ j.engColor }};font-weight:600">{{ j.engName }}</span>
+                <span style="font-variant-numeric:tabular-nums;color:rgba(255,255,255,.7)">{{ j.time }}</span>
+                <span style="border-radius:999px;white-space:nowrap;flex:none;padding:3px 10px;font-size:11px;font-weight:700;background:{{ j.stBg }};color:{{ j.stColor }};text-align:center">{{ j.status }}</span>
+              </a>
+            </sc-for>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ isJob }}" hint-placeholder-val="{{ false }}">
+        <a href="#/jobs" style="font-size:13px;color:rgba(255,255,255,.55)" style-hover="color:#ffce33">← Все заявки</a>
+        <div style="display:flex;align-items:center;gap:14px;margin:12px 0 16px">
+          <span style="font-weight:800;font-size:17px;color:{{ cj.prioColor }};border:2px solid {{ cj.prioColor }};border-radius:12px;padding:4px 10px">{{ cj.prio }}</span>
+          <h1 style="margin:0;font-size:22px;font-weight:800">{{ cj.customer }}</h1>
+          <span style="border-radius:999px;white-space:nowrap;flex:none;padding:5px 14px;font-size:12px;font-weight:700;background:{{ cj.stBg }};color:{{ cj.stColor }}">{{ cj.status }}</span>
+          <sc-if value="{{ cj.pinned }}" hint-placeholder-val="{{ false }}">
+            <span style="border-radius:999px;white-space:nowrap;flex:none;padding:5px 14px;font-size:12px;font-weight:700;background:rgba(255,206,51,.12);color:#ffce33;border:1px solid rgba(255,206,51,.4)">закреплена диспетчером</span>
+          </sc-if>
+        </div>
+        <div style="display:flex;gap:16px;align-items:flex-start">
+          <div style="width:400px;flex:none;background:#1b1b20;border:1px solid rgba(255,255,255,.07);border-radius:20px;padding:18px 22px">
+            <h2 style="margin:0 0 14px;font-size:15px;font-weight:700">Заявка</h2>
+            <div style="display:grid;grid-template-columns:110px 1fr;gap:10px 14px;font-size:13px">
+              <span style="color:rgba(255,255,255,.45)">Тип работ</span><span><a href="#/reference">{{ cj.typeLabel }}</a></span>
+              <span style="color:rgba(255,255,255,.45)">Адрес</span><span>{{ cj.address }}</span>
+              <span style="color:rgba(255,255,255,.45)">Район</span><span>{{ cj.district }}</span>
+              <span style="color:rgba(255,255,255,.45)">Окно клиента</span><span style="font-variant-numeric:tabular-nums">{{ cj.window }} <b style="color:{{ cj.winColor }}">{{ cj.winKind }}</b></span>
+              <span style="color:rgba(255,255,255,.45)">SLA</span><span style="font-variant-numeric:tabular-nums;color:{{ cj.slaColor }}">{{ cj.slaLabel }}</span>
+              <span style="color:rgba(255,255,255,.45)">Уровень</span><span>минимум {{ cj.lvlNeed }} по «{{ cj.typeName }}»</span>
+              <span style="color:rgba(255,255,255,.45)">Оборудование</span><span>{{ cj.equipLabel }}</span>
+              <span style="color:rgba(255,255,255,.45)">Исполнитель</span><span><a href="{{ cj.engHref }}" style="font-weight:600">{{ cj.engName }}</a></span>
+              <span style="color:rgba(255,255,255,.45)">Время визита</span><span style="font-variant-numeric:tabular-nums;font-weight:700">{{ cj.time }}</span>
+            </div>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;gap:16px;min-width:0">
+            <sc-if value="{{ cjPlanned }}" hint-placeholder-val="{{ true }}">
+              <div style="background:#1b1b20;border:1px solid rgba(255,255,255,.07);border-radius:20px;padding:18px 22px">
+                <h2 style="margin:0 0 12px;font-size:15px;font-weight:700">Почему {{ cj.engShort }}</h2>
+                <div style="display:flex;flex-direction:column;gap:8px">
+                  <sc-for list="{{ cj.why }}" as="w" hint-placeholder-count="3">
+                    <div style="display:flex;gap:10px;font-size:13px;line-height:1.5;color:rgba(255,255,255,.8)"><span style="color:#ffce33;font-weight:800">—</span>{{ w }}</div>
+                  </sc-for>
+                </div>
+                <h2 style="margin:18px 0 12px;font-size:15px;font-weight:700">Почему в это время</h2>
+                <div style="display:flex;flex-direction:column;gap:8px">
+                  <sc-for list="{{ cj.timeWhy }}" as="w" hint-placeholder-count="2">
+                    <div style="display:flex;gap:10px;font-size:13px;line-height:1.5;color:rgba(255,255,255,.8)"><span style="color:#ffce33;font-weight:800">—</span>{{ w }}</div>
+                  </sc-for>
+                </div>
+              </div>
+              <div style="background:#1b1b20;border:1px solid rgba(255,255,255,.07);border-radius:20px;padding:18px 22px">
+                <h2 style="margin:0 0 4px;font-size:15px;font-weight:700">Альтернативы <span style="font-weight:500;font-size:12px;color:rgba(255,255,255,.45)">· что было бы у других допустимых</span></h2>
+                <div style="display:flex;flex-direction:column">
+                  <sc-for list="{{ cj.alts }}" as="a" hint-placeholder-count="3">
+                    <div style="display:flex;align-items:center;gap:14px;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.06)">
+                      <a href="{{ a.href }}" style="font-weight:700;width:140px;flex:none">{{ a.eng }}</a>
+                      <span style="flex:1;font-size:12.5px;color:rgba(255,255,255,.65);line-height:1.45">{{ a.text }}</span>
+                      <span style="font-size:12px;color:#ff9d94;font-weight:600;flex:none">{{ a.cost }}</span>
+                      <button onClick="{{ a.transfer }}" style="background:transparent;border:1px solid rgba(255,206,51,.5);color:#ffce33;border-radius:999px;white-space:nowrap;flex:none;padding:6px 14px;font-size:12px;font-weight:700;cursor:pointer;flex:none" style-hover="background:rgba(255,206,51,.12)">Передать</button>
+                    </div>
+                  </sc-for>
+                </div>
+              </div>
+            </sc-if>
+            <sc-if value="{{ cjUnassigned }}" hint-placeholder-val="{{ false }}">
+              <div style="background:rgba(255,95,82,.06);border:1px solid rgba(255,95,82,.3);border-radius:20px;padding:18px 22px">
+                <h2 style="margin:0 0 8px;font-size:15px;font-weight:700;color:#ff9d94">Не назначена — вердикт</h2>
+                <p style="margin:0 0 16px;font-size:15px;font-weight:600">{{ cj.verdict }}</p>
+                <div style="display:flex;flex-direction:column">
+                  <sc-for list="{{ cj.whyNot }}" as="w" hint-placeholder-count="3">
+                    <div style="display:flex;gap:14px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.06);align-items:baseline">
+                      <a href="{{ w.href }}" style="font-weight:700;width:140px;flex:none">{{ w.eng }}</a>
+                      <span style="font-size:13px;color:rgba(255,255,255,.75);line-height:1.45">{{ w.text }}</span>
+                    </div>
+                  </sc-for>
+                </div>
+              </div>
+            </sc-if>
+            <sc-if value="{{ cjNew }}" hint-placeholder-val="{{ false }}">
+              <div style="background:#1b1b20;border:1px solid rgba(255,255,255,.07);border-radius:20px;padding:18px 22px">
+                <h2 style="margin:0 0 8px;font-size:15px;font-weight:700">Ещё не поступила</h2>
+                <p style="margin:0;font-size:13px;color:rgba(255,255,255,.65);line-height:1.55">Заявка придёт в {{ cj.arrive }}. При поступлении сервис пересчитает план за 3 секунды: выполненное зафиксировано, перенос визитов другим исполнителям стоит дорого — обычно затрагиваются 2–4 инженера из 18.</p>
+              </div>
+            </sc-if>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ isBacklog }}" hint-placeholder-val="{{ false }}">
+        <h1 style="margin:0 0 4px;font-size:22px;font-weight:800">Не назначено <span style="color:rgba(255,255,255,.4);font-weight:600;font-size:15px">· 1 из 52</span></h1>
+        <p style="margin:0 0 18px;color:rgba(255,255,255,.5);font-size:13px">Управленческий инструмент: из разбора видно, чего службе не хватает — людей, приборов или машин.</p>
+        <div style="display:flex;gap:16px;align-items:flex-start">
+          <div style="flex:1.4;background:#1b1b20;border:1px solid rgba(255,255,255,.07);border-radius:20px;padding:18px 22px">
+            <div style="display:flex;align-items:center;gap:12px;margin-bottom:6px">
+              <span style="font-weight:800;color:#ffa53a;border:2px solid #ffa53a;border-radius:10px;padding:2px 8px;font-size:13px">P2</span>
+              <a href="{{ bkHref }}" style="font-weight:700;font-size:16px;color:#f2f2f4" style-hover="color:#ffce33">{{ bk.customer }}</a>
+              <span style="font-size:12px;color:rgba(255,255,255,.5)">{{ bk.typeLabel }}</span>
+            </div>
+            <div style="font-size:12.5px;color:rgba(255,255,255,.55);margin-bottom:14px">{{ bk.address }} · окно {{ bk.window }} <b style="color:#ff9d94">жёсткое</b> · нужен: {{ bk.equipLabel }}</div>
+            <div style="padding:12px 16px;border-radius:14px;background:rgba(255,95,82,.08);border:1px solid rgba(255,95,82,.3);font-weight:600;margin-bottom:14px">{{ bk.verdict }}</div>
+            <div style="display:flex;flex-direction:column">
+              <sc-for list="{{ bkWhyNot }}" as="w" hint-placeholder-count="3">
+                <div style="display:flex;gap:14px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.06);align-items:baseline">
+                  <a href="{{ w.href }}" style="font-weight:700;width:140px;flex:none">{{ w.eng }}</a>
+                  <span style="font-size:13px;color:rgba(255,255,255,.75);line-height:1.45">{{ w.text }}</span>
+                </div>
+              </sc-for>
+            </div>
+            <a href="{{ bkHref }}" style="display:inline-block;margin-top:14px;font-size:13px;font-weight:600">Открыть карточку заявки →</a>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;gap:16px">
+            <div style="background:#1b1b20;border:1px solid rgba(255,255,255,.07);border-radius:20px;padding:18px 22px">
+              <h2 style="margin:0 0 12px;font-size:15px;font-weight:700">Сводка по причинам</h2>
+              <div style="display:flex;flex-direction:column;gap:8px">
+                <sc-for list="{{ bkCauses }}" as="c" hint-placeholder-count="4">
+                  <div style="display:flex;align-items:center;gap:10px"><span style="flex:1;font-size:13px;color:rgba(255,255,255,.75)">{{ c.name }}</span><span style="width:120px;height:8px;background:#141419;border-radius:4px;overflow:hidden"><span style="display:block;height:100%;width:{{ c.pct }}%;background:#ff7a6e;border-radius:4px"></span></span><span style="width:18px;text-align:right;font-weight:700">{{ c.n }}</span></div>
+                </sc-for>
+              </div>
+            </div>
+            <div style="background:rgba(255,206,51,.05);border:1px solid rgba(255,206,51,.25);border-radius:20px;padding:18px 22px">
+              <h2 style="margin:0 0 8px;font-size:15px;font-weight:700;color:#ffce33">Узкое место — приборы</h2>
+              <p style="margin:0 0 10px;font-size:12.5px;color:rgba(255,255,255,.65);line-height:1.5">По 2 экземпляра на всю службу из 18 человек:</p>
+              <div style="display:flex;flex-wrap:wrap;gap:6px">
+                <sc-for list="{{ deficitChips }}" as="d" hint-placeholder-count="5">
+                  <span style="border:1px solid rgba(255,206,51,.4);color:#ffce33;border-radius:999px;white-space:nowrap;flex:none;padding:4px 12px;font-size:12px;font-weight:600">{{ d }} · 2 шт</span>
+                </sc-for>
+              </div>
+              <a href="#/reference" style="display:inline-block;margin-top:12px;font-size:12.5px;font-weight:600">Справочник оборудования →</a>
+            </div>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ isEffect }}" hint-placeholder-val="{{ false }}">
+        <h1 style="margin:0 0 4px;font-size:22px;font-weight:800">Эффект</h1>
+        <p style="margin:0 0 18px;color:rgba(255,255,255,.5);font-size:13px">Сравнение с ручным планированием на тех же 52 утренних заявках.</p>
+        <div style="max-width:860px;background:#1b1b20;border:1px solid rgba(255,255,255,.07);border-radius:20px;overflow:hidden">
+          <div style="display:grid;grid-template-columns:1fr 170px 170px;gap:10px;padding:12px 22px;border-bottom:1px solid rgba(255,255,255,.08);font-size:11px;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.4px">
+            <span>Показатель</span><span>Сервис</span><span>Ручной план</span>
+          </div>
+          <sc-for list="{{ effectRows }}" as="r" hint-placeholder-count="7">
+            <div style="display:grid;grid-template-columns:1fr 170px 170px;gap:10px;padding:13px 22px;border-bottom:1px solid rgba(255,255,255,.05);align-items:baseline;background:{{ r.bg }}">
+              <span style="font-weight:{{ r.fw }};font-size:{{ r.fs }}">{{ r.name }}<sc-if value="{{ r.note }}" hint-placeholder-val="{{ false }}"><span style="display:block;font-size:11.5px;font-weight:400;color:#ff9d94;margin-top:3px;line-height:1.4">{{ r.note }}</span></sc-if></span>
+              <span style="font-weight:800;font-size:{{ r.fs }};color:{{ r.oursColor }};font-variant-numeric:tabular-nums">{{ r.ours }}</span>
+              <span style="color:rgba(255,255,255,.6);font-variant-numeric:tabular-nums">{{ r.manual }}</span>
+            </div>
+          </sc-for>
+        </div>
+        <div style="max-width:860px;margin-top:16px;background:#17171b;border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:16px 22px;font-size:12.5px;color:rgba(255,255,255,.55);line-height:1.6">
+          <b style="color:rgba(255,255,255,.8)">Как считался baseline.</b> Ручной план собран опытным диспетчером на том же датасете: 18 инженеров, 52 утренние заявки, те же окна и SLA. Он не взял в работу 6 неудобных заявок — отсюда меньше нарушений при худшем покрытии. Все цифры воспроизводятся командой: датасет и скрипт сравнения — в репозитории проекта.
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ isReference }}" hint-placeholder-val="{{ false }}">
+        <h1 style="margin:0 0 14px;font-size:22px;font-weight:800">Справочники</h1>
+        <div style="display:flex;gap:6px;margin-bottom:18px">
+          <sc-for list="{{ refTabs }}" as="t" hint-placeholder-count="4">
+            <button onClick="{{ t.set }}" style="border-radius:999px;white-space:nowrap;flex:none;padding:8px 18px;font-size:13px;font-weight:600;cursor:pointer;border:1px solid {{ t.border }};background:{{ t.bg }};color:{{ t.color }}" style-hover="border-color:#ffce33">{{ t.label }}</button>
+          </sc-for>
+        </div>
+        <sc-if value="{{ refTypes }}" hint-placeholder-val="{{ true }}">
+          <p style="margin:0 0 14px;color:rgba(255,255,255,.5);font-size:13px">Матрица «работа → оборудование». Жёлтым — дефицитные приборы: по 2 экземпляра на службу.</p>
+          <div style="background:#1b1b20;border:1px solid rgba(255,255,255,.07);border-radius:20px;padding:16px;overflow:auto">
+            <div style="display:grid;grid-template-columns:230px 56px repeat(17,34px);gap:2px;align-items:end">
+              <span style="font-size:11px;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.4px;padding-bottom:8px">Тип работ</span>
+              <span style="font-size:11px;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.4px;padding-bottom:8px">Мин. ур.</span>
+              <sc-for list="{{ matrixCols }}" as="c" hint-placeholder-count="17">
+                <span style="writing-mode:vertical-rl;transform:rotate(180deg);font-size:10.5px;color:{{ c.color }};height:150px;padding:4px 0;white-space:nowrap;overflow:hidden">{{ c.name }}</span>
+              </sc-for>
+            </div>
+            <sc-for list="{{ matrixRows }}" as="r" hint-placeholder-count="12">
+              <div style="display:grid;grid-template-columns:230px 56px repeat(17,34px);gap:2px;align-items:center;border-top:1px solid rgba(255,255,255,.05);padding:5px 0">
+                <span style="font-size:12.5px"><b>{{ r.name }}</b><span style="display:block;font-size:11px;color:rgba(255,255,255,.45)">{{ r.label }}</span></span>
+                <span style="font-weight:700;text-align:center">{{ r.lvl }}</span>
+                <sc-for list="{{ r.cells }}" as="c" hint-placeholder-count="17">
+                  <span style="width:22px;height:22px;margin:0 auto;border-radius:7px;background:{{ c.bg }};border:1px solid {{ c.border }}"></span>
+                </sc-for>
+              </div>
+            </sc-for>
+          </div>
+        </sc-if>
+        <sc-if value="{{ refEquip }}" hint-placeholder-val="{{ false }}">
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;max-width:1000px">
+            <sc-for list="{{ equipRows }}" as="q" hint-placeholder-count="17">
+              <div style="background:#1b1b20;border:1px solid {{ q.border }};border-radius:16px;padding:14px 16px;display:flex;align-items:center;gap:12px">
+                <span style="flex:1;min-width:0"><span style="display:block;font-weight:600;font-size:13px">{{ q.name }}</span><span style="display:block;font-size:11.5px;color:rgba(255,255,255,.45);margin-top:2px">{{ q.tags }}</span></span>
+                <span style="font-weight:800;font-size:17px;color:{{ q.qtyColor }}">{{ q.qty }}<span style="font-size:11px;font-weight:500;color:rgba(255,255,255,.4)"> шт</span></span>
+              </div>
+            </sc-for>
+          </div>
+        </sc-if>
+        <sc-if value="{{ refWhs }}" hint-placeholder-val="{{ false }}">
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:1000px">
+            <sc-for list="{{ whRows }}" as="w" hint-placeholder-count="3">
+              <div style="background:#1b1b20;border:1px solid rgba(255,255,255,.07);border-radius:20px;padding:20px 22px">
+                <span style="display:inline-flex;width:34px;height:34px;border-radius:10px;background:#141419;border:2px solid #ffce33;align-items:center;justify-content:center;font-weight:800;color:#ffce33;margin-bottom:12px">С</span>
+                <h2 style="margin:0 0 4px;font-size:16px;font-weight:700">{{ w.name }}</h2>
+                <div style="font-size:12.5px;color:rgba(255,255,255,.55);margin-bottom:12px">{{ w.addr }}</div>
+                <div style="font-size:12.5px;color:rgba(255,255,255,.75)">утренний заезд: <b>{{ w.engCount }}</b><span style="display:block;color:rgba(255,255,255,.5);margin-top:2px">{{ w.engs }}</span></div>
+              </div>
+            </sc-for>
+          </div>
+        </sc-if>
+        <sc-if value="{{ refStaff }}" hint-placeholder-val="{{ false }}">
+          <div style="background:#1b1b20;border:1px solid rgba(255,255,255,.07);border-radius:20px;overflow:hidden;max-width:1000px">
+            <sc-for list="{{ staffRows }}" as="s" hint-placeholder-count="18">
+              <a href="{{ s.href }}" style="display:grid;grid-template-columns:26px 160px 1fr 130px 110px;gap:12px;padding:10px 18px;border-bottom:1px solid rgba(255,255,255,.05);align-items:center;color:#f2f2f4;font-size:13px" style-hover="background:rgba(255,255,255,.05)">
+                <span style="width:12px;height:12px;border-radius:50%;background:{{ s.color }}"></span>
+                <span style="font-weight:600">{{ s.name }}</span>
+                <span style="color:rgba(255,255,255,.6);font-size:12.5px">{{ s.skills }}</span>
+                <span style="color:rgba(255,255,255,.6)">{{ s.transport }}</span>
+                <span style="font-variant-numeric:tabular-nums;color:rgba(255,255,255,.6)">{{ s.shift }}</span>
+              </a>
+            </sc-for>
+          </div>
+        </sc-if>
+      </sc-if>
+
+    </main>
+  </div>
+  <sc-if value="{{ banner }}" hint-placeholder-val="{{ false }}">
+    <div style="position:fixed;right:22px;bottom:22px;width:380px;background:#1f1f25;border:1px solid rgba(255,206,51,.45);border-radius:18px;padding:16px 18px;box-shadow:0 16px 48px rgba(0,0,0,.5);z-index:50">
+      <div style="display:flex;justify-content:space-between;gap:10px;align-items:baseline">
+        <b style="font-size:13.5px;color:#ffce33">{{ banner.title }}</b>
+        <button onClick="{{ closeBanner }}" style="all:unset;cursor:pointer;color:rgba(255,255,255,.45);font-size:15px;line-height:1" style-hover="color:#fff">×</button>
+      </div>
+      <p style="margin:7px 0 0;font-size:12.5px;color:rgba(255,255,255,.75);line-height:1.5">{{ banner.text }}</p>
+      <sc-if value="{{ banner.delta }}" hint-placeholder-val="{{ false }}">
+        <p style="margin:8px 0 0;font-size:12px;color:rgba(255,255,255,.5)">{{ banner.delta }}</p>
+      </sc-if>
+    </div>
+  </sc-if>
+  <sc-if value="{{ progress }}" hint-placeholder-val="{{ false }}">
+    <div style="position:fixed;inset:0;background:rgba(15,15,18,.72);display:flex;align-items:center;justify-content:center;z-index:60;backdrop-filter:blur(3px)">
+      <div style="width:420px;background:#1f1f25;border:1px solid rgba(255,255,255,.1);border-radius:22px;padding:30px 34px;text-align:center">
+        <span style="display:inline-block;width:34px;height:34px;border:3px solid #ffce33;border-top-color:transparent;border-radius:50%;animation:spin .8s linear infinite;margin-bottom:16px"></span>
+        <h2 style="margin:0 0 6px;font-size:17px;font-weight:800">Строим план на день</h2>
+        <p style="margin:0 0 18px;font-size:13px;color:rgba(255,255,255,.6)">{{ progress.text }}</p>
+        <div style="height:8px;background:#141419;border-radius:4px;overflow:hidden"><span style="display:block;height:100%;width:{{ progress.pct }}%;background:#ffce33;border-radius:4px;transition:width .5s"></span></div>
+      </div>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;navStyle&quot;: {&quot;editor&quot;: &quot;enum&quot;, &quot;default&quot;: &quot;rail&quot;, &quot;options&quot;: [&quot;rail&quot;, &quot;top&quot;], &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Навигация&quot;}}">
+class Component extends DCLogic {
+  state = { hash: (typeof location !== 'undefined' && location.hash) || '#/', now: 585, planBuilt: true, recalc: null, banner: null, progress: null, playing: false, pins: [], jobStatus: 'all', jobPrio: 'all', refTab: 'types', engSearch: '', sortKey: null, sortDir: 1, engFilters: [], railCollapsed: false, openMenu: null };
+  componentDidMount() {
+    this._onHash = () => this.setState({ hash: location.hash || '#/', engSearch: '' });
+    window.addEventListener('hashchange', this._onHash);
+    import(new URL('./data.js', document.baseURI).href).then((m) => { this.D = m.DATA; this.fmt = m.fmt; this.forceUpdate(); });
+  }
+  componentWillUnmount() { window.removeEventListener('hashchange', this._onHash); clearInterval(this._pl); }
+  buildPlan = () => {
+    if (this.state.progress) return;
+    const stages = ['Читаем 52 заявки, смены и инструмент…', 'Строим матрицу времени в пути по улицам и метро…', 'Распределяем заявки и оптимизируем маршруты…', 'Проверяем окна клиентов и SLA…'];
+    let i = 0;
+    this.setState({ progress: { text: stages[0], pct: 8 }, planBuilt: false, now: 480, playing: false });
+    clearInterval(this._pl);
+    const tick = setInterval(() => {
+      i++;
+      if (i < stages.length) this.setState({ progress: { text: stages[i], pct: 8 + i * 26 } });
+      else { clearInterval(tick); this.setState({ progress: null, planBuilt: true, banner: { title: 'План построен за 17,4 с', text: 'Назначена 51 заявка из 52, задействовано 13 инженеров из 18. Одна заявка не поместилась — разбор в разделе «Не назначено».' } }); }
+    }, 900);
+  };
+  nextEvent = () => {
+    if (!this.D || !this.state.planBuilt || this.state.recalc) return false;
+    const evs = this.D.events; const idx = evs.findIndex((e) => e.t > this.state.now);
+    if (idx === -1) {
+      this.setState({ playing: false, banner: { title: 'День закончился', text: 'Выполнено 52 визита, перенесено 4, нарушений SLA — 3. Итог дня — в разделе «Эффект».' } });
+      clearInterval(this._pl); return false;
+    }
+    const ev = evs[idx];
+    this.setState({ now: ev.t, recalc: 'Идёт пересчёт…', banner: null });
+    setTimeout(() => this.setState({
+      recalc: null,
+      banner: { title: `${this.fmt(ev.t)} · ${ev.kind}`, text: ev.text, delta: ev.moved ? `Пересчёт: 3 с · перенесено визитов: ${ev.moved} · затронуто инженеров: ${ev.aff.length} из 18 — выделены на обзоре` : 'Пересчёт: 3 с · план не изменился, заявка встала в свободный слот' },
+    }), 1100);
+    return true;
+  };
+  playDay = () => {
+    if (this.state.playing) { clearInterval(this._pl); this.setState({ playing: false }); return; }
+    this.setState({ playing: true });
+    this._pl = setInterval(() => { if (!this.nextEvent()) { clearInterval(this._pl); this.setState({ playing: false }); } }, 2400);
+  };
+  resetDay = () => { clearInterval(this._pl); this.setState({ planBuilt: false, now: 480, playing: false, banner: null, recalc: null, pins: [] }); location.hash = '#/'; };
+  seg2bar(s, engColor) {
+    const L = (t) => ((t - 480) / 720) * 100;
+    const left = +L(s.t0).toFixed(2), width = +Math.max(L(s.t1) - L(s.t0), 0.15).toFixed(2);
+    return { left, width, k: s.k, engColor };
+  }
+  renderVals() {
+    const st = this.state, D = this.D, fmt = this.fmt;
+    const base = {
+      buildPlan: this.buildPlan, nextEvent: this.nextEvent, playDay: this.playDay, resetDay: this.resetDay,
+      closeBanner: () => this.setState({ banner: null }),
+      playLabel: st.playing ? '❚❚ Пауза' : '▶ Проиграть день', recalc: st.recalc, banner: st.banner, progress: st.progress,
+      navRail: (this.props.navStyle ?? 'rail') === 'rail', navTop: (this.props.navStyle ?? 'rail') === 'top',
+      navTopFalse: (this.props.navStyle ?? 'rail') === 'rail',
+      toggleRail: () => this.setState({ railCollapsed: !this.state.railCollapsed }),
+      railExpanded: !st.railCollapsed, railW: st.railCollapsed ? '62px' : '210px', railJustify: st.railCollapsed ? 'center' : 'flex-start',
+      menuOpen: !!st.openMenu, closeMenu: () => this.setState({ openMenu: null }),
+    };
+    if (!D) return { ...base, nowLabel: '—', pinnedCount: 0, navItems: [], isOverview: true, noPlan: false, hasPlan: false, kpis: [], mapRoutes: [], mapDots: [], mapWhs: [], eventRows: [], ganttRows: [], ticks: [] };
+    const hash = st.hash.replace(/^#/, '') || '/';
+    const seg = hash.split('/').filter(Boolean);
+    const screen = seg[0] || 'overview';
+    const now = st.now;
+    const P = { P1: '#ff5f52', P2: '#ffa53a', P3: '#9aa0ac', P4: '#686d78' };
+    const engs = D.engineers, jobs = D.jobs;
+    const pinnedCount = jobs.filter((j) => j.pinned).length + st.pins.length;
+    const navDefs = [['/', 'Обзор дня', '', '◎'], ['/engineers', 'Инженеры', '18', '⚑'], ['/jobs', 'Заявки', '70', '▤'], ['/backlog', 'Не назначено', '1', '!'], ['/effect', 'Эффект', '', '↗'], ['/reference', 'Справочники', '', '⊞']];
+    const active = (h) => (h === '/' ? seg.length === 0 : seg[0] === h.slice(1));
+    const navItems = navDefs.map(([h, label, badge, icon]) => ({ href: '#' + h, label, badge, icon, color: active(h) ? '#17171a' : 'rgba(255,255,255,.75)', bg: active(h) ? '#ffce33' : 'transparent', iconBg: active(h) ? 'rgba(23,23,26,.15)' : 'rgba(255,255,255,.07)', iconColor: active(h) ? '#17171a' : 'rgba(255,255,255,.7)' }));
+    const doneVisits = jobs.filter((j) => j.status === 'planned' && j.end <= now).length;
+    const L = (t) => ((t - 480) / 720) * 100;
+    const out = {
+      ...base, nowLabel: fmt(now), pinnedCount, navItems, nowPct: +L(now).toFixed(2),
+      isOverview: screen === 'overview' || hash === '/', isEngineers: screen === 'engineers' && !seg[1], isEngineer: screen === 'engineers' && !!seg[1],
+      isJobs: screen === 'jobs' && !seg[1], isJob: screen === 'jobs' && !!seg[1], isBacklog: screen === 'backlog', isEffect: screen === 'effect', isReference: screen === 'reference',
+      noPlan: !st.planBuilt, hasPlan: st.planBuilt,
+    };
+    // ---- обзор
+    let gs = 'M ', g2 = 'M ';
+    for (let x = 100; x <= 900; x += 160) gs += `${x} 0 L ${x} 560 M `;
+    for (let y = 80; y <= 480; y += 130) gs += `0 ${y} L 1000 ${y} M `;
+    for (let x = 60; x <= 980; x += 55) g2 += `${x} 0 L ${x} 560 M `;
+    for (let y = 30; y <= 540; y += 48) g2 += `0 ${y} L 1000 ${y} M `;
+    out.streetsD = gs.slice(0, -3); out.streetsD2 = g2.slice(0, -3);
+    const elbow = (pts) => pts.length ? 'M ' + pts[0].x + ' ' + pts[0].y + pts.slice(1).map((p, i) => ` L ${p.x} ${pts[i].y} L ${p.x} ${p.y}`).join('') : '';
+    const affected = st.banner && st.banner.delta && st.banner.delta.includes('выделены') ? (D.events.filter((e) => e.t === now)[0]?.aff || []) : [];
+    out.mapRoutes = engs.filter((e) => e.busy).map((e) => ({ d: elbow(e.pts), color: e.color, stroke: affected.includes(e.id) ? e.color : '#a9a294', open: () => { location.hash = '#/engineers/' + e.id; } }));
+    out.mapWhs = D.warehouses.map((w) => ({ x: w.pt.x - 8, y: w.pt.y - 8 }));
+    out.mapDots = jobs.filter((j) => j.status === 'planned').map((j) => ({ x: j.pt.x, y: j.pt.y, fill: j.end <= now ? '#b9b4a7' : '#8b857a', open: () => { location.hash = '#/jobs/' + j.id; } }));
+    out.unassignedPt = D.unassigned.pt;
+    out.openUnassigned = () => { location.hash = '#/jobs/' + D.unassigned.id; };
+    const passed = D.events.filter((e) => e.t <= now).length;
+    out.eventsPassedLabel = `${passed} из 26 произошло`;
+    out.eventRows = D.events.map((e) => ({
+      ts: fmt(e.t), kind: e.kind, text: e.text,
+      bg: e.t <= now ? 'transparent' : 'rgba(255,255,255,.03)', op: e.t <= now ? 0.55 : 1,
+      tColor: e.t <= now ? 'rgba(255,255,255,.4)' : '#ffce33',
+      kColor: e.kind === 'Авария' ? '#ff5f52' : e.t <= now ? 'rgba(255,255,255,.4)' : 'rgba(255,255,255,.6)',
+    }));
+    out.kpis = [
+      { v: '51/52', l: 'назначено · 98,1 %', color: '#f2f2f4' },
+      { v: '3', l: 'нарушения SLA', color: '#ff5f52' },
+      { v: '41 ч 06 м', l: 'время в пути', color: '#f2f2f4' },
+      { v: '618 км', l: 'пробег службы', color: '#f2f2f4' },
+      { v: '3 ч 34 м', l: 'простой в ожидании', color: '#f2f2f4' },
+      { v: '13/18', l: 'инженеров занято', color: '#f2f2f4' },
+      { v: '×2,7', l: 'разброс загрузки (177–485 мин)', color: '#ffa53a' },
+      { v: String(doneVisits), l: 'визитов выполнено', color: '#7dc982' },
+      { v: '17,4 с', l: 'время расчёта', color: '#f2f2f4' },
+    ];
+    const gMaxBusy = Math.max(...engs.filter((e) => e.busy).map((e) => e.work + e.road + e.idleMin + e.lunch));
+    out.engTable = engs.map((e, i) => {
+      const bm = e.work + e.road + e.idleMin;
+      let stColor = '#565661', stText = 'rgba(255,255,255,.55)', status = '—', stGlow = 'none';
+      if (!e.busy) { status = 'без заявок'; stColor = '#e8933a'; stText = '#e8933a'; }
+      else if (now < e.s0) { status = 'смена не началась'; }
+      else if (now >= e.dayEnd) { status = 'день завершён'; stColor = '#7dc982'; stText = 'rgba(255,255,255,.55)'; }
+      else {
+        const cur = e.segs.find((s) => s.t0 <= now && now < s.t1 && s.t1 > s.t0);
+        if (!cur) { status = 'в пути'; }
+        else if (cur.k === 'visit') { const j = jobs.find((x) => x.id === cur.job); status = 'визит · ' + (j ? j.customer : ''); stColor = '#4d7cff'; stText = '#f2f2f4'; stGlow = '0 0 6px rgba(77,124,255,.7)'; }
+        else if (cur.k === 'idle') { status = 'ожидание клиента'; stColor = '#e8933a'; stText = '#f2c98a'; }
+        else if (cur.k === 'lunch') { status = 'обед'; stColor = '#8a8a94'; }
+        else if (cur.k === 'depot') { status = 'на складе'; stColor = '#ffce33'; stText = '#ffce33'; }
+        else { status = 'в пути'; }
+      }
+      const w = (v) => +((v / gMaxBusy) * 100).toFixed(2);
+      return {
+        href: '#/engineers/' + e.id, color: e.color, name: e.name, transport: e.transportLabel, shift: e.shift,
+        rowBg: e.busy ? (i % 2 ? 'rgba(255,255,255,.012)' : 'transparent') : 'rgba(232,147,58,.045)',
+        jobs: e.busy ? String(e.visits.length) : '—', jobsColor: e.busy ? '#f2f2f4' : 'rgba(255,255,255,.35)',
+        status, stColor, stText, stGlow,
+        load: e.busy ? [{ w: w(e.work), bg: '#4d7cff' }, { w: w(e.road), bg: '#565661' }, { w: w(e.idleMin), bg: '#e8933a' }] : [{ w: 0, bg: '#101014' }],
+        busyLabel: e.busy ? bm + ' мин' : '—', busyColor: !e.busy ? 'rgba(255,255,255,.3)' : bm === Math.max(...engs.map((x) => x.work + x.road + x.idleMin)) ? '#ff7a6e' : bm <= 200 ? '#e8933a' : 'rgba(255,255,255,.85)',
+      };
+    });
+    // ---- инженеры (таблица)
+    const avgWork = Math.round(engs.filter((e) => e.busy).reduce((a, e) => a + e.work, 0) / 13);
+    const avgRoad = Math.round(engs.filter((e) => e.busy).reduce((a, e) => a + e.road, 0) / 13);
+    const busyMin = (e) => e.work + e.road + e.idleMin;
+    const maxBusy = Math.max(...engs.map(busyMin));
+    const skey = (e) => (st.sortKey === 'skill' ? e.skills.map((s) => s.name).join() : st.sortKey === 'transport' ? e.transportLabel : '');
+    const nkey = (e) => (st.sortKey === 'jobs' ? e.visits.length : st.sortKey === 'work' ? e.work : st.sortKey === 'road' ? e.road : st.sortKey === 'shift' ? e.s0 : busyMin(e));
+    let rows = engs.slice();
+    if (st.sortKey === 'name') rows.sort((a, b) => a.name.localeCompare(b.name) * st.sortDir);
+    else if (st.sortKey === 'skill' || st.sortKey === 'transport') rows.sort((a, b) => skey(a).localeCompare(skey(b)) * st.sortDir);
+    else if (st.sortKey) rows.sort((a, b) => (nkey(a) - nkey(b)) * st.sortDir);
+    const mkSort = (key) => () => this.setState({ sortKey: key, sortDir: st.sortKey === key ? -st.sortDir : -1 });
+    out.sortByName = mkSort('name'); out.sortByJobs = mkSort('jobs'); out.sortByWork = mkSort('work'); out.sortByRoad = mkSort('road'); out.sortByLoad = mkSort('load');
+    const arrow = (key) => st.sortKey === key ? (st.sortDir === 1 ? ' ↑' : ' ↓') : '';
+    const tglMenu = (id) => () => this.setState({ openMenu: this.state.openMenu === id ? null : id });
+    const sortNames = { name: 'ФИО', skill: 'Специализация', transport: 'Транспорт', shift: 'Смена', jobs: 'Заявок', work: 'Работа', load: 'Занятость' };
+    out.esortMenu = {
+      open: st.openMenu === 'esort', toggle: tglMenu('esort'),
+      label: st.sortKey ? sortNames[st.sortKey] + (st.sortDir === 1 ? ' ↑' : ' ↓') : 'по умолчанию',
+      active: !!st.sortKey,
+      items: [['name', 'ФИО'], ['skill', 'Специализация'], ['transport', 'Транспорт'], ['shift', 'Смена'], ['jobs', 'Заявок'], ['work', 'Работа'], ['load', 'Занятость']].map(([k, label]) => ({
+        label, mark: st.sortKey === k ? (st.sortDir === 1 ? '↑' : '↓') : '', set: mkSort(k),
+        bg: st.sortKey === k ? 'rgba(255,206,51,.12)' : 'transparent', color: st.sortKey === k ? '#ffce33' : 'rgba(255,255,255,.8)',
+      })),
+    };
+    const ef = st.engFilters;
+    out.engFiltersOn = ef.length > 0;
+    out.clearEngFilters = () => this.setState({ engFilters: [] });
+    out.esortActiveBorder = st.sortKey ? '#ffce33' : 'rgba(255,255,255,.14)'; out.esortActiveBg = st.sortKey ? 'rgba(255,206,51,.12)' : 'transparent'; out.esortActiveColor = st.sortKey ? '#ffce33' : 'rgba(255,255,255,.85)';
+    out.efilterActiveBorder = ef.length ? '#ffce33' : 'rgba(255,255,255,.14)'; out.efilterActiveBg = ef.length ? 'rgba(255,206,51,.12)' : 'transparent'; out.efilterActiveColor = ef.length ? '#ffce33' : 'rgba(255,255,255,.85)';
+    out.efilterMenu = {
+      open: st.openMenu === 'efilter', toggle: tglMenu('efilter'),
+      label: ef.length ? `Фильтр · ${ef.length}` : 'Фильтр', active: ef.length > 0,
+      items: [['t:car', 'Легковой'], ['t:van', 'Фургон'], ['t:foot', 'Пешком+метро'], ['busy', 'С заявками'], ['idle', 'Без заявок'], ['sla', 'С нарушением SLA']].map(([k, label]) => ({
+        label, mark: ef.includes(k) ? '✓' : '', set: () => { const has = this.state.engFilters.includes(k); this.setState({ engFilters: has ? this.state.engFilters.filter((x) => x !== k) : [...this.state.engFilters, k] }); },
+        bg: ef.includes(k) ? 'rgba(255,206,51,.1)' : 'transparent', color: ef.includes(k) ? '#ffce33' : 'rgba(255,255,255,.8)',
+      })),
+    };
+    const slaByEng = {}; jobs.forEach((j) => { if (j.slaViolated) slaByEng[j.eng] = (slaByEng[j.eng] || 0) + 1; });
+    const trGroup = ef.filter((k) => k.startsWith('t:')).map((k) => k.slice(2));
+    rows = rows.filter((e) => {
+      if (trGroup.length && !trGroup.includes(e.transport)) return false;
+      if (ef.includes('busy') && !ef.includes('idle') && !e.busy) return false;
+      if (ef.includes('idle') && !ef.includes('busy') && e.busy) return false;
+      if (ef.includes('sla') && !slaByEng[e.id]) return false;
+      return true;
+    });
+    out.engShown = rows.length;
+    out.engRows = rows.map((e) => {
+      const bm = busyMin(e);
+      return {
+        href: '#/engineers/' + e.id, color: e.color, name: e.name, skills: e.skills.map((s) => s.name).join(' · '),
+        transport: e.transportLabel, shift: e.shift, jobs: e.busy ? String(e.visits.length) : 'без заявок',
+        jobsColor: e.busy ? '#f2f2f4' : '#ffa53a', bg: e.busy ? 'transparent' : 'rgba(255,165,58,.04)',
+        work: e.busy ? e.work + ' мин' : '—', road: e.busy ? e.road + ' мин' : '—',
+        loadPct: Math.round((bm / maxBusy) * 100), loadColor: bm === maxBusy ? '#ff7a6e' : e.busy && bm <= 200 ? '#ffa53a' : e.color,
+        sla: slaByEng[e.id] ? String(slaByEng[e.id]) : '—', slaColor: slaByEng[e.id] ? '#ff5f52' : 'rgba(255,255,255,.35)',
+        wh: e.wh || '—',
+      };
+    });
+    // ---- карточка инженера
+    if (out.isEngineer) {
+      const e = engs.find((x) => x.id === seg[1]) || engs[0];
+      const idx = engs.indexOf(e);
+      out.prevEngHref = '#/engineers/' + engs[(idx + 17) % 18].id;
+      out.nextEngHref = '#/engineers/' + engs[(idx + 1) % 18].id;
+      out.engSearch = st.engSearch;
+      out.onEngSearch = (ev) => this.setState({ engSearch: ev.target.value });
+      const q = st.engSearch.trim().toLowerCase();
+      out.engSearchOpen = q.length > 0;
+      out.engSearchResults = engs.filter((x) => x.name.toLowerCase().includes(q)).slice(0, 8).map((x) => ({ href: '#/engineers/' + x.id, name: x.name, color: x.color }));
+      out.ceIdle = !e.busy; out.ceBusy = e.busy;
+      out.ce = {
+        ...e, initials: e.name.split(' ').map((w) => w[0]).join(''), visitCount: e.busy ? e.visits.length : 0,
+        equipCount: e.equip.length + ' позиций', cantTakeLabel: e.cantTake.length ? e.cantTake.join(', ').toLowerCase() : null,
+        busyMin: busyMin(e), routeNote: e.transport === 'foot' ? 'пунктир — перегоны на метро' : 'автомасштаб по маршруту',
+        idleReason: e.idleReason || '',
+      };
+      out.ticks = Array.from({ length: 13 }, (_, i) => ({ left: +(i / 12 * 100).toFixed(2), label: fmt(480 + i * 60) }));
+      out.ceTrack = e.segs.filter((s) => s.t1 > s.t0 && s.k !== 'visit').map((s) => {
+        const b = this.seg2bar(s);
+        const isLunch = s.k === 'lunch', isIdle = s.k === 'idle', isDepot = s.k === 'depot';
+        return {
+          left: b.left, width: b.width,
+          bg: isLunch ? 'repeating-linear-gradient(135deg,#3a3a41 0 6px,#2a2a30 6px 12px)' : isIdle ? '#e8933a' : isDepot ? '#6a6a76' : s.metro ? 'repeating-linear-gradient(90deg,#7aa7ff 0 6px,transparent 6px 11px)' : '#4a4a52',
+          h: isLunch || isIdle || isDepot ? '18px' : s.metro ? '6px' : '5px',
+          top: isLunch || isIdle || isDepot ? '52px' : s.metro ? '58px' : '58.5px',
+          label: b.width > 4 ? (isLunch ? 'Обед' : isIdle ? 'Ожидание' : isDepot ? 'Склад' : '') : '',
+          labelColor: 'rgba(255,255,255,.75)',
+          title: `${fmt(s.t0)}–${fmt(s.t1)} · ${isLunch ? 'обед' : isIdle ? 'ожидание клиента' : isDepot ? 'склад' : s.metro ? 'перегон на метро' : 'в пути'}`,
+        };
+      });
+      out.ceVisitBlocks = e.segs.filter((s) => s.k === 'visit' && s.t1 > s.t0).map((s, i) => {
+        const b = this.seg2bar(s);
+        const job = jobs.find((j) => j.id === s.job);
+        const flag = job.slaViolated ? 'SLA' : job.hard ? 'жёсткое окно' : job.pinned ? 'закреплена' : '';
+        return {
+          left: b.left, width: b.width, n: String(i + 1), customer: job.customer, timeLabel: `${fmt(s.t0)}–${fmt(s.t1)}`,
+          border: job.slaViolated ? '2px solid #ff5f52' : job.hard ? '2px solid #ffb35f' : job.pinned ? '2px solid #ffce33' : '1px solid rgba(255,255,255,.14)',
+          flag, flagBg: job.slaViolated ? '#ff5f52' : job.hard ? '#ffb35f' : '#ffce33',
+          flagShow: !!flag, href: '#/jobs/' + job.id,
+          title: `${fmt(s.t0)}–${fmt(s.t1)} · ${job.customer}${flag ? ' · ' + flag : ''}`,
+        };
+      });
+      const xs = e.pts.map((p) => p.x), ys = e.pts.map((p) => p.y);
+      const pad = 70, x0 = Math.min(...xs) - pad, y0 = Math.min(...ys) - pad;
+      out.ceViewBox = `${x0} ${y0} ${Math.max(...xs) - x0 + pad} ${Math.max(...ys) - y0 + pad}`;
+      const travels = e.segs.filter((s) => s.k === 'travel');
+      out.ceLegs = e.pts.slice(1).map((p, i) => ({
+        d: elbow([e.pts[i], p]), stroke: e.color,
+        dash: travels[i] && travels[i].metro ? '10 8' : 'none',
+      }));
+      out.cePts = e.pts.map((p) => p.kind === 'visit'
+        ? { x: p.x, y: p.y, ty: p.y + 5.5, r: 15, fill: e.color, stroke: '#f7f6f1', n: String(p.n), tfill: '#17171a' }
+        : { x: p.x, y: p.y, ty: p.y + 4.5, r: 12, fill: '#17171a', stroke: p.kind === 'wh' ? '#ffce33' : '#8b857a', n: p.kind === 'wh' ? 'С' : 'Д', tfill: '#fff' });
+      const shiftLen = e.s1 - e.s0;
+      const pct = (v, tot) => +((v / tot) * 100).toFixed(1);
+      out.ceLoad = { work: e.work, road: e.road, lunch: e.lunch, idle: e.idleMin, workPct: pct(e.work, shiftLen), roadPct: pct(e.road, shiftLen), lunchPct: pct(e.lunch, shiftLen), idlePct: pct(e.idleMin, shiftLen) };
+      out.avgLoad = { work: avgWork, road: avgRoad, workPct: pct(avgWork, 540), roadPct: pct(avgRoad, 540), lunchPct: pct(45, 540), idlePct: pct(16, 540) };
+      out.ceVisits = e.visits.map((jid, i) => {
+        const j = jobs.find((x) => x.id === jid);
+        const status = j.end <= now ? 'выполнено' : j.start <= now ? 'в работе' : 'впереди';
+        const flags = [j.slaViolated ? 'нарушение SLA' : '', j.pinned ? 'закреплена' : '', j.wait ? `ожидание ${j.wait} мин` : ''].filter(Boolean).join(' · ');
+        return {
+          href: '#/jobs/' + j.id, n: String(i + 1), time: `${fmt(j.start)}–${fmt(j.end)}`,
+          nBg: status === 'выполнено' ? '#2c2c33' : e.color, nColor: status === 'выполнено' ? 'rgba(255,255,255,.5)' : '#17171a',
+          customer: j.customer, typeLabel: j.typeLabel, address: j.address, prio: j.prio, prioColor: P[j.prio],
+          window: j.window, winKind: j.hard ? 'жёсткое' : 'мягкое', winColor: j.hard ? '#ff9d94' : 'rgba(255,255,255,.4)',
+          fromPrev: 'от пред.: ' + j.fromPrev, waitLabel: '',
+          flags: flags || '—', flagColor: j.slaViolated ? '#ff5f52' : flags ? '#ffce33' : 'rgba(255,255,255,.3)',
+          borderColor: j.slaViolated ? 'rgba(255,95,82,.5)' : 'rgba(255,255,255,.06)',
+          status, stBg: status === 'выполнено' ? 'rgba(125,201,130,.12)' : status === 'в работе' ? 'rgba(255,206,51,.14)' : 'rgba(255,255,255,.06)',
+          stColor: status === 'выполнено' ? '#7dc982' : status === 'в работе' ? '#ffce33' : 'rgba(255,255,255,.6)',
+        };
+      });
+    }
+    // ---- заявки
+    const stLabel = (j) => j.status === 'planned' ? (j.end <= now ? 'выполнена' : j.start <= now ? 'в работе' : 'в плане') : j.status === 'new' ? 'новая' : 'не назначена';
+    const stColors = { 'выполнена': ['rgba(125,201,130,.12)', '#7dc982'], 'в работе': ['rgba(255,206,51,.14)', '#ffce33'], 'в плане': ['rgba(255,255,255,.07)', 'rgba(255,255,255,.7)'], 'новая': ['rgba(122,167,255,.12)', '#7aa7ff'], 'не назначена': ['rgba(255,95,82,.14)', '#ff7a6e'] };
+    if (out.isJobs) {
+      const chips = [];
+      [['all', 'Все · 70'], ['planned', 'В плане · 51'], ['new', 'Новые · 18'], ['unassigned', 'Не назначена · 1']].forEach(([k, label]) => chips.push({ label, set: () => this.setState({ jobStatus: k }), on: st.jobStatus === k, kind: 's' }));
+      [['all', 'Любой приоритет'], ['P1', 'P1 · 5'], ['P2', 'P2 · 15'], ['P3', 'P3 · 33'], ['P4', 'P4 · 17']].forEach(([k, label]) => chips.push({ label, set: () => this.setState({ jobPrio: k }), on: st.jobPrio === k, kind: 'p' }));
+      const tglM = (id) => () => this.setState({ openMenu: this.state.openMenu === id ? null : id });
+      const sLbl = { all: 'Все', planned: 'В плане', new: 'Новые', unassigned: 'Не назначена' };
+      const pLbl = { all: 'Любой', P1: 'P1', P2: 'P2', P3: 'P3', P4: 'P4' };
+      out.jobStatusMenu = {
+        open: st.openMenu === 'jstatus', toggle: tglM('jstatus'), label: sLbl[st.jobStatus], active: st.jobStatus !== 'all',
+        items: chips.filter((c) => c.kind === 's').map((c) => ({ label: c.label, mark: c.on ? '✓' : '', set: () => { c.set(); this.setState({ openMenu: null }); }, bg: c.on ? 'rgba(255,206,51,.12)' : 'transparent', color: c.on ? '#ffce33' : 'rgba(255,255,255,.8)' })),
+      };
+      out.jobPrioMenu = {
+        open: st.openMenu === 'jprio', toggle: tglM('jprio'), label: pLbl[st.jobPrio], active: st.jobPrio !== 'all',
+        items: chips.filter((c) => c.kind === 'p').map((c) => ({ label: c.label, mark: c.on ? '✓' : '', set: () => { c.set(); this.setState({ openMenu: null }); }, bg: c.on ? 'rgba(255,206,51,.12)' : 'transparent', color: c.on ? '#ffce33' : 'rgba(255,255,255,.8)' })),
+      };
+      const jsOn = st.jobStatus !== 'all', jpOn = st.jobPrio !== 'all';
+      out.jstatusBorder = jsOn ? '#ffce33' : 'rgba(255,255,255,.14)'; out.jstatusBg = jsOn ? 'rgba(255,206,51,.12)' : 'transparent'; out.jstatusColor = jsOn ? '#ffce33' : 'rgba(255,255,255,.85)';
+      out.jprioBorder = jpOn ? '#ffce33' : 'rgba(255,255,255,.14)'; out.jprioBg = jpOn ? 'rgba(255,206,51,.12)' : 'transparent'; out.jprioColor = jpOn ? '#ffce33' : 'rgba(255,255,255,.85)';
+      const list = jobs.filter((j) => (st.jobStatus === 'all' || j.status === st.jobStatus) && (st.jobPrio === 'all' || j.prio === st.jobPrio));
+      list.sort((a, b) => (a.status === 'unassigned' ? -1 : b.status === 'unassigned' ? 1 : 0) || (a.start || a.arriveT || 0) - (b.start || b.arriveT || 0));
+      out.jobRows = list.map((j) => {
+        const s = stLabel(j);
+        return {
+          href: '#/jobs/' + j.id, prio: j.prio, prioColor: P[j.prio], customer: j.customer, typeLabel: j.typeLabel, address: j.address,
+          district: j.district, window: j.window, hardMark: j.hard ? 'ж' : '', sla: fmt(j.sla), slaColor: j.slaViolated ? '#ff5f52' : 'rgba(255,255,255,.55)',
+          engName: j.engName || '—', engColor: j.engName ? '#ffce33' : 'rgba(255,255,255,.3)',
+          time: j.status === 'planned' ? `${fmt(j.start)}–${fmt(j.end)}` : j.status === 'new' ? `придёт в ${fmt(j.arriveT)}` : '—',
+          status: s, stBg: stColors[s][0], stColor: stColors[s][1], bg: j.status === 'unassigned' ? 'rgba(255,95,82,.05)' : 'transparent',
+        };
+      });
+    }
+    if (out.isJob) {
+      const j = jobs.find((x) => x.id === seg[1]) || jobs[0];
+      const s = stLabel(j);
+      out.cjPlanned = j.status === 'planned'; out.cjUnassigned = j.status === 'unassigned'; out.cjNew = j.status === 'new';
+      out.cj = {
+        ...j, prioColor: P[j.prio], status: s, stBg: stColors[s][0], stColor: stColors[s][1],
+        winKind: j.hard ? 'жёсткое' : 'мягкое', winColor: j.hard ? '#ff9d94' : 'rgba(255,255,255,.4)',
+        slaLabel: 'до ' + fmt(j.sla) + (j.slaViolated ? ' — нарушен' : ''), slaColor: j.slaViolated ? '#ff5f52' : '#f2f2f4',
+        equipLabel: j.equip.join(', '), engName: j.engName || '—', engHref: j.eng ? '#/engineers/' + j.eng : '#/engineers',
+        engShort: j.engName || '', time: j.status === 'planned' ? `${fmt(j.start)}–${fmt(j.end)}` : '—',
+        pinned: j.pinned || st.pins.includes(j.id),
+        why: j.explain ? j.explain.why : [], timeWhy: j.explain ? j.explain.time : [],
+        alts: j.explain ? j.explain.alts.map((a) => ({ ...a, href: '#/engineers/' + a.engId, transfer: () => {
+          this.setState({ recalc: 'Идёт пересчёт…' });
+          setTimeout(() => this.setState({ recalc: null, pins: [...this.state.pins, j.id], banner: { title: `Заявка закреплена за: ${a.eng}`, text: `Цена решения: ${a.cost} по службе. Остальной план пересчитан за 3 с, эту заявку алгоритм больше не тронет.` } }), 1100);
+        } })) : [],
+        whyNot: (j.whyNot || []).map((w) => ({ ...w, href: '#/engineers/' + w.engId })),
+        arrive: j.arriveT ? fmt(j.arriveT) : '',
+      };
+    }
+    // ---- backlog
+    const bk = D.unassigned;
+    out.bk = { ...bk, equipLabel: bk.equip.join(', ').toLowerCase() };
+    out.bkHref = '#/jobs/' + bk.id;
+    out.bkWhyNot = bk.whyNot.map((w) => ({ ...w, href: '#/engineers/' + w.engId }));
+    out.bkCauses = [
+      { name: 'Нет оборудования (дефицит приборов)', n: 1, pct: 100 },
+      { name: 'Окно недостижимо по времени', n: 1, pct: 100 },
+      { name: 'Не хватает уровня квалификации', n: 1, pct: 100 },
+      { name: 'Нужен автомобиль (габарит)', n: 0, pct: 0 },
+      { name: 'День инженера заполнен', n: 0, pct: 0 },
+    ];
+    out.deficitChips = D.equipment.filter((q) => q.deficit).map((q) => q.name);
+    // ---- эффект
+    out.effectRows = D.effect.map((r) => ({
+      ...r, bg: r.main ? 'rgba(255,206,51,.05)' : 'transparent', fw: r.main ? 800 : 500, fs: r.main ? '15px' : '13px',
+      oursColor: r.better === false ? '#ff7a6e' : r.main ? '#ffce33' : '#f2f2f4',
+    }));
+    // ---- справочники
+    const tab = st.refTab;
+    out.refTypes = tab === 'types'; out.refEquip = tab === 'equip'; out.refWhs = tab === 'whs'; out.refStaff = tab === 'staff';
+    out.refTabs = [['types', 'Типы работ'], ['equip', 'Оборудование'], ['whs', 'Склады'], ['staff', 'Состав службы']].map(([k, label]) => ({
+      label, set: () => this.setState({ refTab: k }), border: tab === k ? '#ffce33' : 'rgba(255,255,255,.14)', bg: tab === k ? 'rgba(255,206,51,.12)' : 'transparent', color: tab === k ? '#ffce33' : 'rgba(255,255,255,.7)',
+    }));
+    out.matrixCols = D.equipment.map((q) => ({ name: q.name, color: q.deficit ? '#ffce33' : 'rgba(255,255,255,.55)' }));
+    out.matrixRows = D.worktypes.map((w) => ({
+      name: w.name, label: w.label, lvl: String(w.lvl),
+      cells: D.equipment.map((q, qi) => w.eq.includes(qi)
+        ? { bg: q.deficit ? '#ffce33' : '#6fa3e0', border: 'transparent' }
+        : { bg: 'transparent', border: 'rgba(255,255,255,.08)' }),
+    }));
+    out.equipRows = D.equipment.map((q) => ({
+      name: q.name, qty: String(q.qty), qtyColor: q.deficit ? '#ffce33' : '#f2f2f4',
+      border: q.deficit ? 'rgba(255,206,51,.4)' : 'rgba(255,255,255,.07)',
+      tags: [q.deficit ? 'дефицит — узкое место службы' : '', q.bulky ? 'габарит: только с машиной' : ''].filter(Boolean).join(' · ') || 'в достатке',
+    }));
+    out.whRows = D.warehouses.map((w) => {
+      const list = engs.filter((e) => e.wh === w.name);
+      return { name: w.name, addr: w.addr, engCount: `${list.length} инж.`, engs: list.map((e) => e.name).join(', ') || '—' };
+    });
+    out.staffRows = engs.map((e) => ({ href: '#/engineers/' + e.id, color: e.color, name: e.name, skills: e.skills.map((s) => s.name).join(' · '), transport: e.transportLabel, shift: e.shift }));
+    return out;
+  }
+}
+</script>
+</body>
+</html>

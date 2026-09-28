@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=PT+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <style>body{margin:0;background:#efe8db} a{color:#7b2d3b} a:hover{color:#57202a}</style>
+</helmet>
+<x-import component-from-global-scope="deck-stage" from="./deck-stage.js" width="1920" height="1080" hint-size="100%,100%">
+  <section data-label="Обложка" style="background:#faf6ef; font-family:'PT Serif',serif; color:#2b2320; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:90px 120px;">
+    <span style="font-size:26px; letter-spacing:0.35em; text-transform:uppercase; color:#7b2d3b;">Журнал «Архив» · выпуск 14</span>
+    <span style="width:80px; height:2px; background:#7b2d3b; margin:48px 0;"></span>
+    <h1 style="font-family:'Playfair Display',serif; font-size:150px; margin:0; font-weight:400; line-height:1.05; max-width:1500px;">Эпоха модерна</h1>
+    <p style="font-family:'Playfair Display',serif; font-style:italic; font-size:42px; margin:44px 0 0; color:#6b5d55;">Искусство рубежа веков — от Вены до Москвы</p>
+    <span style="width:80px; height:2px; background:#7b2d3b; margin:48px 0 0;"></span>
+  </section>
+  <section data-label="Содержание" style="background:#faf6ef; font-family:'PT Serif',serif; color:#2b2320; display:flex; flex-direction:column; padding:90px 160px;">
+    <h2 style="font-family:'Playfair Display',serif; font-size:76px; margin:0 0 24px; font-weight:400;">Оглавление</h2>
+    <span style="width:80px; height:2px; background:#7b2d3b;"></span>
+    <div style="display:flex; flex-direction:column; margin-top:56px;">
+      <div style="display:flex; align-items:baseline; gap:32px; padding:34px 0; border-bottom:1px solid #d8cec0;"><span style="font-family:'Playfair Display',serif; font-size:34px; color:#7b2d3b;">I</span><span style="font-size:34px;">Рождение стиля: Вена и Париж</span><span style="flex:1; border-bottom:1px dotted #b8ab99;"></span><span style="font-size:28px; color:#a09385;">03</span></div>
+      <div style="display:flex; align-items:baseline; gap:32px; padding:34px 0; border-bottom:1px solid #d8cec0;"><span style="font-family:'Playfair Display',serif; font-size:34px; color:#7b2d3b;">II</span><span style="font-size:34px;">Линия и орнамент</span><span style="flex:1; border-bottom:1px dotted #b8ab99;"></span><span style="font-size:28px; color:#a09385;">05</span></div>
+      <div style="display:flex; align-items:baseline; gap:32px; padding:34px 0; border-bottom:1px solid #d8cec0;"><span style="font-family:'Playfair Display',serif; font-size:34px; color:#7b2d3b;">III</span><span style="font-size:34px;">Архитектура нового века</span><span style="flex:1; border-bottom:1px dotted #b8ab99;"></span><span style="font-size:28px; color:#a09385;">08</span></div>
+      <div style="display:flex; align-items:baseline; gap:32px; padding:34px 0;"><span style="font-family:'Playfair Display',serif; font-size:34px; color:#7b2d3b;">IV</span><span style="font-size:34px;">Наследие и музеи</span><span style="flex:1; border-bottom:1px dotted #b8ab99;"></span><span style="font-size:28px; color:#a09385;">11</span></div>
+    </div>
+  </section>
+  <section data-label="Раздел I" style="background:#7b2d3b; font-family:'PT Serif',serif; color:#f5ead9; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:90px 120px;">
+    <span style="font-family:'Playfair Display',serif; font-size:44px; color:#d9a3ae;">I</span>
+    <span style="width:60px; height:2px; background:#d9a3ae; margin:40px 0;"></span>
+    <h2 style="font-family:'Playfair Display',serif; font-size:120px; margin:0; font-weight:400; line-height:1.1;">Рождение стиля</h2>
+    <p style="font-family:'Playfair Display',serif; font-style:italic; font-size:36px; margin:40px 0 0; color:#d9a3ae;">Вена · Париж · Брюссель, 1890–1905</p>
+  </section>
+  <section data-label="Три колонки" style="background:#faf6ef; font-family:'PT Serif',serif; color:#2b2320; display:flex; flex-direction:column; padding:90px 120px;">
+    <h2 style="font-family:'Playfair Display',serif; font-size:76px; margin:0 0 70px; font-weight:400;">Три столицы модерна</h2>
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:0;">
+      <div style="display:flex; flex-direction:column; gap:26px; padding:0 56px 0 0; border-right:1px solid #d8cec0;"><span style="font-family:'Playfair Display',serif; font-size:44px; color:#7b2d3b;">Вена</span><p style="font-size:27px; margin:0; line-height:1.65; color:#4d4139;">Сецессион Климта и Ольбриха: золото, геометрия и лозунг «Времени — его искусство»</p></div>
+      <div style="display:flex; flex-direction:column; gap:26px; padding:0 56px; border-right:1px solid #d8cec0;"><span style="font-family:'Playfair Display',serif; font-size:44px; color:#7b2d3b;">Париж</span><p style="font-size:27px; margin:0; line-height:1.65; color:#4d4139;">Ар-нуво Гимара: входы метро как кованые стебли, стекло и текучая линия</p></div>
+      <div style="display:flex; flex-direction:column; gap:26px; padding:0 0 0 56px;"><span style="font-family:'Playfair Display',serif; font-size:44px; color:#7b2d3b;">Москва</span><p style="font-size:27px; margin:0; line-height:1.65; color:#4d4139;">Шехтель и особняк Рябушинского: волна лестницы и витражный свет</p></div>
+    </div>
+  </section>
+  <section data-label="Большая цифра" style="background:#faf6ef; font-family:'PT Serif',serif; color:#2b2320; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:90px 120px;">
+    <span style="font-family:'Playfair Display',serif; font-size:280px; line-height:1; color:#7b2d3b;">1897</span>
+    <span style="width:80px; height:2px; background:#7b2d3b; margin:48px 0;"></span>
+    <p style="font-size:36px; margin:0; max-width:1100px; line-height:1.55; color:#4d4139;">Год основания Венского сецессиона — девятнадцать художников выходят из академии</p>
+  </section>
+  <section data-label="Таймлайн" style="background:#faf6ef; font-family:'PT Serif',serif; color:#2b2320; display:flex; flex-direction:column; padding:90px 120px;">
+    <h2 style="font-family:'Playfair Display',serif; font-size:76px; margin:0 0 90px; font-weight:400;">Хроника стиля</h2>
+    <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:52px;">
+      <div style="display:flex; flex-direction:column; gap:20px; border-top:2px solid #7b2d3b; padding-top:30px;"><span style="font-family:'Playfair Display',serif; font-size:42px; color:#7b2d3b;">1893</span><p style="font-size:26px; margin:0; line-height:1.55; color:#4d4139;">Отель Тасселя в Брюсселе — первый дом ар-нуво</p></div>
+      <div style="display:flex; flex-direction:column; gap:20px; border-top:2px solid #d8cec0; padding-top:30px;"><span style="font-family:'Playfair Display',serif; font-size:42px;">1900</span><p style="font-size:26px; margin:0; line-height:1.55; color:#4d4139;">Всемирная выставка в Париже — триумф стиля</p></div>
+      <div style="display:flex; flex-direction:column; gap:20px; border-top:2px solid #d8cec0; padding-top:30px;"><span style="font-family:'Playfair Display',serif; font-size:42px;">1908</span><p style="font-size:26px; margin:0; line-height:1.55; color:#4d4139;">Лоос публикует «Орнамент и преступление»</p></div>
+      <div style="display:flex; flex-direction:column; gap:20px; border-top:2px solid #d8cec0; padding-top:30px;"><span style="font-family:'Playfair Display',serif; font-size:42px;">1914</span><p style="font-size:26px; margin:0; line-height:1.55; color:#4d4139;">Война закрывает эпоху; модерн уходит в историю</p></div>
+    </div>
+  </section>
+  <section data-label="Таблица" style="background:#faf6ef; font-family:'PT Serif',serif; color:#2b2320; display:flex; flex-direction:column; padding:90px 140px;">
+    <h2 style="font-family:'Playfair Display',serif; font-size:76px; margin:0 0 60px; font-weight:400;">Имена и школы</h2>
+    <div style="display:grid; grid-template-columns:1fr 1fr 1.4fr; font-size:28px; border-top:2px solid #2b2320;">
+      <div style="padding:28px 0; font-weight:700; border-bottom:1px solid #d8cec0; font-family:'Playfair Display',serif; font-size:30px;">Мастер</div><div style="padding:28px 0; font-weight:700; border-bottom:1px solid #d8cec0; font-family:'Playfair Display',serif; font-size:30px;">Город</div><div style="padding:28px 0; font-weight:700; border-bottom:1px solid #d8cec0; font-family:'Playfair Display',serif; font-size:30px;">Главная работа</div>
+      <div style="padding:28px 0; border-bottom:1px solid #d8cec0;">Густав Климт</div><div style="padding:28px 0; border-bottom:1px solid #d8cec0; color:#7b2d3b;">Вена</div><div style="padding:28px 0; border-bottom:1px solid #d8cec0; font-style:italic;">«Поцелуй», 1908</div>
+      <div style="padding:28px 0; border-bottom:1px solid #d8cec0;">Альфонс Муха</div><div style="padding:28px 0; border-bottom:1px solid #d8cec0; color:#7b2d3b;">Париж</div><div style="padding:28px 0; border-bottom:1px solid #d8cec0; font-style:italic;">Афиши Сары Бернар</div>
+      <div style="padding:28px 0; border-bottom:1px solid #d8cec0;">Антонио Гауди</div><div style="padding:28px 0; border-bottom:1px solid #d8cec0; color:#7b2d3b;">Барселона</div><div style="padding:28px 0; border-bottom:1px solid #d8cec0; font-style:italic;">Каса Бальо, 1906</div>
+      <div style="padding:28px 0;">Фёдор Шехтель</div><div style="padding:28px 0; color:#7b2d3b;">Москва</div><div style="padding:28px 0; font-style:italic;">Особняк Рябушинского, 1903</div>
+    </div>
+  </section>
+  <section data-label="Цитата" style="background:#2b2320; font-family:'PT Serif',serif; color:#f5ead9; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:90px 180px;">
+    <span style="font-family:'Playfair Display',serif; font-size:160px; line-height:0.5; color:#7b2d3b;">“</span>
+    <p style="font-family:'Playfair Display',serif; font-style:italic; font-size:66px; line-height:1.35; margin:56px 0 0; max-width:1500px; font-weight:400;">Каждому времени — его искусство, каждому искусству — его свобода.</p>
+    <p style="font-size:28px; margin:64px 0 0; letter-spacing:0.25em; text-transform:uppercase; color:#b8a48f;">Девиз Венского сецессиона</p>
+  </section>
+  <section data-label="Две колонки" style="background:#faf6ef; font-family:'PT Serif',serif; color:#2b2320; display:grid; grid-template-columns:1fr 1fr; gap:90px; align-items:center; padding:90px 130px;">
+    <div style="display:flex; flex-direction:column; gap:34px;">
+      <h2 style="font-family:'Playfair Display',serif; font-size:72px; margin:0; font-weight:400; line-height:1.15;">Линия как героиня</h2>
+      <p style="font-size:29px; margin:0; line-height:1.7; color:#4d4139;">Модерн отверг прямой угол. Стебель ириса, изгиб волны, «удар бича» — природная линия стала конструкцией: она несёт балкон, рисует шрифт, ведёт перила лестницы.</p>
+      <p style="font-family:'Playfair Display',serif; font-style:italic; font-size:30px; margin:0; color:#7b2d3b;">Орнамент — это не украшение, а способ мыслить форму.</p>
+    </div>
+    <div style="display:flex; align-items:center; justify-content:center;">
+      <svg width="480" height="620" viewBox="0 0 240 310" fill="none" stroke="#7b2d3b" stroke-width="2.5" stroke-linecap="round"><path d="M120 300 C 60 240, 180 200, 120 140 C 70 90, 160 60, 120 10"/><path d="M120 140 C 160 120, 200 140, 210 100"/><path d="M120 140 C 80 120, 40 140, 30 100"/><ellipse cx="120" cy="10" rx="14" ry="9"/><ellipse cx="210" cy="96" rx="11" ry="7" transform="rotate(-30 210 96)"/><ellipse cx="30" cy="96" rx="11" ry="7" transform="rotate(30 30 96)"/></svg>
+    </div>
+  </section>
+  <section data-label="Раздел IV" style="background:#7b2d3b; font-family:'PT Serif',serif; color:#f5ead9; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:90px 120px;">
+    <span style="font-family:'Playfair Display',serif; font-size:44px; color:#d9a3ae;">IV</span>
+    <span style="width:60px; height:2px; background:#d9a3ae; margin:40px 0;"></span>
+    <h2 style="font-family:'Playfair Display',serif; font-size:120px; margin:0; font-weight:400; line-height:1.1;">Наследие и музеи</h2>
+    <p style="font-family:'Playfair Display',serif; font-style:italic; font-size:36px; margin:40px 0 0; color:#d9a3ae;">Где смотреть модерн сегодня</p>
+  </section>
+  <section data-label="Показатели" style="background:#faf6ef; font-family:'PT Serif',serif; color:#2b2320; display:flex; flex-direction:column; padding:90px 120px;">
+    <h2 style="font-family:'Playfair Display',serif; font-size:76px; margin:0 0 80px; font-weight:400;">Модерн в цифрах</h2>
+    <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:56px;">
+      <div style="display:flex; flex-direction:column; gap:18px; border-top:2px solid #7b2d3b; padding-top:32px;"><span style="font-family:'Playfair Display',serif; font-size:90px; color:#7b2d3b;">~25</span><span style="font-size:26px; color:#4d4139; line-height:1.5;">лет длилась эпоха стиля</span></div>
+      <div style="display:flex; flex-direction:column; gap:18px; border-top:2px solid #d8cec0; padding-top:32px;"><span style="font-family:'Playfair Display',serif; font-size:90px;">4</span><span style="font-size:26px; color:#4d4139; line-height:1.5;">национальные школы — от ар-нуво до сецессиона</span></div>
+      <div style="display:flex; flex-direction:column; gap:18px; border-top:2px solid #d8cec0; padding-top:32px;"><span style="font-family:'Playfair Display',serif; font-size:90px;">7</span><span style="font-size:26px; color:#4d4139; line-height:1.5;">объектов Гауди в списке ЮНЕСКО</span></div>
+      <div style="display:flex; flex-direction:column; gap:18px; border-top:2px solid #d8cec0; padding-top:32px;"><span style="font-family:'Playfair Display',serif; font-size:90px; color:#7b2d3b;">100+</span><span style="font-size:26px; color:#4d4139; line-height:1.5;">особняков модерна сохранилось в Москве</span></div>
+    </div>
+  </section>
+  <section data-label="Финал" style="background:#faf6ef; font-family:'PT Serif',serif; color:#2b2320; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:90px 120px;">
+    <span style="font-size:26px; letter-spacing:0.35em; text-transform:uppercase; color:#7b2d3b;">Журнал «Архив»</span>
+    <h2 style="font-family:'Playfair Display',serif; font-size:130px; margin:48px 0 0; font-weight:400;">Благодарим за внимание</h2>
+    <span style="width:80px; height:2px; background:#7b2d3b; margin:56px 0;"></span>
+    <p style="font-family:'Playfair Display',serif; font-style:italic; font-size:34px; margin:0; color:#6b5d55;">Следующий выпуск — «Конструктивизм» — в сентябре</p>
+  </section>
+</x-import>
+</x-dc>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>body{margin:0;background:#0d0b09} a{color:#c9a24b} a:hover{color:#e0be6d}</style>
+</helmet>
+<x-import component-from-global-scope="deck-stage" from="./deck-stage.js" width="1920" height="1080" hint-size="100%,100%">
+  <section data-label="Обложка" style="background:#14110e; font-family:Jost,sans-serif; color:#ece5d8; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:90px 120px;">
+    <div style="position:absolute; inset:44px; border:1px solid #3d352a;"></div>
+    <span style="font-size:24px; letter-spacing:0.5em; text-transform:uppercase; color:#c9a24b;">Гранд-отель</span>
+    <h1 style="font-family:'Cormorant Garamond',serif; font-size:170px; margin:40px 0 0; font-weight:400; line-height:1; letter-spacing:0.04em;">Меридиан</h1>
+    <div style="display:flex; align-items:center; gap:28px; margin:52px 0 0;"><span style="width:80px; height:1px; background:#c9a24b;"></span><span style="font-size:26px; letter-spacing:0.3em; text-transform:uppercase; color:#8f8574;">Санкт-Петербург · с 1912 года</span><span style="width:80px; height:1px; background:#c9a24b;"></span></div>
+    <p style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:38px; margin:60px 0 0; color:#b3a68e;">Презентация обновлённого отеля · сезон 2027</p>
+  </section>
+  <section data-label="Содержание" style="background:#14110e; font-family:Jost,sans-serif; color:#ece5d8; display:flex; flex-direction:column; justify-content:center; padding:90px 200px;">
+    <span style="font-size:24px; letter-spacing:0.5em; text-transform:uppercase; color:#c9a24b;">Содержание</span>
+    <div style="display:flex; flex-direction:column; margin-top:64px;">
+      <div style="display:flex; align-items:baseline; gap:48px; padding:40px 0; border-bottom:1px solid #2c261e;"><span style="font-family:'Cormorant Garamond',serif; font-size:40px; color:#c9a24b;">I</span><span style="font-family:'Cormorant Garamond',serif; font-size:46px;">Реставрация исторического здания</span></div>
+      <div style="display:flex; align-items:baseline; gap:48px; padding:40px 0; border-bottom:1px solid #2c261e;"><span style="font-family:'Cormorant Garamond',serif; font-size:40px; color:#c9a24b;">II</span><span style="font-family:'Cormorant Garamond',serif; font-size:46px;">Номера и резиденции</span></div>
+      <div style="display:flex; align-items:baseline; gap:48px; padding:40px 0; border-bottom:1px solid #2c261e;"><span style="font-family:'Cormorant Garamond',serif; font-size:40px; color:#c9a24b;">III</span><span style="font-family:'Cormorant Garamond',serif; font-size:46px;">Гастрономия и спа</span></div>
+      <div style="display:flex; align-items:baseline; gap:48px; padding:40px 0;"><span style="font-family:'Cormorant Garamond',serif; font-size:40px; color:#c9a24b;">IV</span><span style="font-family:'Cormorant Garamond',serif; font-size:46px;">Открытие и бронирование</span></div>
+    </div>
+  </section>
+  <section data-label="Раздел I" style="background:#1d1813; font-family:Jost,sans-serif; color:#ece5d8; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:90px 120px;">
+    <span style="font-family:'Cormorant Garamond',serif; font-size:52px; color:#c9a24b;">I</span>
+    <span style="width:1px; height:80px; background:#c9a24b; margin:36px 0;"></span>
+    <h2 style="font-family:'Cormorant Garamond',serif; font-size:120px; margin:0; font-weight:400; line-height:1.1; max-width:1400px;">Реставрация исторического здания</h2>
+  </section>
+  <section data-label="Три колонки" style="background:#14110e; font-family:Jost,sans-serif; color:#ece5d8; display:flex; flex-direction:column; padding:90px 120px;">
+    <h2 style="font-family:'Cormorant Garamond',serif; font-size:88px; margin:0 0 80px; font-weight:400;">Что вернули зданию</h2>
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:56px;">
+      <div style="border-top:1px solid #c9a24b; padding-top:40px; display:flex; flex-direction:column; gap:24px;"><span style="font-size:24px; letter-spacing:0.3em; text-transform:uppercase; color:#c9a24b;">Фасад</span><p style="font-family:'Cormorant Garamond',serif; font-size:34px; margin:0; line-height:1.5; color:#cfc4ae;">Лепнина 1912 года восстановлена по архивным фотографиям мастерами из трёх городов</p></div>
+      <div style="border-top:1px solid #3d352a; padding-top:40px; display:flex; flex-direction:column; gap:24px;"><span style="font-size:24px; letter-spacing:0.3em; text-transform:uppercase; color:#c9a24b;">Вестибюль</span><p style="font-family:'Cormorant Garamond',serif; font-size:34px; margin:0; line-height:1.5; color:#cfc4ae;">Мраморная лестница и витражный плафон — подлинники, прошедшие реставрацию</p></div>
+      <div style="border-top:1px solid #3d352a; padding-top:40px; display:flex; flex-direction:column; gap:24px;"><span style="font-size:24px; letter-spacing:0.3em; text-transform:uppercase; color:#c9a24b;">Зимний сад</span><p style="font-family:'Cormorant Garamond',serif; font-size:34px; margin:0; line-height:1.5; color:#cfc4ae;">Стеклянный купол воссоздан заново — впервые открыт для гостей с 1941 года</p></div>
+    </div>
+  </section>
+  <section data-label="Большая цифра" style="background:#14110e; font-family:Jost,sans-serif; color:#ece5d8; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:90px 120px;">
+    <div style="position:absolute; inset:44px; border:1px solid #2c261e;"></div>
+    <span style="font-family:'Cormorant Garamond',serif; font-size:300px; line-height:1; color:#c9a24b;">115</span>
+    <p style="font-size:30px; margin:44px 0 0; max-width:1000px; letter-spacing:0.12em; text-transform:uppercase; color:#b3a68e; line-height:1.7;">лет истории — и три года бережной реставрации до последней дверной ручки</p>
+  </section>
+  <section data-label="Таймлайн" style="background:#14110e; font-family:Jost,sans-serif; color:#ece5d8; display:flex; flex-direction:column; padding:90px 120px;">
+    <h2 style="font-family:'Cormorant Garamond',serif; font-size:88px; margin:0 0 100px; font-weight:400;">Путь к открытию</h2>
+    <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:56px;">
+      <div style="display:flex; flex-direction:column; gap:24px;"><span style="font-family:'Cormorant Garamond',serif; font-size:52px; color:#c9a24b;">2024</span><span style="width:48px; height:1px; background:#c9a24b;"></span><p style="font-size:26px; margin:0; color:#b3a68e; line-height:1.6;">Начало реставрации, архивные исследования</p></div>
+      <div style="display:flex; flex-direction:column; gap:24px;"><span style="font-family:'Cormorant Garamond',serif; font-size:52px;">2025</span><span style="width:48px; height:1px; background:#3d352a;"></span><p style="font-size:26px; margin:0; color:#b3a68e; line-height:1.6;">Фасад и вестибюль завершены</p></div>
+      <div style="display:flex; flex-direction:column; gap:24px;"><span style="font-family:'Cormorant Garamond',serif; font-size:52px;">2026</span><span style="width:48px; height:1px; background:#3d352a;"></span><p style="font-size:26px; margin:0; color:#b3a68e; line-height:1.6;">Номера, спа и зимний сад</p></div>
+      <div style="display:flex; flex-direction:column; gap:24px;"><span style="font-family:'Cormorant Garamond',serif; font-size:52px;">2027</span><span style="width:48px; height:1px; background:#3d352a;"></span><p style="font-size:26px; margin:0; color:#b3a68e; line-height:1.6;">Открытие — май, к белым ночам</p></div>
+    </div>
+  </section>
+  <section data-label="Таблица" style="background:#14110e; font-family:Jost,sans-serif; color:#ece5d8; display:flex; flex-direction:column; padding:90px 140px;">
+    <h2 style="font-family:'Cormorant Garamond',serif; font-size:88px; margin:0 0 64px; font-weight:400;">Номера и резиденции</h2>
+    <div style="display:grid; grid-template-columns:1.6fr 1fr 1fr 1fr; font-size:28px; border-top:1px solid #c9a24b;">
+      <div style="padding:30px 0; letter-spacing:0.2em; text-transform:uppercase; font-size:23px; color:#c9a24b; border-bottom:1px solid #2c261e;">Категория</div><div style="padding:30px 0; letter-spacing:0.2em; text-transform:uppercase; font-size:23px; color:#c9a24b; border-bottom:1px solid #2c261e;">Номеров</div><div style="padding:30px 0; letter-spacing:0.2em; text-transform:uppercase; font-size:23px; color:#c9a24b; border-bottom:1px solid #2c261e;">Площадь</div><div style="padding:30px 0; letter-spacing:0.2em; text-transform:uppercase; font-size:23px; color:#c9a24b; border-bottom:1px solid #2c261e;">От, ночь</div>
+      <div style="padding:32px 0; border-bottom:1px solid #2c261e; font-family:'Cormorant Garamond',serif; font-size:34px;">Классический</div><div style="padding:32px 0; border-bottom:1px solid #2c261e; color:#b3a68e;">62</div><div style="padding:32px 0; border-bottom:1px solid #2c261e; color:#b3a68e;">38 м²</div><div style="padding:32px 0; border-bottom:1px solid #2c261e; color:#b3a68e;">34 000 ₽</div>
+      <div style="padding:32px 0; border-bottom:1px solid #2c261e; font-family:'Cormorant Garamond',serif; font-size:34px;">Люкс с видом на канал</div><div style="padding:32px 0; border-bottom:1px solid #2c261e; color:#b3a68e;">24</div><div style="padding:32px 0; border-bottom:1px solid #2c261e; color:#b3a68e;">64 м²</div><div style="padding:32px 0; border-bottom:1px solid #2c261e; color:#b3a68e;">72 000 ₽</div>
+      <div style="padding:32px 0; font-family:'Cormorant Garamond',serif; font-size:34px;">Резиденция «Купол»</div><div style="padding:32px 0; color:#b3a68e;">4</div><div style="padding:32px 0; color:#b3a68e;">140 м²</div><div style="padding:32px 0; color:#c9a24b;">по запросу</div>
+    </div>
+  </section>
+  <section data-label="Цитата" style="background:#1d1813; font-family:Jost,sans-serif; color:#ece5d8; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:90px 180px;">
+    <span style="font-family:'Cormorant Garamond',serif; font-size:200px; line-height:0.4; color:#c9a24b;">“</span>
+    <p style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:70px; line-height:1.35; margin:64px 0 0; max-width:1500px; font-weight:400;">Роскошь — это не позолота. Это когда за каждой деталью стоит столетняя история и живой мастер.</p>
+    <p style="font-size:25px; margin:64px 0 0; letter-spacing:0.3em; text-transform:uppercase; color:#8f8574;">Главный архитектор реставрации</p>
+  </section>
+  <section data-label="Две колонки" style="background:#14110e; font-family:Jost,sans-serif; color:#ece5d8; display:grid; grid-template-columns:1fr 1fr; gap:100px; align-items:center; padding:90px 130px;">
+    <div style="display:flex; flex-direction:column; gap:36px;">
+      <span style="font-size:24px; letter-spacing:0.5em; text-transform:uppercase; color:#c9a24b;">Гастрономия</span>
+      <h2 style="font-family:'Cormorant Garamond',serif; font-size:84px; margin:0; font-weight:400; line-height:1.1;">Ресторан «Купол» и чайный салон</h2>
+      <p style="font-size:28px; margin:0; color:#b3a68e; line-height:1.7;">Сезонное меню северной кухни под стеклянным куполом зимнего сада. Чайный салон возвращает традицию файф-о-клока с видом на канал.</p>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:2px;">
+      <div style="border:1px solid #2c261e; padding:44px 52px; display:flex; justify-content:space-between; align-items:baseline;"><span style="font-family:'Cormorant Garamond',serif; font-size:38px;">Ресторан «Купол»</span><span style="font-size:24px; color:#c9a24b; letter-spacing:0.15em;">18:00 — 23:00</span></div>
+      <div style="border:1px solid #2c261e; padding:44px 52px; display:flex; justify-content:space-between; align-items:baseline;"><span style="font-family:'Cormorant Garamond',serif; font-size:38px;">Чайный салон</span><span style="font-size:24px; color:#c9a24b; letter-spacing:0.15em;">12:00 — 19:00</span></div>
+      <div style="border:1px solid #2c261e; padding:44px 52px; display:flex; justify-content:space-between; align-items:baseline;"><span style="font-family:'Cormorant Garamond',serif; font-size:38px;">Спа и бассейн</span><span style="font-size:24px; color:#c9a24b; letter-spacing:0.15em;">07:00 — 22:00</span></div>
+    </div>
+  </section>
+  <section data-label="Раздел IV" style="background:#1d1813; font-family:Jost,sans-serif; color:#ece5d8; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:90px 120px;">
+    <span style="font-family:'Cormorant Garamond',serif; font-size:52px; color:#c9a24b;">IV</span>
+    <span style="width:1px; height:80px; background:#c9a24b; margin:36px 0;"></span>
+    <h2 style="font-family:'Cormorant Garamond',serif; font-size:120px; margin:0; font-weight:400; line-height:1.1;">Открытие и бронирование</h2>
+  </section>
+  <section data-label="Показатели" style="background:#14110e; font-family:Jost,sans-serif; color:#ece5d8; display:flex; flex-direction:column; padding:90px 120px;">
+    <h2 style="font-family:'Cormorant Garamond',serif; font-size:88px; margin:0 0 90px; font-weight:400;">Отель в цифрах</h2>
+    <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:56px;">
+      <div style="display:flex; flex-direction:column; gap:20px; border-top:1px solid #c9a24b; padding-top:36px;"><span style="font-family:'Cormorant Garamond',serif; font-size:96px; color:#c9a24b;">90</span><span style="font-size:25px; color:#b3a68e; letter-spacing:0.08em; line-height:1.5;">номеров и резиденций</span></div>
+      <div style="display:flex; flex-direction:column; gap:20px; border-top:1px solid #3d352a; padding-top:36px;"><span style="font-family:'Cormorant Garamond',serif; font-size:96px;">2</span><span style="font-size:25px; color:#b3a68e; letter-spacing:0.08em; line-height:1.5;">ресторана и чайный салон</span></div>
+      <div style="display:flex; flex-direction:column; gap:20px; border-top:1px solid #3d352a; padding-top:36px;"><span style="font-family:'Cormorant Garamond',serif; font-size:96px;">25 м</span><span style="font-size:25px; color:#b3a68e; letter-spacing:0.08em; line-height:1.5;">бассейн под сводами XIX века</span></div>
+      <div style="display:flex; flex-direction:column; gap:20px; border-top:1px solid #3d352a; padding-top:36px;"><span style="font-family:'Cormorant Garamond',serif; font-size:96px; color:#c9a24b;">1912</span><span style="font-size:25px; color:#b3a68e; letter-spacing:0.08em; line-height:1.5;">год первого открытия отеля</span></div>
+    </div>
+  </section>
+  <section data-label="Финал" style="background:#14110e; font-family:Jost,sans-serif; color:#ece5d8; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:90px 120px;">
+    <div style="position:absolute; inset:44px; border:1px solid #3d352a;"></div>
+    <span style="font-size:24px; letter-spacing:0.5em; text-transform:uppercase; color:#c9a24b;">Май 2027</span>
+    <h2 style="font-family:'Cormorant Garamond',serif; font-size:130px; margin:44px 0 0; font-weight:400; line-height:1.05;">Ждём вас к белым ночам</h2>
+    <div style="display:flex; align-items:center; gap:28px; margin:56px 0 0;"><span style="width:80px; height:1px; background:#c9a24b;"></span><span style="font-size:26px; letter-spacing:0.3em; text-transform:uppercase; color:#8f8574;">meridian.example · бронирование открыто</span><span style="width:80px; height:1px; background:#c9a24b;"></span></div>
+  </section>
+</x-import>
+</x-dc>
+</body>
+</html>

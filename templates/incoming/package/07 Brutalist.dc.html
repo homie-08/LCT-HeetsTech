@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>body{margin:0;background:#d9cf00} a{color:#000} a:hover{color:#333}</style>
+</helmet>
+<x-import component-from-global-scope="deck-stage" from="./deck-stage.js" width="1920" height="1080" hint-size="100%,100%">
+  <section data-label="Обложка" style="background:#ffd400; font-family:'JetBrains Mono',monospace; color:#000; display:flex; flex-direction:column; justify-content:space-between; padding:70px 90px;">
+    <div style="display:flex; justify-content:space-between; align-items:center; border:5px solid #000; padding:24px 40px; font-size:28px; font-weight:700;"><span>ФЕСТИВАЛЬ</span><span>27–29.08.2026</span><span>ЗАВОД «АРМА»</span></div>
+    <h1 style="font-family:'Unbounded',sans-serif; font-weight:900; font-size:180px; margin:0; line-height:0.9; text-transform:uppercase; letter-spacing:-0.02em;">БЕТОН<span style="color:#fff; -webkit-text-stroke:5px #000;">*</span></h1>
+    <div style="display:flex; justify-content:space-between; align-items:flex-end;"><span style="font-size:30px; max-width:800px; line-height:1.4;">*музыка, стрит-арт и уличная еда на старом заводе. три дня. без дресс-кода.</span><span style="background:#000; color:#ffd400; padding:20px 40px; font-size:28px; font-weight:700;">ВХОД ПО БРАСЛЕТАМ</span></div>
+  </section>
+  <section data-label="Содержание" style="background:#fff; font-family:'JetBrains Mono',monospace; color:#000; display:flex; flex-direction:column; padding:80px 90px;">
+    <h2 style="font-family:'Unbounded',sans-serif; font-weight:900; font-size:74px; margin:0 0 60px; text-transform:uppercase;">Что внутри</h2>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:32px;">
+      <div style="border:5px solid #000; padding:40px 48px; display:flex; align-items:center; gap:36px; box-shadow:14px 14px 0 #000;"><span style="font-family:'Unbounded',sans-serif; font-weight:900; font-size:56px;">01</span><span style="font-size:32px; font-weight:700;">ТРИ СЦЕНЫ И ЛАЙНАП</span></div>
+      <div style="border:5px solid #000; padding:40px 48px; display:flex; align-items:center; gap:36px; box-shadow:14px 14px 0 #000; background:#ffd400;"><span style="font-family:'Unbounded',sans-serif; font-weight:900; font-size:56px;">02</span><span style="font-size:32px; font-weight:700;">СТРИТ-АРТ ПРОГРАММА</span></div>
+      <div style="border:5px solid #000; padding:40px 48px; display:flex; align-items:center; gap:36px; box-shadow:14px 14px 0 #000; background:#ffd400;"><span style="font-family:'Unbounded',sans-serif; font-weight:900; font-size:56px;">03</span><span style="font-size:32px; font-weight:700;">ЕДА, МАРКЕТ, КЕМП</span></div>
+      <div style="border:5px solid #000; padding:40px 48px; display:flex; align-items:center; gap:36px; box-shadow:14px 14px 0 #000;"><span style="font-family:'Unbounded',sans-serif; font-weight:900; font-size:56px;">04</span><span style="font-size:32px; font-weight:700;">БИЛЕТЫ И ПАРТНЁРЫ</span></div>
+    </div>
+  </section>
+  <section data-label="Раздел 01" style="background:#000; font-family:'JetBrains Mono',monospace; color:#ffd400; display:flex; flex-direction:column; justify-content:center; padding:80px 90px;">
+    <span style="border:4px solid #ffd400; padding:14px 32px; font-size:28px; font-weight:700; width:max-content;">РАЗДЕЛ 01</span>
+    <h2 style="font-family:'Unbounded',sans-serif; font-weight:900; font-size:150px; margin:40px 0 0; line-height:0.92; text-transform:uppercase;">ТРИ<br>СЦЕНЫ</h2>
+  </section>
+  <section data-label="Три колонки" style="background:#ffd400; font-family:'JetBrains Mono',monospace; color:#000; display:flex; flex-direction:column; padding:80px 90px;">
+    <h2 style="font-family:'Unbounded',sans-serif; font-weight:900; font-size:74px; margin:0 0 60px; text-transform:uppercase;">Сцены</h2>
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:44px;">
+      <div style="background:#fff; border:5px solid #000; box-shadow:14px 14px 0 #000; padding:48px; display:flex; flex-direction:column; gap:24px;">
+        <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2.5" stroke-linecap="square"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+        <h3 style="font-family:'Unbounded',sans-serif; font-weight:900; font-size:40px; margin:0; text-transform:uppercase;">Главная</h3>
+        <p style="font-size:26px; margin:0; line-height:1.5;">Хедлайнеры и живые составы. Цех №1, 12 000 человек</p>
+      </div>
+      <div style="background:#fff; border:5px solid #000; box-shadow:14px 14px 0 #000; padding:48px; display:flex; flex-direction:column; gap:24px;">
+        <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2.5" stroke-linecap="square"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/><path d="M12 2v3"/><path d="M12 19v3"/></svg>
+        <h3 style="font-family:'Unbounded',sans-serif; font-weight:900; font-size:40px; margin:0; text-transform:uppercase;">Техно-двор</h3>
+        <p style="font-size:26px; margin:0; line-height:1.5;">Диджеи до рассвета под открытым небом</p>
+      </div>
+      <div style="background:#fff; border:5px solid #000; box-shadow:14px 14px 0 #000; padding:48px; display:flex; flex-direction:column; gap:24px;">
+        <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2.5" stroke-linecap="square"><path d="M12 2v20"/><path d="M2 12h20"/><path d="m5 5 14 14"/><path d="m19 5-14 14"/></svg>
+        <h3 style="font-family:'Unbounded',sans-serif; font-weight:900; font-size:40px; margin:0; text-transform:uppercase;">Локальная</h3>
+        <p style="font-size:26px; margin:0; line-height:1.5;">Молодые группы города — open call открыт</p>
+      </div>
+    </div>
+  </section>
+  <section data-label="Большая цифра" style="background:#fff; font-family:'JetBrains Mono',monospace; color:#000; display:flex; flex-direction:column; justify-content:center; padding:80px 90px;">
+    <span style="font-family:'Unbounded',sans-serif; font-weight:900; font-size:260px; line-height:0.95; letter-spacing:-0.02em;">48<span style="color:#ffd400; -webkit-text-stroke:6px #000;">ч</span></span>
+    <p style="font-size:36px; margin:48px 0 0; max-width:1200px; line-height:1.45; font-weight:700;">НЕПРЕРЫВНОЙ МУЗЫКИ: ТРИ СЦЕНЫ РАБОТАЮТ ПОСМЕННО ВСЕ ТРИ ДНЯ</p>
+  </section>
+  <section data-label="Таймлайн" style="background:#fff; font-family:'JetBrains Mono',monospace; color:#000; display:flex; flex-direction:column; padding:80px 90px;">
+    <h2 style="font-family:'Unbounded',sans-serif; font-weight:900; font-size:74px; margin:0 0 80px; text-transform:uppercase;">Три дня</h2>
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:44px;">
+      <div style="border-top:10px solid #000; padding-top:32px; display:flex; flex-direction:column; gap:20px;"><span style="font-family:'Unbounded',sans-serif; font-weight:900; font-size:48px;">ПТ 27.08</span><p style="font-size:27px; margin:0; line-height:1.55;">Открытие, локальная сцена, ночной техно-двор</p></div>
+      <div style="border-top:10px solid #ffd400; padding-top:32px; display:flex; flex-direction:column; gap:20px;"><span style="font-family:'Unbounded',sans-serif; font-weight:900; font-size:48px;">СБ 28.08</span><p style="font-size:27px; margin:0; line-height:1.55;">Хедлайнеры, батл граффити-команд, маркет</p></div>
+      <div style="border-top:10px solid #000; padding-top:32px; display:flex; flex-direction:column; gap:20px;"><span style="font-family:'Unbounded',sans-serif; font-weight:900; font-size:48px;">ВС 29.08</span><p style="font-size:27px; margin:0; line-height:1.55;">Дневные концерты, аукцион работ, закрытие</p></div>
+    </div>
+  </section>
+  <section data-label="Таблица" style="background:#ffd400; font-family:'JetBrains Mono',monospace; color:#000; display:flex; flex-direction:column; padding:80px 90px;">
+    <h2 style="font-family:'Unbounded',sans-serif; font-weight:900; font-size:74px; margin:0 0 56px; text-transform:uppercase;">Билеты</h2>
+    <div style="display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; font-size:28px; border:5px solid #000; background:#fff;">
+      <div style="padding:28px 40px; background:#000; color:#ffd400; font-weight:700;">ТИП</div><div style="padding:28px 24px; background:#000; color:#ffd400; font-weight:700;">1 ДЕНЬ</div><div style="padding:28px 24px; background:#000; color:#ffd400; font-weight:700;">3 ДНЯ</div><div style="padding:28px 24px; background:#000; color:#ffd400; font-weight:700;">С КЕМПОМ</div>
+      <div style="padding:28px 40px; border-bottom:3px solid #000; font-weight:700;">РАННИЙ</div><div style="padding:28px 24px; border-bottom:3px solid #000;">2 500 ₽</div><div style="padding:28px 24px; border-bottom:3px solid #000;">5 500 ₽</div><div style="padding:28px 24px; border-bottom:3px solid #000;">7 000 ₽</div>
+      <div style="padding:28px 40px; border-bottom:3px solid #000; font-weight:700;">ОБЫЧНЫЙ</div><div style="padding:28px 24px; border-bottom:3px solid #000;">3 500 ₽</div><div style="padding:28px 24px; border-bottom:3px solid #000;">7 500 ₽</div><div style="padding:28px 24px; border-bottom:3px solid #000;">9 500 ₽</div>
+      <div style="padding:28px 40px; font-weight:700;">У ВОРОТ</div><div style="padding:28px 24px;">4 500 ₽</div><div style="padding:28px 24px;">—</div><div style="padding:28px 24px;">—</div>
+    </div>
+    <p style="font-size:26px; margin:36px 0 0; font-weight:700;">ДО 18 ЛЕТ — БЕСПЛАТНО С ВЗРОСЛЫМ. РАННИЕ — ДО 1 ИЮЛЯ.</p>
+  </section>
+  <section data-label="Цитата" style="background:#000; font-family:'JetBrains Mono',monospace; color:#fff; display:flex; flex-direction:column; justify-content:center; padding:80px 130px;">
+    <span style="background:#ffd400; color:#000; padding:14px 32px; font-size:28px; font-weight:700; width:max-content;">ИЗ ПРЕССЫ</span>
+    <p style="font-family:'Unbounded',sans-serif; font-weight:900; font-size:80px; line-height:1.15; margin:56px 0 0; text-transform:uppercase; max-width:1600px;">«Единственный фестиваль, где граффити сохнет дольше, чем играет хедлайнер»</p>
+    <p style="font-size:28px; margin:56px 0 0; color:#ffd400;">— городской журнал, репортаж с «Бетона-2025»</p>
+  </section>
+  <section data-label="Две колонки" style="background:#fff; font-family:'JetBrains Mono',monospace; color:#000; display:grid; grid-template-columns:1fr 1fr;">
+    <div style="display:flex; flex-direction:column; justify-content:center; padding:80px 90px; gap:36px;">
+      <h2 style="font-family:'Unbounded',sans-serif; font-weight:900; font-size:80px; margin:0; text-transform:uppercase; line-height:1;">Стрит-арт<br>батл</h2>
+      <p style="font-size:28px; margin:0; line-height:1.6;">12 команд, 12 стен старого цеха, 48 часов. Победителя выбирают зрители — жетоном в урну у стены. Работы остаются на заводе навсегда.</p>
+      <span style="background:#000; color:#fff; padding:20px 44px; font-size:27px; font-weight:700; width:max-content;">ЗАЯВКИ ДО 1 АВГУСТА</span>
+    </div>
+    <div style="background:#ffd400; border-left:5px solid #000; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px;">
+      <span style="font-family:'Unbounded',sans-serif; font-weight:900; font-size:120px; line-height:1;">12</span>
+      <span style="font-size:30px; font-weight:700;">КОМАНД</span>
+      <span style="font-family:'Unbounded',sans-serif; font-weight:900; font-size:120px; line-height:1; margin-top:40px;">12</span>
+      <span style="font-size:30px; font-weight:700;">СТЕН</span>
+    </div>
+  </section>
+  <section data-label="Раздел 04" style="background:#000; font-family:'JetBrains Mono',monospace; color:#ffd400; display:flex; flex-direction:column; justify-content:center; padding:80px 90px;">
+    <span style="border:4px solid #ffd400; padding:14px 32px; font-size:28px; font-weight:700; width:max-content;">РАЗДЕЛ 04</span>
+    <h2 style="font-family:'Unbounded',sans-serif; font-weight:900; font-size:150px; margin:40px 0 0; line-height:0.92; text-transform:uppercase;">ЦИФРЫ<br>И ФАКТЫ</h2>
+  </section>
+  <section data-label="Показатели" style="background:#fff; font-family:'JetBrains Mono',monospace; color:#000; display:flex; flex-direction:column; padding:80px 90px;">
+    <h2 style="font-family:'Unbounded',sans-serif; font-weight:900; font-size:74px; margin:0 0 64px; text-transform:uppercase;">Бетон-2025</h2>
+    <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:36px;">
+      <div style="border:5px solid #000; box-shadow:12px 12px 0 #000; padding:40px; display:flex; flex-direction:column; gap:14px;"><span style="font-family:'Unbounded',sans-serif; font-weight:900; font-size:58px;">31 000</span><span style="font-size:25px; font-weight:700;">ГОСТЕЙ ЗА ТРИ ДНЯ</span></div>
+      <div style="border:5px solid #000; box-shadow:12px 12px 0 #000; padding:40px; display:flex; flex-direction:column; gap:14px; background:#ffd400;"><span style="font-family:'Unbounded',sans-serif; font-weight:900; font-size:58px;">64</span><span style="font-size:25px; font-weight:700;">АРТИСТА В ЛАЙНАПЕ</span></div>
+      <div style="border:5px solid #000; box-shadow:12px 12px 0 #000; padding:40px; display:flex; flex-direction:column; gap:14px; background:#ffd400;"><span style="font-family:'Unbounded',sans-serif; font-weight:900; font-size:58px;">40</span><span style="font-size:25px; font-weight:700;">ФУДТРАКОВ И ЛАВОК</span></div>
+      <div style="border:5px solid #000; box-shadow:12px 12px 0 #000; padding:40px; display:flex; flex-direction:column; gap:14px;"><span style="font-family:'Unbounded',sans-serif; font-weight:900; font-size:58px;">0</span><span style="font-size:25px; font-weight:700;">ПЛАСТИКОВЫХ СТАКАНОВ</span></div>
+    </div>
+  </section>
+  <section data-label="Финал" style="background:#ffd400; font-family:'JetBrains Mono',monospace; color:#000; display:flex; flex-direction:column; justify-content:space-between; padding:70px 90px;">
+    <div style="display:flex; justify-content:space-between; border:5px solid #000; padding:24px 40px; font-size:28px; font-weight:700;"><span>БЕТОН-2026</span><span>27–29.08</span></div>
+    <h2 style="font-family:'Unbounded',sans-serif; font-weight:900; font-size:150px; margin:0; line-height:0.92; text-transform:uppercase;">ДО ВСТРЕЧИ<br>НА ЗАВОДЕ</h2>
+    <div style="display:flex; justify-content:space-between; align-items:center;"><span style="font-size:28px; font-weight:700;">BETON.EXAMPLE</span><span style="background:#000; color:#ffd400; padding:20px 40px; font-size:28px; font-weight:700;">КУПИТЬ БИЛЕТ →</span></div>
+  </section>
+</x-import>
+</x-dc>
+</body>
+</html>

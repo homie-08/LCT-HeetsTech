@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "slide-designer"
+version = "0.1.0"
+description = "Цифровой дизайнер презентаций: шаблон разбирается на дизайн-систему, контент верстается по ней"
+requires-python = ">=3.11"
+dynamic = ["dependencies"]
+
+[project.scripts]
+sd = "sd.cli:main"
+
+[tool.setuptools]
+# Пакет лежит в этой же папке; ставится editable, чтобы правки в коде были
+# видны сразу и `python -m sd` работал из любого каталога — команды в README
+# пишутся от корня репозитория.
+packages = ["sd"]
+
+[tool.setuptools.dynamic]
+dependencies = { file = ["requirements.txt"] }

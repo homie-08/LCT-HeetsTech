@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link href="https://fonts.googleapis.com/css2?family=Prata&family=Alegreya+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>body{margin:0;background:#dfe5da} a{color:#1e4d38} a:hover{color:#123325}</style>
+</helmet>
+<x-import component-from-global-scope="deck-stage" from="./deck-stage.js" width="1920" height="1080" hint-size="100%,100%">
+  <section data-label="Обложка" style="background:#1e4d38; font-family:'Alegreya Sans',sans-serif; color:#eef2e8; display:flex; flex-direction:column; justify-content:center; padding:100px 120px; overflow:hidden;">
+    <svg style="position:absolute; right:60px; top:0; bottom:0; height:100%;" width="620" viewBox="0 0 200 340" fill="none" stroke="#2c6349" stroke-width="1.4"><path d="M100 330 C 100 220, 100 120, 100 30"/><path d="M100 250 C 130 230, 160 230, 180 200"/><path d="M100 250 C 70 230, 40 230, 20 200"/><path d="M100 180 C 128 162, 152 164, 172 138"/><path d="M100 180 C 72 162, 48 164, 28 138"/><path d="M100 110 C 122 96, 142 98, 158 76"/><path d="M100 110 C 78 96, 58 98, 42 76"/><path d="M100 30 C 108 44, 120 48, 126 40"/></svg>
+    <span style="font-size:26px; letter-spacing:0.25em; text-transform:uppercase; color:#9dc3a8;">Фонд «Полоса леса» · годовой отчёт</span>
+    <h1 style="font-family:'Prata',serif; font-size:140px; margin:44px 0 0; font-weight:400; line-height:1.02; max-width:1250px;">Лес возвращается</h1>
+    <p style="font-size:34px; margin:44px 0 0; max-width:850px; color:#c4d8c5; line-height:1.5;">Что мы восстановили за 2025 год — и куда посадим следующий миллион деревьев</p>
+  </section>
+  <section data-label="Содержание" style="background:#f4f3ea; font-family:'Alegreya Sans',sans-serif; color:#22301f; display:flex; flex-direction:column; padding:100px 120px;">
+    <h2 style="font-family:'Prata',serif; font-size:84px; margin:0 0 72px; font-weight:400;">В этом отчёте</h2>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:36px 64px;">
+      <div style="display:flex; gap:32px; align-items:flex-start; border-bottom:2px solid #d5d6c3; padding-bottom:36px;"><span style="font-family:'Prata',serif; font-size:44px; color:#4c7a44;">01</span><div style="display:flex; flex-direction:column; gap:10px;"><span style="font-size:32px; font-weight:700;">Итоги посадок 2025</span><span style="font-size:26px; color:#6b7261;">Регионы, породы, приживаемость</span></div></div>
+      <div style="display:flex; gap:32px; align-items:flex-start; border-bottom:2px solid #d5d6c3; padding-bottom:36px;"><span style="font-family:'Prata',serif; font-size:44px; color:#4c7a44;">02</span><div style="display:flex; flex-direction:column; gap:10px;"><span style="font-size:32px; font-weight:700;">Как устроен цикл</span><span style="font-size:26px; color:#6b7261;">От питомника до мониторинга</span></div></div>
+      <div style="display:flex; gap:32px; align-items:flex-start; border-bottom:2px solid #d5d6c3; padding-bottom:36px;"><span style="font-family:'Prata',serif; font-size:44px; color:#4c7a44;">03</span><div style="display:flex; flex-direction:column; gap:10px;"><span style="font-size:32px; font-weight:700;">Деньги и прозрачность</span><span style="font-size:26px; color:#6b7261;">На что ушёл каждый рубль</span></div></div>
+      <div style="display:flex; gap:32px; align-items:flex-start; border-bottom:2px solid #d5d6c3; padding-bottom:36px;"><span style="font-family:'Prata',serif; font-size:44px; color:#4c7a44;">04</span><div style="display:flex; flex-direction:column; gap:10px;"><span style="font-size:32px; font-weight:700;">План на 2026</span><span style="font-size:26px; color:#6b7261;">Новые регионы и цели</span></div></div>
+    </div>
+  </section>
+  <section data-label="Раздел 01" style="background:#4c7a44; font-family:'Alegreya Sans',sans-serif; color:#f4f3ea; display:flex; flex-direction:column; justify-content:center; padding:100px 120px; overflow:hidden;">
+    <svg style="position:absolute; right:-40px; bottom:-40px; opacity:0.35;" width="500" height="500" viewBox="0 0 24 24" fill="none" stroke="#eef2e8" stroke-width="0.7"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
+    <span style="font-size:26px; letter-spacing:0.25em; text-transform:uppercase; color:#cfe3c4;">Раздел 01</span>
+    <h2 style="font-family:'Prata',serif; font-size:130px; margin:40px 0 0; font-weight:400; line-height:1.05;">Итоги посадок 2025</h2>
+  </section>
+  <section data-label="Три карточки" style="background:#f4f3ea; font-family:'Alegreya Sans',sans-serif; color:#22301f; display:flex; flex-direction:column; padding:100px 120px;">
+    <h2 style="font-family:'Prata',serif; font-size:84px; margin:0 0 68px; font-weight:400;">Цикл восстановления</h2>
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:40px;">
+      <div style="background:#fff; border-radius:8px; padding:52px 44px; border:1px solid #d5d6c3; display:flex; flex-direction:column; gap:28px;">
+        <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#4c7a44" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 20h10"/><path d="M10 20c5.5-2.5.8-6.4 3-10"/><path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8Z"/><path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2Z"/></svg>
+        <h3 style="font-family:'Prata',serif; font-size:38px; margin:0; font-weight:400;">Питомники</h3>
+        <p style="font-size:27px; margin:0; color:#6b7261; line-height:1.55;">Сеянцы местных пород выращиваются два года до высадки</p>
+      </div>
+      <div style="background:#fff; border-radius:8px; padding:52px 44px; border:1px solid #d5d6c3; display:flex; flex-direction:column; gap:28px;">
+        <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#4c7a44" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        <h3 style="font-family:'Prata',serif; font-size:38px; margin:0; font-weight:400;">Посадка</h3>
+        <p style="font-size:27px; margin:0; color:#6b7261; line-height:1.55;">Волонтёрские лагеря весной и осенью, лесники — круглый год</p>
+      </div>
+      <div style="background:#fff; border-radius:8px; padding:52px 44px; border:1px solid #d5d6c3; display:flex; flex-direction:column; gap:28px;">
+        <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#4c7a44" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+        <h3 style="font-family:'Prata',serif; font-size:38px; margin:0; font-weight:400;">Мониторинг</h3>
+        <p style="font-size:27px; margin:0; color:#6b7261; line-height:1.55;">Спутниковые снимки и обходы: пять лет наблюдения за каждым участком</p>
+      </div>
+    </div>
+  </section>
+  <section data-label="Большая цифра" style="background:#f4f3ea; font-family:'Alegreya Sans',sans-serif; color:#22301f; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:100px 120px;">
+    <span style="font-family:'Prata',serif; font-size:300px; line-height:1; color:#1e4d38;">1,2 млн</span>
+    <p style="font-size:38px; margin:44px 0 0; max-width:1150px; line-height:1.45; color:#4a523f;">деревьев высажено в 2025 году — на треть больше, чем планировали</p>
+  </section>
+  <section data-label="Таймлайн" style="background:#f4f3ea; font-family:'Alegreya Sans',sans-serif; color:#22301f; display:flex; flex-direction:column; padding:100px 120px;">
+    <h2 style="font-family:'Prata',serif; font-size:84px; margin:0 0 90px; font-weight:400;">Год фонда по сезонам</h2>
+    <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:48px;">
+      <div style="display:flex; flex-direction:column; gap:20px; border-top:3px solid #4c7a44; padding-top:30px;"><span style="font-family:'Prata',serif; font-size:40px;">Март — май</span><p style="font-size:26px; margin:0; color:#6b7261; line-height:1.55;">Весенняя посадочная кампания, 14 лагерей</p></div>
+      <div style="display:flex; flex-direction:column; gap:20px; border-top:3px solid #d5d6c3; padding-top:30px;"><span style="font-family:'Prata',serif; font-size:40px;">Июнь — август</span><p style="font-size:26px; margin:0; color:#6b7261; line-height:1.55;">Уход, полив, защита от пожаров</p></div>
+      <div style="display:flex; flex-direction:column; gap:20px; border-top:3px solid #d5d6c3; padding-top:30px;"><span style="font-family:'Prata',serif; font-size:40px;">Сентябрь — октябрь</span><p style="font-size:26px; margin:0; color:#6b7261; line-height:1.55;">Осенняя посадка хвойных пород</p></div>
+      <div style="display:flex; flex-direction:column; gap:20px; border-top:3px solid #d5d6c3; padding-top:30px;"><span style="font-family:'Prata',serif; font-size:40px;">Ноябрь — февраль</span><p style="font-size:26px; margin:0; color:#6b7261; line-height:1.55;">Питомники, отчёты, планирование</p></div>
+    </div>
+  </section>
+  <section data-label="Таблица" style="background:#f4f3ea; font-family:'Alegreya Sans',sans-serif; color:#22301f; display:flex; flex-direction:column; padding:100px 120px;">
+    <h2 style="font-family:'Prata',serif; font-size:84px; margin:0 0 60px; font-weight:400;">Посадки по регионам</h2>
+    <div style="display:grid; grid-template-columns:1.5fr 1fr 1fr 1fr; font-size:28px; background:#fff; border:1px solid #d5d6c3; border-radius:8px; overflow:hidden;">
+      <div style="padding:28px 44px; background:#1e4d38; color:#eef2e8; font-weight:700;">Регион</div><div style="padding:28px 24px; background:#1e4d38; color:#eef2e8; font-weight:700;">Деревьев</div><div style="padding:28px 24px; background:#1e4d38; color:#eef2e8; font-weight:700;">Гектаров</div><div style="padding:28px 24px; background:#1e4d38; color:#eef2e8; font-weight:700;">Приживаемость</div>
+      <div style="padding:28px 44px; border-bottom:1px solid #e4e4d6; font-weight:500;">Рязанская область</div><div style="padding:28px 24px; border-bottom:1px solid #e4e4d6;">460 000</div><div style="padding:28px 24px; border-bottom:1px solid #e4e4d6;">210</div><div style="padding:28px 24px; border-bottom:1px solid #e4e4d6; color:#1e4d38; font-weight:700;">84%</div>
+      <div style="padding:28px 44px; border-bottom:1px solid #e4e4d6; font-weight:500;">Башкортостан</div><div style="padding:28px 24px; border-bottom:1px solid #e4e4d6;">380 000</div><div style="padding:28px 24px; border-bottom:1px solid #e4e4d6;">175</div><div style="padding:28px 24px; border-bottom:1px solid #e4e4d6; color:#1e4d38; font-weight:700;">81%</div>
+      <div style="padding:28px 44px; font-weight:500;">Иркутская область</div><div style="padding:28px 24px;">360 000</div><div style="padding:28px 24px;">190</div><div style="padding:28px 24px; color:#1e4d38; font-weight:700;">78%</div>
+    </div>
+  </section>
+  <section data-label="Цитата" style="background:#1e4d38; font-family:'Alegreya Sans',sans-serif; color:#eef2e8; display:flex; flex-direction:column; justify-content:center; padding:100px 170px;">
+    <span style="font-family:'Prata',serif; font-size:180px; line-height:0.5; color:#4c7a44;">“</span>
+    <p style="font-family:'Prata',serif; font-size:66px; line-height:1.35; margin:52px 0 0; max-width:1500px; font-weight:400;">Гарь 2021 года снова пахнет сосной. Через двадцать лет здесь будет лес, в который придут наши внуки.</p>
+    <p style="font-size:28px; margin:56px 0 0; color:#9dc3a8;">Лесничий Рязанского участка · с фондом с первого дня</p>
+  </section>
+  <section data-label="Две колонки" style="background:#f4f3ea; font-family:'Alegreya Sans',sans-serif; color:#22301f; display:grid; grid-template-columns:1fr 1fr; gap:90px; align-items:center; padding:100px 120px;">
+    <div style="display:flex; flex-direction:column; gap:34px;">
+      <h2 style="font-family:'Prata',serif; font-size:80px; margin:0; font-weight:400; line-height:1.1;">Куда идёт рубль</h2>
+      <p style="font-size:29px; margin:0; color:#6b7261; line-height:1.6;">72 копейки с каждого рубля — прямые расходы на посадку и уход. Административные расходы держим ниже 10% четвёртый год подряд.</p>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:28px;">
+      <div style="display:flex; flex-direction:column; gap:12px;"><div style="display:flex; justify-content:space-between; font-size:27px; font-weight:700;"><span>Посадка и уход</span><span>72%</span></div><div style="height:28px; border-radius:999px; background:#e4e4d6;"><div style="width:72%; height:100%; border-radius:999px; background:#1e4d38;"></div></div></div>
+      <div style="display:flex; flex-direction:column; gap:12px;"><div style="display:flex; justify-content:space-between; font-size:27px; font-weight:700;"><span>Питомники</span><span>12%</span></div><div style="height:28px; border-radius:999px; background:#e4e4d6;"><div style="width:12%; height:100%; border-radius:999px; background:#4c7a44;"></div></div></div>
+      <div style="display:flex; flex-direction:column; gap:12px;"><div style="display:flex; justify-content:space-between; font-size:27px; font-weight:700;"><span>Мониторинг</span><span>7%</span></div><div style="height:28px; border-radius:999px; background:#e4e4d6;"><div style="width:7%; height:100%; border-radius:999px; background:#8aa86a;"></div></div></div>
+      <div style="display:flex; flex-direction:column; gap:12px;"><div style="display:flex; justify-content:space-between; font-size:27px; font-weight:700;"><span>Администрирование</span><span>9%</span></div><div style="height:28px; border-radius:999px; background:#e4e4d6;"><div style="width:9%; height:100%; border-radius:999px; background:#c9c48f;"></div></div></div>
+    </div>
+  </section>
+  <section data-label="Раздел 04" style="background:#4c7a44; font-family:'Alegreya Sans',sans-serif; color:#f4f3ea; display:flex; flex-direction:column; justify-content:center; padding:100px 120px;">
+    <span style="font-size:26px; letter-spacing:0.25em; text-transform:uppercase; color:#cfe3c4;">Раздел 04</span>
+    <h2 style="font-family:'Prata',serif; font-size:130px; margin:40px 0 0; font-weight:400; line-height:1.05;">План на 2026</h2>
+  </section>
+  <section data-label="Показатели" style="background:#f4f3ea; font-family:'Alegreya Sans',sans-serif; color:#22301f; display:flex; flex-direction:column; padding:100px 120px;">
+    <h2 style="font-family:'Prata',serif; font-size:84px; margin:0 0 76px; font-weight:400;">Цели 2026 года</h2>
+    <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:56px;">
+      <div style="display:flex; flex-direction:column; gap:18px; border-top:3px solid #1e4d38; padding-top:32px;"><span style="font-family:'Prata',serif; font-size:88px; color:#1e4d38;">1,5 млн</span><span style="font-size:26px; color:#6b7261; line-height:1.45;">деревьев к высадке</span></div>
+      <div style="display:flex; flex-direction:column; gap:18px; border-top:3px solid #d5d6c3; padding-top:32px;"><span style="font-family:'Prata',serif; font-size:88px;">5</span><span style="font-size:26px; color:#6b7261; line-height:1.45;">регионов, включая два новых</span></div>
+      <div style="display:flex; flex-direction:column; gap:18px; border-top:3px solid #d5d6c3; padding-top:32px;"><span style="font-family:'Prata',serif; font-size:88px;">6 000</span><span style="font-size:26px; color:#6b7261; line-height:1.45;">волонтёров в лагерях</span></div>
+      <div style="display:flex; flex-direction:column; gap:18px; border-top:3px solid #d5d6c3; padding-top:32px;"><span style="font-family:'Prata',serif; font-size:88px; color:#1e4d38;">85%</span><span style="font-size:26px; color:#6b7261; line-height:1.45;">целевая приживаемость</span></div>
+    </div>
+  </section>
+  <section data-label="Финал" style="background:#1e4d38; font-family:'Alegreya Sans',sans-serif; color:#eef2e8; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:100px 120px;">
+    <h2 style="font-family:'Prata',serif; font-size:120px; margin:0; font-weight:400; max-width:1500px; line-height:1.1;">Посадите своё дерево</h2>
+    <p style="font-size:32px; margin:44px 0 0; color:#c4d8c5;">350 ₽ — одно дерево с двухлетним уходом и координатами участка</p>
+    <span style="margin-top:60px; background:#eef2e8; color:#1e4d38; border-radius:999px; padding:26px 64px; font-size:30px; font-weight:700;">polosa-lesa.example</span>
+  </section>
+</x-import>
+</x-dc>
+</body>
+</html>

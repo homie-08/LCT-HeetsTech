@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>body{margin:0;background:#03222e} a{color:#2dd4bf} a:hover{color:#7ceee0}</style>
+</helmet>
+<x-import component-from-global-scope="deck-stage" from="./deck-stage.js" width="1920" height="1080" hint-size="100%,100%">
+  <section data-label="Обложка" style="background:linear-gradient(180deg,#03222e, #06384c); font-family:'Exo 2',sans-serif; color:#e6f7f5; display:flex; flex-direction:column; justify-content:center; padding:100px 120px; overflow:hidden;">
+    <svg style="position:absolute; left:0; right:0; bottom:0;" width="1920" height="240" viewBox="0 0 1920 240" preserveAspectRatio="none"><path d="M0 120 C 320 40, 640 200, 960 120 S 1600 40, 1920 120 L1920 240 L0 240 Z" fill="rgba(45,212,191,0.12)"/><path d="M0 160 C 320 90, 640 230, 960 160 S 1600 90, 1920 160 L1920 240 L0 240 Z" fill="rgba(45,212,191,0.18)"/></svg>
+    <span style="display:inline-flex; align-items:center; gap:16px; background:rgba(45,212,191,0.12); border:1px solid rgba(45,212,191,0.4); border-radius:999px; padding:14px 34px; font-size:26px; font-weight:600; width:max-content; color:#2dd4bf;">Аквакультура · инвестиционный меморандум</span>
+    <h1 style="font-size:130px; margin:44px 0 0; font-weight:800; line-height:1.02; max-width:1350px;">Ферма «Глубина»</h1>
+    <p style="font-size:33px; margin:44px 0 0; max-width:900px; color:#8fb8c4; line-height:1.5;">Выращивание форели и мидий в Баренцевом море: технология, экономика, план роста</p>
+  </section>
+  <section data-label="Содержание" style="background:#04293a; font-family:'Exo 2',sans-serif; color:#e6f7f5; display:flex; flex-direction:column; padding:100px 120px;">
+    <h2 style="font-size:74px; margin:0 0 68px; font-weight:800;">Четыре течения доклада</h2>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:32px;">
+      <div style="display:flex; align-items:center; gap:32px; background:rgba(45,212,191,0.06); border:1px solid rgba(45,212,191,0.25); border-radius:999px; padding:28px 48px;"><span style="width:68px; height:68px; border-radius:50%; background:#0d9488; display:flex; align-items:center; justify-content:center; font-size:30px; font-weight:800; flex-shrink:0;">1</span><span style="font-size:30px; font-weight:600;">Технология садков открытого моря</span></div>
+      <div style="display:flex; align-items:center; gap:32px; background:rgba(45,212,191,0.06); border:1px solid rgba(45,212,191,0.25); border-radius:999px; padding:28px 48px;"><span style="width:68px; height:68px; border-radius:50%; background:#0d9488; display:flex; align-items:center; justify-content:center; font-size:30px; font-weight:800; flex-shrink:0;">2</span><span style="font-size:30px; font-weight:600;">Производственный цикл</span></div>
+      <div style="display:flex; align-items:center; gap:32px; background:rgba(45,212,191,0.06); border:1px solid rgba(45,212,191,0.25); border-radius:999px; padding:28px 48px;"><span style="width:68px; height:68px; border-radius:50%; background:#0d9488; display:flex; align-items:center; justify-content:center; font-size:30px; font-weight:800; flex-shrink:0;">3</span><span style="font-size:30px; font-weight:600;">Экономика и рынок сбыта</span></div>
+      <div style="display:flex; align-items:center; gap:32px; background:rgba(45,212,191,0.06); border:1px solid rgba(45,212,191,0.25); border-radius:999px; padding:28px 48px;"><span style="width:68px; height:68px; border-radius:50%; background:#0d9488; display:flex; align-items:center; justify-content:center; font-size:30px; font-weight:800; flex-shrink:0;">4</span><span style="font-size:30px; font-weight:600;">Инвестиционное предложение</span></div>
+    </div>
+  </section>
+  <section data-label="Раздел 1" style="background:#03222e; font-family:'Exo 2',sans-serif; color:#e6f7f5; display:flex; flex-direction:column; justify-content:center; padding:100px 120px; overflow:hidden;">
+    <svg style="position:absolute; left:0; right:0; bottom:80px; opacity:0.5;" width="1920" height="120" viewBox="0 0 1920 120" preserveAspectRatio="none"><path d="M0 60 C 320 0, 640 120, 960 60 S 1600 0, 1920 60" fill="none" stroke="#2dd4bf" stroke-width="3"/></svg>
+    <span style="font-size:28px; font-weight:600; color:#2dd4bf; letter-spacing:0.25em; text-transform:uppercase;">Течение 1</span>
+    <h2 style="font-size:130px; margin:36px 0 0; font-weight:800; line-height:1.02; max-width:1500px;">Садки открытого моря</h2>
+  </section>
+  <section data-label="Три пилюли" style="background:#04293a; font-family:'Exo 2',sans-serif; color:#e6f7f5; display:flex; flex-direction:column; padding:90px 120px;">
+    <h2 style="font-size:74px; margin:0 0 64px; font-weight:800;">Почему Баренцево море</h2>
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:40px;">
+      <div style="display:flex; flex-direction:column; gap:0;">
+        <div style="background:#0d9488; border-radius:999px; padding:24px; display:flex; align-items:center; justify-content:center;"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#e6f7f5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4.1 12 6"/><path d="m5.1 8-2.9-.8"/><path d="m6 12-1.9 2"/><path d="M7.2 2.2 8 5.1"/><path d="M9.037 9.69a.498.498 0 0 1 .653-.653l11 4.5a.5.5 0 0 1-.074.949l-4.349 1.041a1 1 0 0 0-.74.739l-1.04 4.35a.5.5 0 0 1-.95.074Z"/></svg></div>
+        <div style="padding:36px 12px 0;"><h3 style="font-size:34px; margin:0 0 14px; font-weight:800;">Чистая вода</h3><p style="font-size:26px; margin:0; color:#8fb8c4; line-height:1.55;">Открытая акватория без промышленных стоков — рыба без антибиотиков</p></div>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:0;">
+        <div style="background:#0d9488; border-radius:999px; padding:24px; display:flex; align-items:center; justify-content:center;"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#e6f7f5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h20"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="M4.9 4.9 6.3 6.3"/><path d="M17.7 17.7l1.4 1.4"/><circle cx="12" cy="12" r="4"/></svg></div>
+        <div style="padding:36px 12px 0;"><h3 style="font-size:34px; margin:0 0 14px; font-weight:800;">Температура 4–10 °C</h3><p style="font-size:26px; margin:0; color:#8fb8c4; line-height:1.55;">Идеальный диапазон для форели: медленный рост — плотное мясо</p></div>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:0;">
+        <div style="background:#0d9488; border-radius:999px; padding:24px; display:flex; align-items:center; justify-content:center;"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#e6f7f5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="m16 8 4 3v5h-4"/><circle cx="5.5" cy="19.5" r="2.5"/><circle cx="18.5" cy="19.5" r="2.5"/></svg></div>
+        <div style="padding:36px 12px 0;"><h3 style="font-size:34px; margin:0 0 14px; font-weight:800;">Порт в 40 км</h3><p style="font-size:26px; margin:0; color:#8fb8c4; line-height:1.55;">Свежий улов уходит в переработку в день подъёма садка</p></div>
+      </div>
+    </div>
+  </section>
+  <section data-label="Большая цифра" style="background:#04293a; font-family:'Exo 2',sans-serif; color:#e6f7f5; display:flex; flex-direction:column; justify-content:center; padding:100px 120px; overflow:hidden;">
+    <div style="position:absolute; inset:0; background:radial-gradient(ellipse 900px 500px at 80% 90%, rgba(45,212,191,0.16), transparent);"></div>
+    <span style="font-size:290px; font-weight:800; line-height:1; color:#2dd4bf;">1 200 т</span>
+    <p style="font-size:37px; margin:48px 0 0; max-width:1200px; color:#8fb8c4; line-height:1.45;">форели в год — проектная мощность фермы после запуска третьей очереди садков</p>
+  </section>
+  <section data-label="Таймлайн" style="background:#04293a; font-family:'Exo 2',sans-serif; color:#e6f7f5; display:flex; flex-direction:column; justify-content:center; padding:100px 120px;">
+    <h2 style="font-size:74px; margin:0 0 140px; font-weight:800;">Производственный цикл</h2>
+    <div style="position:relative; height:300px;">
+      <span style="position:absolute; left:0; right:0; top:150px; height:3px; background:#0d9488;"></span>
+      <div style="position:absolute; left:5%; top:150px;"><span style="position:absolute; left:-13px; top:-13px; width:26px; height:26px; border-radius:50%; background:#2dd4bf;"></span><span style="position:absolute; left:-1px; top:-70px; width:2px; height:70px; background:#2dd4bf;"></span><div style="position:absolute; left:-130px; top:-170px; width:280px; text-align:center;"><span style="font-size:32px; font-weight:800; color:#2dd4bf;">Месяц 0</span><p style="font-size:24px; margin:8px 0 0; color:#8fb8c4; line-height:1.4;">Закупка малька 50 г</p></div></div>
+      <div style="position:absolute; left:33%; top:150px;"><span style="position:absolute; left:-13px; top:-13px; width:26px; height:26px; border-radius:50%; background:#2dd4bf;"></span><span style="position:absolute; left:-1px; top:0; width:2px; height:70px; background:#2dd4bf;"></span><div style="position:absolute; left:-130px; top:86px; width:280px; text-align:center;"><span style="font-size:32px; font-weight:800; color:#2dd4bf;">Месяц 8</span><p style="font-size:24px; margin:8px 0 0; color:#8fb8c4; line-height:1.4;">Перевод в морские садки</p></div></div>
+      <div style="position:absolute; left:63%; top:150px;"><span style="position:absolute; left:-13px; top:-13px; width:26px; height:26px; border-radius:50%; background:#2dd4bf;"></span><span style="position:absolute; left:-1px; top:-70px; width:2px; height:70px; background:#2dd4bf;"></span><div style="position:absolute; left:-130px; top:-170px; width:280px; text-align:center;"><span style="font-size:32px; font-weight:800; color:#2dd4bf;">Месяц 20</span><p style="font-size:24px; margin:8px 0 0; color:#8fb8c4; line-height:1.4;">Товарная навеска 3,5 кг</p></div></div>
+      <div style="position:absolute; left:92%; top:150px;"><span style="position:absolute; left:-13px; top:-13px; width:26px; height:26px; border-radius:50%; background:#2dd4bf;"></span><span style="position:absolute; left:-1px; top:0; width:2px; height:70px; background:#2dd4bf;"></span><div style="position:absolute; left:-130px; top:86px; width:280px; text-align:center;"><span style="font-size:32px; font-weight:800; color:#2dd4bf;">Месяц 22</span><p style="font-size:24px; margin:8px 0 0; color:#8fb8c4; line-height:1.4;">Подъём, переработка, сбыт</p></div></div>
+    </div>
+  </section>
+  <section data-label="Таблица" style="background:#04293a; font-family:'Exo 2',sans-serif; color:#e6f7f5; display:flex; flex-direction:column; padding:100px 120px;">
+    <h2 style="font-size:74px; margin:0 0 60px; font-weight:800;">Экономика очередей</h2>
+    <div style="display:grid; grid-template-columns:1.6fr 1fr 1fr 1fr; font-size:28px; background:rgba(45,212,191,0.05); border:1px solid rgba(45,212,191,0.25); border-radius:20px; overflow:hidden;">
+      <div style="padding:30px 44px; background:#0d9488; font-weight:800;">Показатель</div><div style="padding:30px 24px; background:#0d9488; font-weight:800;">Очередь 1</div><div style="padding:30px 24px; background:#0d9488; font-weight:800;">Очередь 2</div><div style="padding:30px 24px; background:#0d9488; font-weight:800;">Очередь 3</div>
+      <div style="padding:28px 44px; border-bottom:1px solid rgba(45,212,191,0.15); color:#8fb8c4;">Объём, тонн/год</div><div style="padding:28px 24px; border-bottom:1px solid rgba(45,212,191,0.15);">300</div><div style="padding:28px 24px; border-bottom:1px solid rgba(45,212,191,0.15);">700</div><div style="padding:28px 24px; border-bottom:1px solid rgba(45,212,191,0.15);">1 200</div>
+      <div style="padding:28px 44px; border-bottom:1px solid rgba(45,212,191,0.15); color:#8fb8c4;">CAPEX</div><div style="padding:28px 24px; border-bottom:1px solid rgba(45,212,191,0.15);">280 млн ₽</div><div style="padding:28px 24px; border-bottom:1px solid rgba(45,212,191,0.15);">190 млн ₽</div><div style="padding:28px 24px; border-bottom:1px solid rgba(45,212,191,0.15);">210 млн ₽</div>
+      <div style="padding:28px 44px; color:#8fb8c4;">Запуск</div><div style="padding:28px 24px; color:#2dd4bf; font-weight:800;">2027</div><div style="padding:28px 24px;">2028</div><div style="padding:28px 24px;">2030</div>
+    </div>
+  </section>
+  <section data-label="Цитата" style="background:#03222e; font-family:'Exo 2',sans-serif; color:#e6f7f5; display:flex; flex-direction:column; justify-content:center; padding:100px 160px; overflow:hidden;">
+    <svg style="position:absolute; left:0; right:0; top:0; opacity:0.4;" width="1920" height="120" viewBox="0 0 1920 120" preserveAspectRatio="none"><path d="M0 60 C 320 0, 640 120, 960 60 S 1600 0, 1920 60" fill="none" stroke="#2dd4bf" stroke-width="3"/></svg>
+    <span style="width:100px; height:8px; border-radius:4px; background:#2dd4bf;"></span>
+    <p style="font-size:62px; font-weight:600; line-height:1.35; margin:52px 0 0; max-width:1500px;">Северная форель растёт вдвое дольше нормы — и именно поэтому рестораны стоят за ней в очередь.</p>
+    <p style="font-size:28px; margin:52px 0 0; color:#8fb8c4;">Шеф-закупщик ресторанной группы · дегустация первой партии</p>
+  </section>
+  <section data-label="Две колонки" style="background:#04293a; font-family:'Exo 2',sans-serif; color:#e6f7f5; display:grid; grid-template-columns:1fr 1fr; gap:90px; align-items:center; padding:100px 120px;">
+    <div style="display:flex; flex-direction:column; gap:36px;">
+      <h2 style="font-size:68px; margin:0; font-weight:800; line-height:1.1;">Куда уходит улов</h2>
+      <p style="font-size:28px; margin:0; color:#8fb8c4; line-height:1.6;">Контракты на 80% объёма подписаны до запуска: рестораны и переработчики законтрактовали первую очередь целиком.</p>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:26px;">
+      <div style="display:flex; flex-direction:column; gap:10px;"><div style="display:flex; justify-content:space-between; font-size:27px; font-weight:600;"><span>Рестораны и HoReCa</span><span style="color:#2dd4bf;">45%</span></div><div style="height:24px; border-radius:999px; background:rgba(45,212,191,0.12);"><div style="width:45%; height:100%; border-radius:999px; background:#2dd4bf;"></div></div></div>
+      <div style="display:flex; flex-direction:column; gap:10px;"><div style="display:flex; justify-content:space-between; font-size:27px; font-weight:600;"><span>Переработка</span><span style="color:#2dd4bf;">35%</span></div><div style="height:24px; border-radius:999px; background:rgba(45,212,191,0.12);"><div style="width:35%; height:100%; border-radius:999px; background:#0d9488;"></div></div></div>
+      <div style="display:flex; flex-direction:column; gap:10px;"><div style="display:flex; justify-content:space-between; font-size:27px; font-weight:600;"><span>Розница</span><span style="color:#2dd4bf;">20%</span></div><div style="height:24px; border-radius:999px; background:rgba(45,212,191,0.12);"><div style="width:20%; height:100%; border-radius:999px; background:#06556b;"></div></div></div>
+    </div>
+  </section>
+  <section data-label="Задел" style="background:#04293a; font-family:'Exo 2',sans-serif; color:#e6f7f5; display:flex; flex-direction:column; padding:90px 120px;">
+    <h2 style="font-size:70px; margin:0 0 56px; font-weight:800;">Имеющийся задел</h2>
+    <div style="background:rgba(45,212,191,0.05); border:1px solid rgba(45,212,191,0.25); border-radius:24px; padding:16px 56px; display:flex; flex-direction:column;">
+      <div style="display:grid; grid-template-columns:110px 1fr 64px; gap:44px; align-items:center; padding:38px 0; border-bottom:1px solid rgba(45,212,191,0.15);"><span style="width:86px; height:86px; border-radius:50%; background:#0d9488; display:flex; align-items:center; justify-content:center; font-size:40px; font-weight:800;">1</span><div><h3 style="font-size:32px; margin:0 0 10px; font-weight:800;">Рыбоводный участок на 25 лет</h3><p style="font-size:25px; margin:0; color:#8fb8c4; line-height:1.5;">Договор пользования акваторией подписан и зарегистрирован</p></div><svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#2dd4bf" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m7 5 7 7-7 7"/><path d="m14 5 7 7-7 7"/></svg></div>
+      <div style="display:grid; grid-template-columns:110px 1fr 64px; gap:44px; align-items:center; padding:38px 0; border-bottom:1px solid rgba(45,212,191,0.15);"><span style="width:86px; height:86px; border-radius:50%; background:#0d9488; display:flex; align-items:center; justify-content:center; font-size:40px; font-weight:800;">2</span><div><h3 style="font-size:32px; margin:0 0 10px; font-weight:800;">Пилотная линия садков</h3><p style="font-size:25px; margin:0; color:#8fb8c4; line-height:1.5;">Два садка отработали шторм-сезон, выживаемость малька 94%</p></div><svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#2dd4bf" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m7 5 7 7-7 7"/><path d="m14 5 7 7-7 7"/></svg></div>
+      <div style="display:grid; grid-template-columns:110px 1fr 64px; gap:44px; align-items:center; padding:38px 0;"><span style="width:86px; height:86px; border-radius:50%; background:#2dd4bf; color:#03222e; display:flex; align-items:center; justify-content:center; font-size:40px; font-weight:800;">3</span><div><h3 style="font-size:32px; margin:0 0 10px; font-weight:800;">Контракты на сбыт</h3><p style="font-size:25px; margin:0; color:#8fb8c4; line-height:1.5;">80% первой очереди законтрактовано ресторанами и переработкой</p></div><svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#2dd4bf" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m7 5 7 7-7 7"/><path d="m14 5 7 7-7 7"/></svg></div>
+    </div>
+  </section>
+  <section data-label="Сравнение" style="background:#04293a; font-family:'Exo 2',sans-serif; color:#e6f7f5; display:flex; flex-direction:column; padding:90px 120px;">
+    <h2 style="font-size:70px; margin:0 0 56px; font-weight:800;">Наша форель против альтернатив</h2>
+    <div style="display:grid; grid-template-columns:1.6fr 1fr 1fr 1fr; font-size:27px; background:rgba(45,212,191,0.05); border:1px solid rgba(45,212,191,0.25); border-radius:20px; overflow:hidden;">
+      <div style="padding:28px 44px; background:#0d9488; font-weight:800;">Критерий</div><div style="padding:28px 24px; background:#0d9488; font-weight:800;">«Глубина»</div><div style="padding:28px 24px; background:#0d9488; font-weight:800;">Импорт</div><div style="padding:28px 24px; background:#0d9488; font-weight:800;">Озёрная</div>
+      <div style="padding:26px 44px; border-bottom:1px solid rgba(45,212,191,0.15); color:#8fb8c4;">Без антибиотиков</div><div style="padding:26px 24px; border-bottom:1px solid rgba(45,212,191,0.15); color:#2dd4bf; font-weight:800;">✓</div><div style="padding:26px 24px; border-bottom:1px solid rgba(45,212,191,0.15); color:#3d6273;">частично</div><div style="padding:26px 24px; border-bottom:1px solid rgba(45,212,191,0.15); color:#3d6273;">—</div>
+      <div style="padding:26px 44px; border-bottom:1px solid rgba(45,212,191,0.15); color:#8fb8c4;">От подъёма до прилавка</div><div style="padding:26px 24px; border-bottom:1px solid rgba(45,212,191,0.15); color:#2dd4bf; font-weight:800;">1 день</div><div style="padding:26px 24px; border-bottom:1px solid rgba(45,212,191,0.15); color:#3d6273;">2–3 недели</div><div style="padding:26px 24px; border-bottom:1px solid rgba(45,212,191,0.15);">2–4 дня</div>
+      <div style="padding:26px 44px; color:#8fb8c4;">Плотность мяса (море)</div><div style="padding:26px 24px; color:#2dd4bf; font-weight:800;">✓</div><div style="padding:26px 24px;">✓</div><div style="padding:26px 24px; color:#3d6273;">—</div>
+    </div>
+  </section>
+  <section data-label="Показатели" style="background:#04293a; font-family:'Exo 2',sans-serif; color:#e6f7f5; display:flex; flex-direction:column; padding:100px 120px;">
+    <h2 style="font-size:74px; margin:0 0 80px; font-weight:800;">Инвестиционное предложение</h2>
+    <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:36px;">
+      <div style="background:rgba(45,212,191,0.06); border:1px solid rgba(45,212,191,0.25); border-radius:20px; padding:44px; display:flex; flex-direction:column; gap:16px;"><span style="font-size:74px; font-weight:800; color:#2dd4bf;">680 млн ₽</span><span style="font-size:25px; color:#8fb8c4; line-height:1.45;">общий объём инвестиций</span></div>
+      <div style="background:rgba(45,212,191,0.06); border:1px solid rgba(45,212,191,0.25); border-radius:20px; padding:44px; display:flex; flex-direction:column; gap:16px;"><span style="font-size:74px; font-weight:800;">27%</span><span style="font-size:25px; color:#8fb8c4; line-height:1.45;">целевая IRR проекта</span></div>
+      <div style="background:rgba(45,212,191,0.06); border:1px solid rgba(45,212,191,0.25); border-radius:20px; padding:44px; display:flex; flex-direction:column; gap:16px;"><span style="font-size:74px; font-weight:800;">5,5 лет</span><span style="font-size:25px; color:#8fb8c4; line-height:1.45;">срок окупаемости</span></div>
+      <div style="background:rgba(45,212,191,0.06); border:1px solid rgba(45,212,191,0.25); border-radius:20px; padding:44px; display:flex; flex-direction:column; gap:16px;"><span style="font-size:74px; font-weight:800; color:#2dd4bf;">80%</span><span style="font-size:25px; color:#8fb8c4; line-height:1.45;">сбыта законтрактовано</span></div>
+    </div>
+  </section>
+  <section data-label="Финал" style="background:linear-gradient(180deg,#06384c,#03222e); font-family:'Exo 2',sans-serif; color:#e6f7f5; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:100px 120px; overflow:hidden;">
+    <svg style="position:absolute; left:0; right:0; bottom:0;" width="1920" height="200" viewBox="0 0 1920 200" preserveAspectRatio="none"><path d="M0 100 C 320 20, 640 180, 960 100 S 1600 20, 1920 100 L1920 200 L0 200 Z" fill="rgba(45,212,191,0.14)"/></svg>
+    <h2 style="font-size:120px; margin:0; font-weight:800; line-height:1.05;">Присоединяйтесь к первой очереди</h2>
+    <p style="font-size:31px; margin:44px 0 0; color:#8fb8c4;">Финансовая модель и договор доступны в дата-руме</p>
+    <span style="margin-top:60px; background:#2dd4bf; color:#03222e; border-radius:999px; padding:26px 64px; font-size:30px; font-weight:800;">glubina.example</span>
+  </section>
+</x-import>
+</x-dc>
+</body>
+</html>

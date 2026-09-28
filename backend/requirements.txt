@@ -1,0 +1,29 @@
+# --- Разбор и сборка OOXML ---
+python-pptx==1.0.2      # чтение/запись pptx; для тонких мест работаем с lxml напрямую
+lxml==5.3.0
+Pillow==11.0.0          # растр, метрики текста, анализ цвета
+fonttools==4.55.3       # реальные метрики шрифтов для расчёта переносов и автофита
+
+# --- Рендер и компьютерное зрение ---
+pywin32==308; sys_platform == "win32"   # PowerPoint COM — эталонный рендер на Windows
+PyMuPDF==1.25.1         # pdf -> png, если рендерим через LibreOffice
+numpy==2.2.1
+scikit-image==0.25.0    # разметка декора, детект переполнений и коллизий
+opencv-python-headless==4.10.0.84
+
+# --- Разбор входного контента ---
+python-docx==1.1.2
+openpyxl==3.1.5
+markdown-it-py==3.0.0
+pandas==2.2.3
+
+# --- Сервис и LLM ---
+fastapi==0.115.6
+uvicorn[standard]==0.34.0
+pydantic==2.10.4
+httpx==0.28.1              # OpenAI-совместимый endpoint — простой HTTP, SDK не нужен
+jsonschema==4.23.0         # проверка ответа модели против схемы
+python-multipart==0.0.20
+
+# --- Тесты ---
+pytest==8.3.4

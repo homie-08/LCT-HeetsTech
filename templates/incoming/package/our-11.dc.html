@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;600;800&amp;family=PT+Mono&amp;display=swap" rel="stylesheet">
+  <style>body{margin:0;background:#0a1018} a{color:#9acd1e} a:hover{color:#c4f04a}</style>
+
+<style>
+/* Анимация появления. Базовый стиль — конечный вид: если анимация не
+   проиграет (печать, prefers-reduced-motion, старый браузер), слайд всё равно
+   показан целиком. */
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes dc-rise { from { opacity: 0; transform: translateY(28px); } }
+  @keyframes dc-title { from { opacity: 0; transform: translateY(38px); filter: blur(9px); } }
+  @keyframes dc-kicker { from { opacity: 0; letter-spacing: .28em; } }
+  @keyframes dc-card { from { opacity: 0; transform: translateY(34px) scale(.965); } }
+  @keyframes dc-draw { from { opacity: 0; transform: scale(.86) rotate(-7deg); } }
+  @keyframes dc-wipe { from { opacity: 0; clip-path: inset(0 100% 0 0); } }
+
+  [data-deck-active] [data-anim] { animation-fill-mode: both; }
+  [data-deck-active] [data-anim="kicker"] {
+    animation: dc-kicker .55s cubic-bezier(.2,.8,.2,1);
+    animation-delay: calc(var(--i, 0) * 70ms);
+  }
+  [data-deck-active] [data-anim="title"] {
+    animation: dc-title .72s cubic-bezier(.2,.8,.2,1);
+    animation-delay: calc(80ms + var(--i, 0) * 70ms);
+  }
+  [data-deck-active] [data-anim="text"] {
+    animation: dc-rise .6s cubic-bezier(.2,.8,.2,1);
+    animation-delay: calc(180ms + var(--i, 0) * 70ms);
+  }
+  [data-deck-active] [data-anim="card"] {
+    animation: dc-card .66s cubic-bezier(.2,.8,.2,1);
+    animation-delay: calc(240ms + var(--i, 0) * 110ms);
+    transform-origin: center top;
+  }
+  [data-deck-active] [data-anim="figure"] {
+    animation: dc-draw .9s cubic-bezier(.2,.8,.2,1);
+    animation-delay: calc(200ms + var(--i, 0) * 90ms);
+    transform-origin: center;
+    transform-box: fill-box;
+  }
+  [data-deck-active] [data-anim="rule"] {
+    animation: dc-wipe .7s cubic-bezier(.2,.8,.2,1);
+    animation-delay: calc(160ms + var(--i, 0) * 80ms);
+  }
+}
+
+/* Печать не ждёт: браузер снимает страницу когда угодно и может поймать
+   элемент в начальной фазе — то есть невидимым. В PDF анимации не нужны
+   вовсе, поэтому здесь их просто нет. */
+@media print {
+  [data-anim] { animation: none !important; }
+}
+</style>
+</helmet>
+<x-import component-from-global-scope="deck-stage" from="./deck-stage.js" width="1920" height="1080" hint-size="100%,100%">
+<section data-label="Обложка" style="background:#0e1420; font-family:Onest,sans-serif; color:#eef4e4; display:flex; flex-direction:column; justify-content:center; padding:100px 120px; overflow:hidden;">
+    <div style="position:absolute; inset:0; background:radial-gradient(ellipse 900px 600px at 85% 80%, rgba(110,142,22,0.35), transparent);"></div>
+    <div style="position:absolute; right:120px; top:0; display:flex; flex-direction:column; gap:18px;">
+      <div style="--i:0; width:150px; height:190px; background:#6e8e16; clip-path:polygon(0 0, 100% 0, 100% 78%, 50% 100%, 0 78%); display:flex; align-items:center; justify-content:center;" data-anim="card"><svg width="52" height="52" viewbox="0 0 24 24" fill="none" stroke="#eef4e4" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" data-anim="figure" style="--i:0;"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5Z"></path></svg></div>
+      <div style="--i:1; width:150px; height:190px; background:#6e8e16; clip-path:polygon(0 0, 100% 0, 100% 78%, 50% 100%, 0 78%); display:flex; align-items:center; justify-content:center;" data-anim="card"><svg width="52" height="52" viewbox="0 0 24 24" fill="none" stroke="#eef4e4" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" data-anim="figure" style="--i:1;"><path d="M3 3v16a2 2 0 0 0 2 2h16" data-anim="card" style="--i:2;"></path><path d="m19 9-5 5-4-4-3 3" data-anim="card" style="--i:3;"></path></svg></div>
+      <div style="--i:4; width:150px; height:190px; background:#6e8e16; clip-path:polygon(0 0, 100% 0, 100% 78%, 50% 100%, 0 78%); display:flex; align-items:center; justify-content:center;" data-anim="card"><svg width="52" height="52" viewbox="0 0 24 24" fill="none" stroke="#eef4e4" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" data-anim="figure" style="--i:2;"><path d="M12 22a10 10 0 1 1 10-10"></path><path d="M12 6v6l4 2"></path><path d="M16 22h6" data-anim="card" style="--i:5;"></path></svg></div>
+    </div>
+    <span style="--i:0; font-family:'PT Mono',monospace; font-size:26px; color:#9acd1e; letter-spacing:0.1em;" data-anim="kicker"></span>
+    <h1 style="--i:1; font-size:120px; margin:44px 0 0; font-weight:800; line-height:1.05; max-width:1250px;" data-anim="title">Цифровой дизайнер презентаций</h1>
+    <p style="--i:0; font-size:32px; margin:44px 0 0; max-width:900px; color:#93a08b; line-height:1.5;" data-anim="kicker">Сервис собирает готовую презентацию в заданном шаблоне из обычного текста.</p>
+  </section>
+  
+<section data-label="Содержание" style="background:#0e1420; font-family:Onest,sans-serif; color:#eef4e4; display:flex; flex-direction:column; padding:100px 120px;">
+    <h2 style="--i:1; font-size:72px; margin:0 0 72px; font-weight:800;" data-anim="title">Содержание</h2>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:32px;">
+      <div style="--i:0; display:flex; align-items:center; gap:36px; background:#141d2c; border-radius:18px; padding:36px 44px;" data-anim="card"><span style="width:120px; height:74px; background:#6e8e16; clip-path:polygon(0 0, 82% 0, 100% 50%, 82% 100%, 0 100%); display:flex; align-items:center; justify-content:center; font-family:'PT Mono',monospace; font-size:30px; color:#eef4e4;">01</span><span style="font-size:27.6px; font-weight:600;">Цифровой дизайнер презентаций</span></div>
+      <div style="--i:1; display:flex; align-items:center; gap:36px; background:#141d2c; border-radius:18px; padding:36px 44px;" data-anim="card"><span style="width:120px; height:74px; background:#6e8e16; clip-path:polygon(0 0, 82% 0, 100% 50%, 82% 100%, 0 100%); display:flex; align-items:center; justify-content:center; font-family:'PT Mono',monospace; font-size:30px; color:#eef4e4;">02</span><span style="font-size:31px; font-weight:600;">Проблема</span></div>
+      <div style="--i:2; display:flex; align-items:center; gap:36px; background:#141d2c; border-radius:18px; padding:36px 44px;" data-anim="card"><span style="width:120px; height:74px; background:#6e8e16; clip-path:polygon(0 0, 82% 0, 100% 50%, 82% 100%, 0 100%); display:flex; align-items:center; justify-content:center; font-family:'PT Mono',monospace; font-size:30px; color:#eef4e4;">03</span><span style="font-size:31px; font-weight:600;">Решение</span></div>
+      <div style="--i:3; display:flex; align-items:center; gap:36px; background:#141d2c; border-radius:18px; padding:36px 44px;" data-anim="card"><span style="width:120px; height:74px; background:#6e8e16; clip-path:polygon(0 0, 82% 0, 100% 50%, 82% 100%, 0 100%); display:flex; align-items:center; justify-content:center; font-family:'PT Mono',monospace; font-size:30px; color:#eef4e4;">04</span><span style="font-size:31px; font-weight:600;">Как устроено</span></div>
+    </div>
+  </section>
+  
+<section data-label="Орбита" style="background:#0e1420; font-family:Onest,sans-serif; color:#eef4e4; display:grid; grid-template-columns:1fr 600px; gap:80px; align-items:center; padding:90px 120px;">
+    <div style="display:flex; flex-direction:column; gap:36px;">
+      <h2 style="--i:1; font-size:39.7px; margin:0; font-weight:800; line-height:1.1;" data-anim="title">Сервис собирает готовую презентацию в заданном шаблоне из обычного…</h2>
+      <p style="--i:0; font-size:28px; margin:0; color:#93a08b; line-height:1.6;" data-anim="kicker"></p>
+      <div style="display:flex; flex-direction:column; gap:18px; font-size:27px;">
+        <span style="--i:0; display:flex; align-items:center; gap:18px;" data-anim="card"><span style="width:16px; height:16px; border-radius:50%; background:#9acd1e;"></span></span>
+        <span style="--i:1; display:flex; align-items:center; gap:18px;" data-anim="card"><span style="width:16px; height:16px; border-radius:50%; background:#9acd1e;"></span></span>
+        <span style="--i:2; display:flex; align-items:center; gap:18px;" data-anim="card"><span style="width:16px; height:16px; border-radius:50%; background:#9acd1e;"></span></span>
+      </div>
+    </div>
+    <svg width="600" height="600" viewbox="0 0 200 200" data-anim="figure" style="--i:0;">
+      <circle cx="100" cy="100" r="70" fill="none" stroke="#6e8e16" stroke-width="7"></circle>
+      <g>
+        <circle cx="100" cy="30" r="22" fill="#6e8e16" data-anim="card" style="--i:3;"></circle>
+        <g transform="translate(100,30)" fill="none" stroke="#eef4e4" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" data-anim="card" style="--i:4;"><path d="M-6 6 -6 -3 0 -8 6 -3 6 6 Z" data-anim="card" style="--i:5;"></path><path d="M-2 6v-5h4v5" data-anim="card" style="--i:6;"></path></g>
+        <circle cx="161" cy="135" r="22" fill="#6e8e16" data-anim="card" style="--i:7;"></circle>
+        <g transform="translate(161,135)" fill="none" stroke="#eef4e4" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" data-anim="card" style="--i:8;"><circle cx="0" cy="0" r="2.6"></circle><path d="M0 -8a8 8 0 0 1 8 8"></path><path d="M0 -4.5a4.5 4.5 0 0 1 4.5 4.5"></path></g>
+        <circle cx="39" cy="135" r="22" fill="#6e8e16" data-anim="card" style="--i:9;"></circle>
+        <g transform="translate(39,135)" fill="none" stroke="#eef4e4" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" data-anim="card" style="--i:10;"><path d="M-7 7 V-2"></path><path d="M-2.3 7V-7"></path><path d="M2.3 7V0" data-anim="card" style="--i:11;"></path><path d="M7 7V-4" data-anim="card" style="--i:12;"></path></g>
+      </g>
+    </svg>
+  </section>
+  
+<section data-label="Преимущества" style="background:#0e1420; font-family:Onest,sans-serif; color:#eef4e4; display:flex; flex-direction:column; padding:90px 120px;">
+    <h2 style="--i:1; font-size:68px; margin:0 0 60px; font-weight:800;" data-anim="title">Проблема</h2>
+    <div style="display:flex; flex-direction:column; gap:36px;">
+      <div style="--i:0; display:grid; grid-template-columns:280px 1fr; gap:48px; align-items:center;" data-anim="card">
+        <div style="background:#6e8e16; border-radius:24px; height:150px; display:flex; align-items:center; justify-content:center;"><svg width="56" height="56" viewbox="0 0 24 24" fill="none" stroke="#eef4e4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-anim="figure" style="--i:0;"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3" data-anim="card" style="--i:1;"></path><path d="M11 8v6" data-anim="card" style="--i:2;"></path><path d="M8 11h6" data-anim="card" style="--i:3;"></path></svg></div>
+        <div style="border-bottom:1px solid #2a3a24; padding-bottom:32px;"><h3 style="font-size:34px; margin:0 0 14px; font-weight:800;">4 часа</h3><p style="font-size:27px; margin:0; color:#93a08b; line-height:1.5;">средний срок сборки презентации на 12 слайдов</p></div>
+      </div>
+      <div style="--i:4; display:grid; grid-template-columns:280px 1fr; gap:48px; align-items:center;" data-anim="card">
+        <div style="background:#6e8e16; border-radius:24px; height:150px; display:flex; align-items:center; justify-content:center;"><svg width="56" height="56" viewbox="0 0 24 24" fill="none" stroke="#eef4e4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-anim="figure" style="--i:1;"><rect x="3" y="3" width="7" height="9" rx="1" data-anim="card" style="--i:5;"></rect><rect x="14" y="3" width="7" height="5" rx="1" data-anim="card" style="--i:6;"></rect><rect x="14" y="12" width="7" height="9" rx="1" data-anim="card" style="--i:7;"></rect><rect x="3" y="16" width="7" height="5" rx="1" data-anim="card" style="--i:8;"></rect></svg></div>
+        <div style="border-bottom:1px solid #2a3a24; padding-bottom:32px;"><h3 style="font-size:34px; margin:0 0 14px; font-weight:800;">60 % времени уходит</h3><p style="font-size:27px; margin:0; color:#93a08b; line-height:1.5;">на подгонку текста под макет, а не на смысл</p></div>
+      </div>
+      <div style="--i:9; display:grid; grid-template-columns:280px 1fr; gap:48px; align-items:center;" data-anim="card">
+        <div style="background:#6e8e16; border-radius:24px; height:150px; display:flex; align-items:center; justify-content:center;"><svg width="56" height="56" viewbox="0 0 24 24" fill="none" stroke="#eef4e4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-anim="figure" style="--i:2;"><path d="M12 2v20"></path><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg></div>
+        <div><h3 style="font-size:34px; margin:0 0 14px; font-weight:800;">3 из 10 слайдов</h3><p style="font-size:27px; margin:0; color:#93a08b; line-height:1.5;">нарушают шаблон: чужой шрифт, цвет или отступ</p></div>
+      </div>
+    </div>
+  </section>
+  
+<section data-label="Донат" style="background:#0e1420; font-family:Onest,sans-serif; color:#eef4e4; display:grid; grid-template-columns:1fr 640px 1fr; align-items:center; padding:80px 100px; column-gap:48px;">
+    <div style="--i:0; display:flex; flex-direction:column; gap:72px; text-align:right;" data-anim="card">
+      <div data-anim="card" style="--i:1;"><h3 style="font-size:24px; margin:0 0 12px; font-weight:800;">Шаблон разбирается на дизайн-систему:</h3><p style="font-size:25px; margin:0; color:#93a08b; line-height:1.5;"></p></div>
+      <div data-anim="card" style="--i:2;"><h3 style="font-size:25.7px; margin:0 0 12px; font-weight:800;">палитра, типографика, сетка, декор</h3><p style="font-size:25px; margin:0; color:#93a08b; line-height:1.5;"></p></div>
+    </div>
+    <svg width="640" height="640" viewbox="0 0 200 200" data-anim="figure" style="--i:0;">
+      <g data-anim="card" style="--i:3;">
+        <path d="M111.2 20.8 A80 80 0 0 1 179.2 88.8 A7 7 0 0 1 172.9 96.2 L151.9 97.3 A7 7 0 0 1 144.0 90.7 A45 45 0 0 0 109.3 56.0 A7 7 0 0 1 102.7 48.1 L103.8 27.1 A7 7 0 0 1 111.2 20.8 Z" fill="#6e8e16" data-anim="card" style="--i:4;"></path>
+        <path d="M179.2 111.2 A80 80 0 0 1 111.2 179.2 A7 7 0 0 1 103.8 172.9 L102.7 151.9 A7 7 0 0 1 109.3 144.0 A45 45 0 0 0 144.0 109.3 A7 7 0 0 1 151.9 102.7 L172.9 103.8 A7 7 0 0 1 179.2 111.2 Z" fill="#6e8e16" data-anim="card" style="--i:5;"></path>
+        <path d="M88.8 179.2 A80 80 0 0 1 20.8 111.2 A7 7 0 0 1 27.1 103.8 L48.1 102.7 A7 7 0 0 1 56.0 109.3 A45 45 0 0 0 90.7 144.0 A7 7 0 0 1 97.3 151.9 L96.2 172.9 A7 7 0 0 1 88.8 179.2 Z" fill="#6e8e16" data-anim="card" style="--i:6;"></path>
+        <path d="M20.8 88.8 A80 80 0 0 1 88.8 20.8 A7 7 0 0 1 96.2 27.1 L97.3 48.1 A7 7 0 0 1 90.7 56.0 A45 45 0 0 0 56.0 90.7 A7 7 0 0 1 48.1 97.3 L27.1 96.2 A7 7 0 0 1 20.8 88.8 Z" fill="#6e8e16" data-anim="card" style="--i:7;"></path>
+        </g>
+      <g fill="none" stroke="#eef4e4" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-anim="card" style="--i:8;">
+        <g transform="translate(143.8,56.2) scale(0.9)"><path d="M0 -8v16"></path><path d="M-8 0h16"></path><path d="m-5 -5 10 10"></path><path d="m5 -5 -10 10"></path></g>
+        <g transform="translate(143.8,143.8) scale(0.9)"><rect x="-7" y="-9" width="14" height="18" rx="2"></rect><path d="M-3 -4h6"></path><path d="M-3 0h6"></path><path d="M-3 4h3"></path></g>
+        <g transform="translate(56.2,143.8) scale(0.9)" data-anim="card" style="--i:9;"><path d="M0 -8 A 8 8 0 0 1 8 0 L 0 0 Z" transform="rotate(45)"></path><circle cx="0" cy="0" r="8"></circle></g>
+        <g transform="translate(56.2,56.2) scale(0.9)" data-anim="card" style="--i:10;"><path d="m0 -9 2.6 5.3 5.9.9-4.2 4.1 1 5.8L0 4.4l-5.3 2.7 1-5.8-4.2-4.1 5.9-.9Z"></path></g>
+      </g>
+    </svg>
+    <div style="--i:11; display:flex; flex-direction:column; gap:72px;" data-anim="card">
+      <div><h3 style="font-size:24px; margin:0 0 12px; font-weight:800;">Раскладки распознаются по…</h3><p style="font-size:25px; margin:0; color:#93a08b; line-height:1.5;"></p></div>
+      <div><h3 style="font-size:24px; margin:0 0 12px; font-weight:800;">и геометрии слотов, а не по…</h3><p style="font-size:25px; margin:0; color:#93a08b; line-height:1.5;"></p></div>
+    </div>
+  </section>
+  
+<section data-label="Цитата" style="background:#0a1018; font-family:Onest,sans-serif; color:#eef4e4; display:flex; flex-direction:column; justify-content:center; padding:100px 160px; overflow:hidden;">
+    <div style="position:absolute; inset:0; background:radial-gradient(ellipse 700px 400px at 85% 20%, rgba(110,142,22,0.25), transparent);"></div>
+    <span style="width:100px; height:8px; border-radius:4px; background:#9acd1e;"></span>
+    <p style="--i:0; font-size:60px; font-weight:600; line-height:1.35; margin:52px 0 0; max-width:1500px;" data-anim="card">Разбор шаблона: OOXML, разворачивание</p>
+    <p style="--i:1; font-size:25px; margin:52px 0 0; color:#93a08b;" data-anim="card">Распознавание раскладок: кластеризация краёв,</p>
+  </section>
+  
+<section data-label="Показатели" style="background:#0e1420; font-family:Onest,sans-serif; color:#eef4e4; display:flex; flex-direction:column; padding:100px 120px;">
+    <h2 style="--i:1; font-size:53.6px; margin:0 0 80px; font-weight:800;" data-anim="title">Что проверяется автоматически</h2>
+    <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:36px;">
+      <div style="--i:0; background:#141d2c; border-radius:18px; padding:44px; display:flex; flex-direction:column; gap:16px; border-top:6px solid #9acd1e;" data-anim="card"><span style="--i:1; font-size:49.6px; font-weight:800; color:#9acd1e;" data-anim="card" data-anim-count="">100 %</span><span style="--i:2; font-size:26px; color:#93a08b; line-height:1.45;" data-anim="card">доля шрифтов, взятых из шаблона</span></div>
+      <div style="--i:3; background:#141d2c; border-radius:18px; padding:44px; display:flex; flex-direction:column; gap:16px; border-top:6px solid #2a3a24;" data-anim="card"><span style="font-size:50.6px; font-weight:800;" data-anim-count="">100 %</span><span style="font-size:24px; color:#93a08b; line-height:1.45;">доля цветов, взятых из палитры…</span></div>
+      <div style="--i:4; background:#141d2c; border-radius:18px; padding:44px; display:flex; flex-direction:column; gap:16px; border-top:6px solid #2a3a24;" data-anim="card"><span style="font-size:49.6px; font-weight:800;" data-anim-count="">92 %</span><span style="font-size:24px; color:#93a08b; line-height:1.45;">доля исходного контента, попавшего на…</span></div>
+      </div>
+  </section>
+  
+<section data-label="Аналоги" style="background:#0e1420; font-family:Onest,sans-serif; color:#eef4e4; display:flex; flex-direction:column; padding:90px 120px;">
+    <h2 style="--i:1; font-size:42.2px; margin:0 0 56px; font-weight:800;" data-anim="title">Готовый файл сравнивается с рендером пустого макета: всё…</h2>
+    <div style="display:grid; grid-template-columns:1.6fr 1fr 1fr 1fr; font-size:27px; background:#141d2c; border-radius:24px; overflow:hidden;">
+      <div style="--i:0; padding:28px 44px; background:#6e8e16; font-weight:800;" data-anim="kicker"></div><div style="--i:0; padding:28px 24px; background:#6e8e16; font-weight:800;" data-anim="card"></div><div style="--i:1; padding:28px 24px; background:#6e8e16; font-weight:800;" data-anim="card"></div><div style="--i:2; padding:28px 24px; background:#6e8e16; font-weight:800;" data-anim="card"></div>
+      <div style="--i:3; padding:26px 44px; border-bottom:1px solid #22304a; color:#93a08b;" data-anim="card"></div><div style="--i:4; padding:26px 24px; border-bottom:1px solid #22304a; color:#9acd1e; font-weight:800;" data-anim="card">✓</div><div style="--i:5; padding:26px 24px; border-bottom:1px solid #22304a; color:#4a5670;" data-anim="card"></div><div style="--i:6; padding:26px 24px; border-bottom:1px solid #22304a; color:#9acd1e;" data-anim="card">✓</div>
+      <div style="--i:7; padding:26px 44px; border-bottom:1px solid #22304a; color:#93a08b;" data-anim="card"></div><div style="--i:8; padding:26px 24px; border-bottom:1px solid #22304a; color:#9acd1e; font-weight:800;" data-anim="card">✓</div><div style="--i:9; padding:26px 24px; border-bottom:1px solid #22304a; color:#4a5670;" data-anim="card">—</div><div style="--i:10; padding:26px 24px; border-bottom:1px solid #22304a; color:#4a5670;" data-anim="card">—</div>
+      <div style="--i:11; padding:26px 44px; border-bottom:1px solid #22304a; color:#93a08b;" data-anim="card"></div><div style="--i:12; padding:26px 24px; border-bottom:1px solid #22304a; color:#9acd1e; font-weight:800;" data-anim="card"></div><div style="--i:13; padding:26px 24px; border-bottom:1px solid #22304a; color:#4a5670;" data-anim="card"></div><div style="--i:14; padding:26px 24px; border-bottom:1px solid #22304a; color:#4a5670;" data-anim="card"></div>
+      <div style="--i:15; padding:26px 44px; color:#93a08b;" data-anim="card"></div><div style="--i:16; padding:26px 24px; color:#9acd1e; font-weight:800;" data-anim="card">✓</div><div style="--i:17; padding:26px 24px; color:#4a5670;" data-anim="card">—</div><div style="--i:18; padding:26px 24px; color:#9acd1e;" data-anim="card">✓</div>
+    </div>
+  </section>
+  
+<section data-label="Таблица" style="background:#0e1420; font-family:Onest,sans-serif; color:#eef4e4; display:flex; flex-direction:column; padding:100px 120px;">
+    <h2 style="--i:1; font-size:45.5px; margin:0 0 64px; font-weight:800;" data-anim="title">Результаты на разных шаблонах</h2>
+    <div style="display:grid; grid-template-columns:1.6fr 1fr 1fr; font-size:28px; background:#141d2c; border-radius:18px; overflow:hidden;">
+      <div style="--i:0; padding:30px 44px; background:#6e8e16; font-weight:800;" data-anim="kicker"></div><div style="--i:0; padding:30px 24px; background:#6e8e16; font-weight:800;" data-anim="card"></div><div style="--i:1; padding:30px 24px; background:#6e8e16; font-weight:800;" data-anim="card"></div>
+      <div style="--i:2; padding:30px 44px; border-bottom:1px solid #22304a; color:#c6d0bd;" data-anim="card"></div><div style="--i:3; padding:30px 24px; border-bottom:1px solid #22304a;" data-anim="card"></div><div style="--i:4; padding:30px 24px; border-bottom:1px solid #22304a;" data-anim="card"></div>
+      <div style="--i:5; padding:30px 44px; border-bottom:1px solid #22304a; color:#c6d0bd;" data-anim="card"></div><div style="--i:6; padding:30px 24px; border-bottom:1px solid #22304a;" data-anim="card"></div><div style="--i:7; padding:30px 24px; border-bottom:1px solid #22304a;" data-anim="card"></div>
+      <div style="--i:8; padding:30px 44px; color:#c6d0bd;" data-anim="card"></div><div style="--i:9; padding:30px 24px;" data-anim="card"></div><div style="--i:10; padding:30px 24px;" data-anim="card"></div>
+    </div>
+    <p style="--i:0; font-size:26px; margin:36px 0 0; color:#93a08b;" data-anim="kicker"></p>
+  </section>
+  
+<section data-label="Орбита" style="background:#0e1420; font-family:Onest,sans-serif; color:#eef4e4; display:grid; grid-template-columns:1fr 600px; gap:80px; align-items:center; padding:90px 120px;">
+    <div style="display:flex; flex-direction:column; gap:36px;">
+      <h2 style="--i:1; font-size:58.2px; margin:0; font-weight:800; line-height:1.1;" data-anim="title">Чем доказывается адаптивность</h2>
+      <p style="--i:0; font-size:28px; margin:0; color:#93a08b; line-height:1.6;" data-anim="kicker"></p>
+      <div style="display:flex; flex-direction:column; gap:18px; font-size:27px;">
+        <span style="--i:0; display:flex; align-items:center; gap:18px;" data-anim="card"><span style="width:16px; height:16px; border-radius:50%; background:#9acd1e;"></span></span>
+        <span style="--i:1; display:flex; align-items:center; gap:18px;" data-anim="card"><span style="width:16px; height:16px; border-radius:50%; background:#9acd1e;"></span></span>
+        <span style="--i:2; display:flex; align-items:center; gap:18px;" data-anim="card"><span style="width:16px; height:16px; border-radius:50%; background:#9acd1e;"></span></span>
+      </div>
+    </div>
+    <svg width="600" height="600" viewbox="0 0 200 200" data-anim="figure" style="--i:0;">
+      <circle cx="100" cy="100" r="70" fill="none" stroke="#6e8e16" stroke-width="7"></circle>
+      <g>
+        <circle cx="100" cy="30" r="22" fill="#6e8e16" data-anim="card" style="--i:3;"></circle>
+        <g transform="translate(100,30)" fill="none" stroke="#eef4e4" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" data-anim="card" style="--i:4;"><path d="M-6 6 -6 -3 0 -8 6 -3 6 6 Z" data-anim="card" style="--i:5;"></path><path d="M-2 6v-5h4v5" data-anim="card" style="--i:6;"></path></g>
+        <circle cx="161" cy="135" r="22" fill="#6e8e16" data-anim="card" style="--i:7;"></circle>
+        <g transform="translate(161,135)" fill="none" stroke="#eef4e4" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" data-anim="card" style="--i:8;"><circle cx="0" cy="0" r="2.6"></circle><path d="M0 -8a8 8 0 0 1 8 8"></path><path d="M0 -4.5a4.5 4.5 0 0 1 4.5 4.5"></path></g>
+        <circle cx="39" cy="135" r="22" fill="#6e8e16" data-anim="card" style="--i:9;"></circle>
+        <g transform="translate(39,135)" fill="none" stroke="#eef4e4" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" data-anim="card" style="--i:10;"><path d="M-7 7 V-2"></path><path d="M-2.3 7V-7"></path><path d="M2.3 7V0" data-anim="card" style="--i:11;"></path><path d="M7 7V-4" data-anim="card" style="--i:12;"></path></g>
+      </g>
+    </svg>
+  </section>
+  
+<section data-label="Преимущества" style="background:#0e1420; font-family:Onest,sans-serif; color:#eef4e4; display:flex; flex-direction:column; padding:90px 120px;">
+    <h2 style="--i:1; font-size:68px; margin:0 0 60px; font-weight:800;" data-anim="title">Стек</h2>
+    <div style="display:flex; flex-direction:column; gap:36px;">
+      <div style="--i:0; display:grid; grid-template-columns:280px 1fr; gap:48px; align-items:center;" data-anim="card">
+        <div style="background:#6e8e16; border-radius:24px; height:150px; display:flex; align-items:center; justify-content:center;"><svg width="56" height="56" viewbox="0 0 24 24" fill="none" stroke="#eef4e4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-anim="figure" style="--i:0;"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3" data-anim="card" style="--i:1;"></path><path d="M11 8v6" data-anim="card" style="--i:2;"></path><path d="M8 11h6" data-anim="card" style="--i:3;"></path></svg></div>
+        <div style="border-bottom:1px solid #2a3a24; padding-bottom:32px;"><h3 style="font-size:27.1px; margin:0 0 14px; font-weight:800;">Python 3.11, FastAPI, pydantic</h3><p style="font-size:27px; margin:0; color:#93a08b; line-height:1.5;">ядро и HTTP-интерфейс</p></div>
+      </div>
+      <div style="--i:4; display:grid; grid-template-columns:280px 1fr; gap:48px; align-items:center;" data-anim="card">
+        <div style="background:#6e8e16; border-radius:24px; height:150px; display:flex; align-items:center; justify-content:center;"><svg width="56" height="56" viewbox="0 0 24 24" fill="none" stroke="#eef4e4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-anim="figure" style="--i:1;"><rect x="3" y="3" width="7" height="9" rx="1" data-anim="card" style="--i:5;"></rect><rect x="14" y="3" width="7" height="5" rx="1" data-anim="card" style="--i:6;"></rect><rect x="14" y="12" width="7" height="9" rx="1" data-anim="card" style="--i:7;"></rect><rect x="3" y="16" width="7" height="5" rx="1" data-anim="card" style="--i:8;"></rect></svg></div>
+        <div style="border-bottom:1px solid #2a3a24; padding-bottom:32px;"><h3 style="font-size:30.7px; margin:0 0 14px; font-weight:800;">lxml поверх OOXML напрямую,</h3><p style="font-size:27px; margin:0; color:#93a08b; line-height:1.5;">python-pptx для сборки</p></div>
+      </div>
+      <div style="--i:9; display:grid; grid-template-columns:280px 1fr; gap:48px; align-items:center;" data-anim="card">
+        <div style="background:#6e8e16; border-radius:24px; height:150px; display:flex; align-items:center; justify-content:center;"><svg width="56" height="56" viewbox="0 0 24 24" fill="none" stroke="#eef4e4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-anim="figure" style="--i:2;"><path d="M12 2v20"></path><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg></div>
+        <div><h3 style="font-size:34px; margin:0 0 14px; font-weight:800;">fontTools</h3><p style="font-size:27px; margin:0; color:#93a08b; line-height:1.5;">метрики шрифтов, scikit-image и NumPy — разбор рендера</p></div>
+      </div>
+    </div>
+  </section>
+  
+<section data-label="Донат" style="background:#0e1420; font-family:Onest,sans-serif; color:#eef4e4; display:grid; grid-template-columns:1fr 640px 1fr; align-items:center; padding:80px 100px; column-gap:48px;">
+    <div style="--i:0; display:flex; flex-direction:column; gap:72px; text-align:right;" data-anim="card">
+      <div data-anim="card" style="--i:1;"><h3 style="font-size:32px; margin:0 0 12px; font-weight:800;">Подбор иконок под смысл</h3><p style="font-size:25px; margin:0; color:#93a08b; line-height:1.5;"></p></div>
+      <div data-anim="card" style="--i:2;"><h3 style="font-size:24.7px; margin:0 0 12px; font-weight:800;">тезиса и перекраска в палитру шаблона</h3><p style="font-size:25px; margin:0; color:#93a08b; line-height:1.5;"></p></div>
+    </div>
+    <svg width="640" height="640" viewbox="0 0 200 200" data-anim="figure" style="--i:0;">
+      <g data-anim="card" style="--i:3;">
+        <path d="M111.2 20.8 A80 80 0 0 1 179.2 88.8 A7 7 0 0 1 172.9 96.2 L151.9 97.3 A7 7 0 0 1 144.0 90.7 A45 45 0 0 0 109.3 56.0 A7 7 0 0 1 102.7 48.1 L103.8 27.1 A7 7 0 0 1 111.2 20.8 Z" fill="#6e8e16" data-anim="card" style="--i:4;"></path>
+        <path d="M179.2 111.2 A80 80 0 0 1 111.2 179.2 A7 7 0 0 1 103.8 172.9 L102.7 151.9 A7 7 0 0 1 109.3 144.0 A45 45 0 0 0 144.0 109.3 A7 7 0 0 1 151.9 102.7 L172.9 103.8 A7 7 0 0 1 179.2 111.2 Z" fill="#6e8e16" data-anim="card" style="--i:5;"></path>
+        <path d="M88.8 179.2 A80 80 0 0 1 20.8 111.2 A7 7 0 0 1 27.1 103.8 L48.1 102.7 A7 7 0 0 1 56.0 109.3 A45 45 0 0 0 90.7 144.0 A7 7 0 0 1 97.3 151.9 L96.2 172.9 A7 7 0 0 1 88.8 179.2 Z" fill="#6e8e16" data-anim="card" style="--i:6;"></path>
+        <path d="M20.8 88.8 A80 80 0 0 1 88.8 20.8 A7 7 0 0 1 96.2 27.1 L97.3 48.1 A7 7 0 0 1 90.7 56.0 A45 45 0 0 0 56.0 90.7 A7 7 0 0 1 48.1 97.3 L27.1 96.2 A7 7 0 0 1 20.8 88.8 Z" fill="#6e8e16" data-anim="card" style="--i:7;"></path>
+        </g>
+      <g fill="none" stroke="#eef4e4" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" data-anim="card" style="--i:8;">
+        <g transform="translate(143.8,56.2) scale(0.9)"><path d="M0 -8v16"></path><path d="M-8 0h16"></path><path d="m-5 -5 10 10"></path><path d="m5 -5 -10 10"></path></g>
+        <g transform="translate(143.8,143.8) scale(0.9)"><rect x="-7" y="-9" width="14" height="18" rx="2"></rect><path d="M-3 -4h6"></path><path d="M-3 0h6"></path><path d="M-3 4h3"></path></g>
+        <g transform="translate(56.2,143.8) scale(0.9)" data-anim="card" style="--i:9;"><path d="M0 -8 A 8 8 0 0 1 8 0 L 0 0 Z" transform="rotate(45)"></path><circle cx="0" cy="0" r="8"></circle></g>
+        <g transform="translate(56.2,56.2) scale(0.9)" data-anim="card" style="--i:10;"><path d="m0 -9 2.6 5.3 5.9.9-4.2 4.1 1 5.8L0 4.4l-5.3 2.7 1-5.8-4.2-4.1 5.9-.9Z"></path></g>
+      </g>
+    </svg>
+    <div style="--i:11; display:flex; flex-direction:column; gap:72px;" data-anim="card">
+      <div><h3 style="font-size:24px; margin:0 0 12px; font-weight:800;">Перекомпоновка слотов, когда…</h3><p style="font-size:25px; margin:0; color:#93a08b; line-height:1.5;"></p></div>
+      <div><h3 style="font-size:24px; margin:0 0 12px; font-weight:800;">не ложится в готовую…</h3><p style="font-size:25px; margin:0; color:#93a08b; line-height:1.5;"></p></div>
+    </div>
+  </section>
+  
+<section data-label="Финал" style="background:#0e1420; font-family:Onest,sans-serif; color:#eef4e4; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:100px 120px; overflow:hidden;">
+    <div style="position:absolute; inset:0; background:radial-gradient(ellipse 900px 500px at 50% 100%, rgba(110,142,22,0.35), transparent);"></div>
+    <h2 style="--i:1; font-size:110px; margin:0; font-weight:800; max-width:1500px; line-height:1.1;" data-anim="title">Контакты</h2>
+    <p style="--i:0; font-size:30px; margin:44px 0 0; color:#93a08b;" data-anim="kicker"></p>
+    <span style="--i:0; margin-top:60px; background:#9acd1e; color:#0e1420; border-radius:12px; padding:24px 60px; font-size:30px; font-weight:800;" data-anim="kicker"></span>
+  </section>
+
+</x-import>
+<script>
+/* Числа на показателях набегают от нуля. Значение в разметке — конечное:
+   без скрипта и при печати виден готовый результат. */
+(function () {
+  var motion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)');
+  if (motion && motion.matches) return;
+
+  function parse(text) {
+    /* Пробел-разделитель разрядов забираем только между цифрами: иначе из
+       «100 %» пропадёт пробел перед знаком процента. */
+    var match = String(text).match(
+      /^(\D*?)(\d+(?:[\s\u00a0]\d{3})*(?:[.,]\d+)?)(.*)$/s);
+    if (!match) return null;
+    var raw = match[2].replace(/[\s\u00a0]/g, '').replace(',', '.');
+    var value = parseFloat(raw);
+    if (!isFinite(value)) return null;
+    var decimals = (raw.split('.')[1] || '').length;
+    var grouped = /[\s\u00a0]/.test(match[2]);
+    return { prefix: match[1], value: value, suffix: match[3],
+             decimals: decimals, grouped: grouped };
+  }
+
+  function show(node, parsed, value) {
+    var text = value.toFixed(parsed.decimals);
+    if (parsed.grouped) text = text.replace(/\B(?=(\d{3})+(?!\d))/g, '\u00a0');
+    if (parsed.decimals) text = text.replace('.', ',');
+    node.textContent = parsed.prefix + text + parsed.suffix;
+  }
+
+  function run(node) {
+    if (node.dataset.dcCounted) return;
+    var parsed = parse(node.dataset.dcValue || node.textContent);
+    if (!parsed) return;
+    node.dataset.dcCounted = '1';
+    node.dataset.dcValue = parsed.prefix + parsed.value + parsed.suffix;
+    var start = null, duration = 900, delay = 260;
+    function step(now) {
+      if (start === null) start = now;
+      var passed = now - start - delay;
+      if (passed < 0) return requestAnimationFrame(step);
+      var progress = Math.min(1, passed / duration);
+      var eased = 1 - Math.pow(1 - progress, 3);
+      show(node, parsed, parsed.value * eased);
+      if (progress < 1) requestAnimationFrame(step);
+      else show(node, parsed, parsed.value);
+    }
+    requestAnimationFrame(step);
+  }
+
+  function sweep() {
+    var active = document.querySelectorAll('[data-deck-active] [data-anim-count]');
+    for (var i = 0; i < active.length; i++) run(active[i]);
+  }
+
+  var observer = new MutationObserver(sweep);
+  observer.observe(document.documentElement,
+                   { attributes: true, subtree: true, attributeFilter: ['data-deck-active'] });
+  document.addEventListener('DOMContentLoaded', sweep);
+  sweep();
+})();
+</script>
+</x-dc>
+</body>
+</html>

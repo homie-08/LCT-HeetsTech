@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+  <style>body{margin:0;background:#e9edf2} a{color:#2f6fbf} a:hover{color:#1d4e8f}</style>
+</helmet>
+<x-import component-from-global-scope="deck-stage" from="./deck-stage.js" width="1920" height="1080" hint-size="100%,100%">
+  <section data-label="Обложка" style="background:#0f2a4a; font-family:'IBM Plex Sans',sans-serif; color:#fff; display:flex; flex-direction:column; justify-content:center; padding:100px 120px; overflow:hidden;">
+    <div style="position:absolute; right:0; top:0; bottom:0; width:520px; background:linear-gradient(135deg,#163a63 0%, #0f2a4a 70%);"></div>
+    <div style="position:absolute; right:120px; top:100px; width:300px; height:300px; border:3px solid #2f6fbf; opacity:0.5;"></div>
+    <div style="position:absolute; right:180px; top:160px; width:300px; height:300px; border:3px solid #7fb0e8; opacity:0.35;"></div>
+    <span style="display:flex; align-items:center; gap:18px; font-size:28px; font-weight:600; letter-spacing:0.05em;"><span style="width:44px; height:44px; background:#2f6fbf; display:flex; align-items:center; justify-content:center; font-weight:700;">В</span>ГК «Вектор» · логистика</span>
+    <h1 style="font-size:110px; margin:56px 0 0; font-weight:700; line-height:1.05; max-width:1300px;">Итоги II квартала 2026</h1>
+    <p style="font-size:32px; margin:40px 0 0; color:#9db4d0;">Отчёт для совета директоров · 13 августа 2026</p>
+  </section>
+  <section data-label="Повестка" style="background:#fff; font-family:'IBM Plex Sans',sans-serif; color:#16232f; display:flex; flex-direction:column; padding:100px 120px;">
+    <span style="font-size:26px; font-weight:600; color:#2f6fbf; letter-spacing:0.08em; text-transform:uppercase;">Повестка</span>
+    <h2 style="font-size:68px; margin:20px 0 64px; font-weight:700;">Четыре блока отчёта</h2>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:2px; background:#d7dfe8; border:2px solid #d7dfe8;">
+      <div style="background:#fff; padding:44px 48px; display:flex; gap:32px; align-items:flex-start;"><span style="font-family:'IBM Plex Mono',monospace; font-size:30px; color:#2f6fbf; font-weight:500;">01</span><div style="display:flex; flex-direction:column; gap:12px;"><span style="font-size:32px; font-weight:700;">Финансовые результаты</span><span style="font-size:26px; color:#5c6b7a;">Выручка, маржа, денежный поток</span></div></div>
+      <div style="background:#fff; padding:44px 48px; display:flex; gap:32px; align-items:flex-start;"><span style="font-family:'IBM Plex Mono',monospace; font-size:30px; color:#2f6fbf; font-weight:500;">02</span><div style="display:flex; flex-direction:column; gap:12px;"><span style="font-size:32px; font-weight:700;">Операции</span><span style="font-size:26px; color:#5c6b7a;">Сроки доставки и загрузка парка</span></div></div>
+      <div style="background:#fff; padding:44px 48px; display:flex; gap:32px; align-items:flex-start;"><span style="font-family:'IBM Plex Mono',monospace; font-size:30px; color:#2f6fbf; font-weight:500;">03</span><div style="display:flex; flex-direction:column; gap:12px;"><span style="font-size:32px; font-weight:700;">Ключевые проекты</span><span style="font-size:26px; color:#5c6b7a;">Хаб в Казани и автоматизация склада</span></div></div>
+      <div style="background:#fff; padding:44px 48px; display:flex; gap:32px; align-items:flex-start;"><span style="font-family:'IBM Plex Mono',monospace; font-size:30px; color:#2f6fbf; font-weight:500;">04</span><div style="display:flex; flex-direction:column; gap:12px;"><span style="font-size:32px; font-weight:700;">Прогноз на III квартал</span><span style="font-size:26px; color:#5c6b7a;">Риски и план мероприятий</span></div></div>
+    </div>
+  </section>
+  <section data-label="Раздел 01" style="background:#0f2a4a; font-family:'IBM Plex Sans',sans-serif; color:#fff; display:flex; flex-direction:column; justify-content:center; padding:100px 120px;">
+    <div style="display:flex; align-items:center; gap:40px;"><span style="font-family:'IBM Plex Mono',monospace; font-size:36px; color:#7fb0e8;">01</span><span style="flex:1; height:2px; background:#2f6fbf;"></span></div>
+    <h2 style="font-size:120px; margin:48px 0 0; font-weight:700; line-height:1.05;">Финансовые результаты</h2>
+  </section>
+  <section data-label="KPI" style="background:#fff; font-family:'IBM Plex Sans',sans-serif; color:#16232f; display:flex; flex-direction:column; padding:100px 120px;">
+    <span style="font-size:26px; font-weight:600; color:#2f6fbf; letter-spacing:0.08em; text-transform:uppercase;">Финансы</span>
+    <h2 style="font-size:68px; margin:20px 0 72px; font-weight:700;">Квартал выше плана по всем метрикам</h2>
+    <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:36px;">
+      <div style="border-top:6px solid #2f6fbf; background:#f4f7fa; padding:40px 40px 44px; display:flex; flex-direction:column; gap:16px;"><span style="font-size:26px; color:#5c6b7a; font-weight:600;">Выручка</span><span style="font-size:76px; font-weight:700;">4,8 млрд ₽</span><span style="font-size:26px; color:#1f8a4c; font-weight:700;">▲ +18% г/г</span></div>
+      <div style="border-top:6px solid #2f6fbf; background:#f4f7fa; padding:40px 40px 44px; display:flex; flex-direction:column; gap:16px;"><span style="font-size:26px; color:#5c6b7a; font-weight:600;">EBITDA</span><span style="font-size:76px; font-weight:700;">920 млн ₽</span><span style="font-size:26px; color:#1f8a4c; font-weight:700;">▲ +11% г/г</span></div>
+      <div style="border-top:6px solid #2f6fbf; background:#f4f7fa; padding:40px 40px 44px; display:flex; flex-direction:column; gap:16px;"><span style="font-size:26px; color:#5c6b7a; font-weight:600;">Маржа</span><span style="font-size:76px; font-weight:700;">19,2%</span><span style="font-size:26px; color:#1f8a4c; font-weight:700;">▲ +0,8 п.п.</span></div>
+      <div style="border-top:6px solid #c23b3b; background:#f4f7fa; padding:40px 40px 44px; display:flex; flex-direction:column; gap:16px;"><span style="font-size:26px; color:#5c6b7a; font-weight:600;">Долг / EBITDA</span><span style="font-size:76px; font-weight:700;">1,6×</span><span style="font-size:26px; color:#c23b3b; font-weight:700;">▲ +0,2× — хаб в Казани</span></div>
+    </div>
+  </section>
+  <section data-label="График" style="background:#fff; font-family:'IBM Plex Sans',sans-serif; color:#16232f; display:flex; flex-direction:column; padding:100px 120px;">
+    <span style="font-size:26px; font-weight:600; color:#2f6fbf; letter-spacing:0.08em; text-transform:uppercase;">Финансы</span>
+    <h2 style="font-size:68px; margin:20px 0 80px; font-weight:700;">Выручка растёт шестой квартал подряд</h2>
+    <div style="display:flex; align-items:flex-end; gap:64px; height:480px; border-bottom:3px solid #16232f; padding:0 40px;">
+      <div style="display:flex; flex-direction:column; align-items:center; gap:20px; flex:1;"><span style="font-size:28px; font-weight:600; color:#5c6b7a;">3,2</span><span style="width:100%; height:250px; background:#c5d6ea;"></span><span style="font-size:26px; color:#5c6b7a;">Q1 25</span></div>
+      <div style="display:flex; flex-direction:column; align-items:center; gap:20px; flex:1;"><span style="font-size:28px; font-weight:600; color:#5c6b7a;">3,5</span><span style="width:100%; height:275px; background:#c5d6ea;"></span><span style="font-size:26px; color:#5c6b7a;">Q2 25</span></div>
+      <div style="display:flex; flex-direction:column; align-items:center; gap:20px; flex:1;"><span style="font-size:28px; font-weight:600; color:#5c6b7a;">3,9</span><span style="width:100%; height:305px; background:#c5d6ea;"></span><span style="font-size:26px; color:#5c6b7a;">Q3 25</span></div>
+      <div style="display:flex; flex-direction:column; align-items:center; gap:20px; flex:1;"><span style="font-size:28px; font-weight:600; color:#5c6b7a;">4,1</span><span style="width:100%; height:320px; background:#c5d6ea;"></span><span style="font-size:26px; color:#5c6b7a;">Q4 25</span></div>
+      <div style="display:flex; flex-direction:column; align-items:center; gap:20px; flex:1;"><span style="font-size:28px; font-weight:600; color:#5c6b7a;">4,4</span><span style="width:100%; height:345px; background:#7fb0e8;"></span><span style="font-size:26px; color:#5c6b7a;">Q1 26</span></div>
+      <div style="display:flex; flex-direction:column; align-items:center; gap:20px; flex:1;"><span style="font-size:30px; font-weight:700; color:#2f6fbf;">4,8</span><span style="width:100%; height:375px; background:#2f6fbf;"></span><span style="font-size:26px; font-weight:700;">Q2 26</span></div>
+    </div>
+    <p style="font-size:24px; color:#8a97a5; margin:28px 0 0;">Выручка, млрд ₽ · управленческая отчётность</p>
+  </section>
+  <section data-label="Таблица" style="background:#fff; font-family:'IBM Plex Sans',sans-serif; color:#16232f; display:flex; flex-direction:column; padding:100px 120px;">
+    <span style="font-size:26px; font-weight:600; color:#2f6fbf; letter-spacing:0.08em; text-transform:uppercase;">Операции</span>
+    <h2 style="font-size:68px; margin:20px 0 60px; font-weight:700;">Показатели сети по направлениям</h2>
+    <div style="display:grid; grid-template-columns:1.5fr 1fr 1fr 1fr; font-size:28px; border:2px solid #d7dfe8;">
+      <div style="padding:28px 40px; background:#0f2a4a; color:#fff; font-weight:700;">Направление</div><div style="padding:28px 24px; background:#0f2a4a; color:#fff; font-weight:700;">Отправлений</div><div style="padding:28px 24px; background:#0f2a4a; color:#fff; font-weight:700;">Срок, дней</div><div style="padding:28px 24px; background:#0f2a4a; color:#fff; font-weight:700;">В срок</div>
+      <div style="padding:28px 40px; border-bottom:1px solid #d7dfe8; font-weight:600;">Центр</div><div style="padding:28px 24px; border-bottom:1px solid #d7dfe8;">612 000</div><div style="padding:28px 24px; border-bottom:1px solid #d7dfe8;">1,8</div><div style="padding:28px 24px; border-bottom:1px solid #d7dfe8; color:#1f8a4c; font-weight:700;">97,4%</div>
+      <div style="padding:28px 40px; border-bottom:1px solid #d7dfe8; font-weight:600; background:#f4f7fa;">Поволжье</div><div style="padding:28px 24px; border-bottom:1px solid #d7dfe8; background:#f4f7fa;">348 000</div><div style="padding:28px 24px; border-bottom:1px solid #d7dfe8; background:#f4f7fa;">2,4</div><div style="padding:28px 24px; border-bottom:1px solid #d7dfe8; background:#f4f7fa; color:#1f8a4c; font-weight:700;">95,1%</div>
+      <div style="padding:28px 40px; border-bottom:1px solid #d7dfe8; font-weight:600;">Урал</div><div style="padding:28px 24px; border-bottom:1px solid #d7dfe8;">296 000</div><div style="padding:28px 24px; border-bottom:1px solid #d7dfe8;">3,1</div><div style="padding:28px 24px; border-bottom:1px solid #d7dfe8; color:#1f8a4c; font-weight:700;">94,0%</div>
+      <div style="padding:28px 40px; font-weight:600; background:#f4f7fa;">Сибирь и ДВ</div><div style="padding:28px 24px; background:#f4f7fa;">214 000</div><div style="padding:28px 24px; background:#f4f7fa;">4,6</div><div style="padding:28px 24px; background:#f4f7fa; color:#c23b3b; font-weight:700;">88,7%</div>
+    </div>
+  </section>
+  <section data-label="Большая цифра" style="background:#163a63; font-family:'IBM Plex Sans',sans-serif; color:#fff; display:flex; flex-direction:column; justify-content:center; padding:100px 120px;">
+    <span style="font-size:26px; font-weight:600; color:#7fb0e8; letter-spacing:0.08em; text-transform:uppercase;">Операции</span>
+    <span style="font-size:280px; font-weight:700; line-height:1; margin-top:24px;">95,3%</span>
+    <p style="font-size:36px; margin:44px 0 0; max-width:1200px; color:#9db4d0; line-height:1.45;">доставок в срок по сети — лучший результат за историю компании; цель года 96%</p>
+  </section>
+  <section data-label="Раздел 03" style="background:#0f2a4a; font-family:'IBM Plex Sans',sans-serif; color:#fff; display:flex; flex-direction:column; justify-content:center; padding:100px 120px;">
+    <div style="display:flex; align-items:center; gap:40px;"><span style="font-family:'IBM Plex Mono',monospace; font-size:36px; color:#7fb0e8;">03</span><span style="flex:1; height:2px; background:#2f6fbf;"></span></div>
+    <h2 style="font-size:120px; margin:48px 0 0; font-weight:700; line-height:1.05;">Ключевые проекты</h2>
+  </section>
+  <section data-label="Таймлайн" style="background:#fff; font-family:'IBM Plex Sans',sans-serif; color:#16232f; display:flex; flex-direction:column; padding:100px 120px;">
+    <span style="font-size:26px; font-weight:600; color:#2f6fbf; letter-spacing:0.08em; text-transform:uppercase;">Проекты</span>
+    <h2 style="font-size:68px; margin:20px 0 90px; font-weight:700;">Хаб в Казани: запуск в декабре</h2>
+    <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:48px;">
+      <div style="display:flex; flex-direction:column; gap:22px;"><div style="display:flex; align-items:center; gap:16px;"><span style="width:28px; height:28px; border-radius:50%; background:#1f8a4c;"></span><span style="flex:1; height:3px; background:#1f8a4c;"></span></div><span style="font-size:30px; font-weight:700;">Строительство</span><p style="font-size:26px; margin:0; color:#5c6b7a; line-height:1.5;">Завершено в июне, без сдвига сроков</p></div>
+      <div style="display:flex; flex-direction:column; gap:22px;"><div style="display:flex; align-items:center; gap:16px;"><span style="width:28px; height:28px; border-radius:50%; background:#2f6fbf;"></span><span style="flex:1; height:3px; background:#d7dfe8;"></span></div><span style="font-size:30px; font-weight:700;">Оборудование</span><p style="font-size:26px; margin:0; color:#5c6b7a; line-height:1.5;">Монтаж сортировки — до октября</p></div>
+      <div style="display:flex; flex-direction:column; gap:22px;"><div style="display:flex; align-items:center; gap:16px;"><span style="width:28px; height:28px; border-radius:50%; border:4px solid #d7dfe8; background:#fff;"></span><span style="flex:1; height:3px; background:#d7dfe8;"></span></div><span style="font-size:30px; font-weight:700;">Персонал</span><p style="font-size:26px; margin:0; color:#5c6b7a; line-height:1.5;">Набор 240 сотрудников — ноябрь</p></div>
+      <div style="display:flex; flex-direction:column; gap:22px;"><div style="display:flex; align-items:center; gap:16px;"><span style="width:28px; height:28px; border-radius:50%; border:4px solid #d7dfe8; background:#fff;"></span></div><span style="font-size:30px; font-weight:700;">Запуск</span><p style="font-size:26px; margin:0; color:#5c6b7a; line-height:1.5;">Первая сортировка — декабрь 2026</p></div>
+    </div>
+  </section>
+  <section data-label="Риски" style="background:#fff; font-family:'IBM Plex Sans',sans-serif; color:#16232f; display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; padding:100px 120px;">
+    <div style="display:flex; flex-direction:column; gap:32px;">
+      <span style="font-size:26px; font-weight:600; color:#2f6fbf; letter-spacing:0.08em; text-transform:uppercase;">Прогноз</span>
+      <h2 style="font-size:64px; margin:0; font-weight:700; line-height:1.15;">Три риска III квартала</h2>
+      <p style="font-size:28px; margin:0; color:#5c6b7a; line-height:1.6;">По каждому риску назначен владелец и план мероприятий; статус — на еженедельном комитете.</p>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:24px;">
+      <div style="border-left:6px solid #c23b3b; background:#f4f7fa; padding:32px 40px; display:flex; flex-direction:column; gap:10px;"><span style="font-size:29px; font-weight:700;">Дефицит водителей</span><span style="font-size:25px; color:#5c6b7a;">Программа удержания + партнёрство с автошколами</span></div>
+      <div style="border-left:6px solid #e0a52e; background:#f4f7fa; padding:32px 40px; display:flex; flex-direction:column; gap:10px;"><span style="font-size:29px; font-weight:700;">Рост цен на топливо</span><span style="font-size:25px; color:#5c6b7a;">Хеджирование 60% объёма до конца года</span></div>
+      <div style="border-left:6px solid #e0a52e; background:#f4f7fa; padding:32px 40px; display:flex; flex-direction:column; gap:10px;"><span style="font-size:29px; font-weight:700;">Сдвиг поставок сортировки</span><span style="font-size:25px; color:#5c6b7a;">Резервный поставщик законтрактован</span></div>
+    </div>
+  </section>
+  <section data-label="Цитата" style="background:#f4f7fa; font-family:'IBM Plex Sans',sans-serif; color:#16232f; display:flex; flex-direction:column; justify-content:center; padding:100px 160px;">
+    <span style="width:80px; height:6px; background:#2f6fbf;"></span>
+    <p style="font-size:60px; font-weight:600; line-height:1.35; margin:56px 0 0; max-width:1500px;">Мы прошли пик сезона без единого дня простоя сортировки. Команда операций отработала безупречно.</p>
+    <p style="font-size:28px; margin:56px 0 0; color:#5c6b7a;">Генеральный директор · итоги квартала для сотрудников</p>
+  </section>
+  <section data-label="Финал" style="background:#0f2a4a; font-family:'IBM Plex Sans',sans-serif; color:#fff; display:flex; flex-direction:column; justify-content:center; padding:100px 120px;">
+    <span style="display:flex; align-items:center; gap:18px; font-size:28px; font-weight:600;"><span style="width:44px; height:44px; background:#2f6fbf; display:flex; align-items:center; justify-content:center; font-weight:700;">В</span>ГК «Вектор»</span>
+    <h2 style="font-size:110px; margin:56px 0 0; font-weight:700; line-height:1.1; max-width:1400px;">Вопросы и обсуждение</h2>
+    <div style="display:flex; gap:80px; margin-top:72px; font-size:28px; color:#9db4d0;"><span>ir@vektor.example</span><span>Материалы — в портале совета директоров</span></div>
+  </section>
+</x-import>
+</x-dc>
+</body>
+</html>

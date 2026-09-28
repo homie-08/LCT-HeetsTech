@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;900&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet">
+  <style>body{margin:0;background:#d9cf00} a{color:#000} a:hover{color:#333}</style>
+
+</helmet>
+<x-import component-from-global-scope="deck-stage" from="./deck-stage.js" width="1920" height="1080" hint-size="100%,100%">
+<section data-label="Обложка" style="background:#ffd400; font-family:'JetBrains Mono',monospace; color:#000; display:flex; flex-direction:column; justify-content:space-between; padding:70px 90px;">
+    <div style="display:flex; justify-content:space-between; align-items:center; border:5px solid #000; padding:24px 40px; font-size:28px; font-weight:700;"><span></span><span></span><span></span></div>
+    <h1 style="font-family:'Unbounded',sans-serif; font-weight:900; font-size:111.6px; margin:0; line-height:0.9; text-transform:uppercase; letter-spacing:-0.02em;">Цифровой…<span style="font-size:111.6px; color:#fff; -webkit-text-stroke:5px #000;">Сервис…</span></h1>
+    <div style="display:flex; justify-content:space-between; align-items:flex-end;"><span style="font-size:30px; max-width:800px; line-height:1.4;"></span><span style="background:#000; color:#ffd400; padding:20px 40px; font-size:28px; font-weight:700;"></span></div>
+  </section>
+  
+<section data-label="Содержание" style="background:#fff; font-family:'JetBrains Mono',monospace; color:#000; display:flex; flex-direction:column; padding:80px 90px;">
+    <h2 style="font-family:'Unbounded',sans-serif; font-weight:900; font-size:74px; margin:0 0 60px; text-transform:uppercase;">Содержание</h2>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:32px;">
+      <div style="border:5px solid #000; padding:40px 48px; display:flex; align-items:center; gap:36px; box-shadow:14px 14px 0 #000;"><span style="font-family:'Unbounded',sans-serif; font-weight:900; font-size:56px;">01</span><span style="font-size:32px; font-weight:700;"></span></div>
+      <div style="border:5px solid #000; padding:40px 48px; display:flex; align-items:center; gap:36px; box-shadow:14px 14px 0 #000; background:#ffd400;"><span style="font-family:'Unbounded',sans-serif; font-weight:900; font-size:56px;">02</span><span style="font-size:32px; font-weight:700;"></span></div>
+      <div style="border:5px solid #000; padding:40px 48px; display:flex; align-items:center; gap:36px; box-shadow:14px 14px 0 #000; background:#ffd400;"><span style="font-family:'Unbounded',sans-serif; font-weight:900; font-size:56px;">03</span><span style="font-size:32px; font-weight:700;"></span></div>
+      <div style="border:5px solid #000; padding:40px 48px; display:flex; align-items:center; gap:36px; box-shadow:14px 14px 0 #000;"><span style="font-family:'Unbounded',sans-serif; font-weight:900; font-size:56px;">04</span><span style="font-size:32px; font-weight:700;"></span></div>
+    </div>
+  </section>
+  
+<section data-label="Большая цифра" style="background:#fff; font-family:'JetBrains Mono',monospace; color:#000; display:flex; flex-direction:column; justify-content:center; padding:80px 90px;">
+    <span style="font-family:'Unbounded',sans-serif; font-weight:900; font-size:161.2px; line-height:0.95; letter-spacing:-0.02em;">Сервис…<span style="font-size:161.2px; color:#ffd400; -webkit-text-stroke:6px #000;">Сервис…</span></span>
+    <p style="font-size:36px; margin:48px 0 0; max-width:1200px; line-height:1.45; font-weight:700;"></p>
+  </section>
+  
+<section data-label="Три колонки" style="background:#ffd400; font-family:'JetBrains Mono',monospace; color:#000; display:flex; flex-direction:column; padding:80px 90px;">
+    <h2 style="font-family:'Unbounded',sans-serif; font-weight:900; font-size:58.5px; margin:0 0 60px; text-transform:uppercase;">Проблема</h2>
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:44px;">
+      <div style="background:#fff; border:5px solid #000; box-shadow:14px 14px 0 #000; padding:48px; display:flex; flex-direction:column; gap:24px;">
+        <svg width="60" height="60" viewbox="0 0 24 24" fill="none" stroke="#000" stroke-width="2.5" stroke-linecap="square"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg>
+        <h3 style="font-family:'Unbounded',sans-serif; font-weight:900; font-size:40px; margin:0; text-transform:uppercase;">4 часа</h3>
+        <p style="font-size:26px; margin:0; line-height:1.5;">средний срок сборки презентации на 12 слайдов</p>
+      </div>
+      <div style="background:#fff; border:5px solid #000; box-shadow:14px 14px 0 #000; padding:48px; display:flex; flex-direction:column; gap:24px;">
+        <svg width="60" height="60" viewbox="0 0 24 24" fill="none" stroke="#000" stroke-width="2.5" stroke-linecap="square"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="3"></circle><path d="M12 2v3"></path><path d="M12 19v3"></path></svg>
+        <h3 style="font-family:'Unbounded',sans-serif; font-weight:900; font-size:29px; margin:0; text-transform:uppercase;">60 % времени уходит</h3>
+        <p style="font-size:24.1px; margin:0; line-height:1.5;">на подгонку текста под макет, а не на смысл</p>
+      </div>
+      <div style="background:#fff; border:5px solid #000; box-shadow:14px 14px 0 #000; padding:48px; display:flex; flex-direction:column; gap:24px;">
+        <svg width="60" height="60" viewbox="0 0 24 24" fill="none" stroke="#000" stroke-width="2.5" stroke-linecap="square"><path d="M12 2v20"></path><path d="M2 12h20"></path><path d="m5 5 14 14"></path><path d="m19 5-14 14"></path></svg>
+        <h3 style="font-family:'Unbounded',sans-serif; font-weight:900; font-size:31px; margin:0; text-transform:uppercase;">3 из 10 слайдов</h3>
+        <p style="font-size:26px; margin:0; line-height:1.5;">нарушают шаблон: чужой шрифт, цвет или отступ</p>
+      </div>
+    </div>
+  </section>
+  
+<section data-label="Две колонки" style="background:#fff; font-family:'JetBrains Mono',monospace; color:#000; display:grid; grid-template-columns:1fr 1fr;">
+    <div style="display:flex; flex-direction:column; justify-content:center; padding:80px 90px; gap:36px;">
+      <h2 style="font-family:'Unbounded',sans-serif; font-weight:900; font-size:49.6px; margin:0; text-transform:uppercase; line-height:1;">Стиль не выдумывается — он вынимается…<br></h2>
+      <p style="font-size:28px; margin:0; line-height:1.6;"></p>
+      <span style="background:#000; color:#fff; padding:20px 44px; font-size:27px; font-weight:700; width:max-content;"></span>
+    </div>
+    <div style="background:#ffd400; border-left:5px solid #000; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px;">
+      <span style="font-family:'Unbounded',sans-serif; font-weight:900; font-size:74.4px; line-height:1;">Шаблон…</span>
+      <span style="font-size:24px; font-weight:700;">Раскладки…</span>
+      <span style="font-family:'Unbounded',sans-serif; font-weight:900; font-size:74.4px; line-height:1; margin-top:40px;">Контент…</span>
+      <span style="font-size:24px; font-weight:700;">Каждому…</span>
+    </div>
+  </section>
+  
+<section data-label="Цитата" style="background:#000; font-family:'JetBrains Mono',monospace; color:#fff; display:flex; flex-direction:column; justify-content:center; padding:80px 130px;">
+    <span style="background:#ffd400; color:#000; padding:14px 32px; font-size:28px; font-weight:700; width:max-content;"></span>
+    <p style="font-family:'Unbounded',sans-serif; font-weight:900; font-size:80px; line-height:1.15; margin:56px 0 0; text-transform:uppercase; max-width:1600px;">Разбор шаблона: OOXML, разворачивание</p>
+    <p style="font-size:28px; margin:56px 0 0; color:#ffd400;">Распознавание раскладок: кластеризация краёв,</p>
+  </section>
+  
+<section data-label="Показатели" style="background:#fff; font-family:'JetBrains Mono',monospace; color:#000; display:flex; flex-direction:column; padding:80px 90px;">
+    <h2 style="font-family:'Unbounded',sans-serif; font-weight:900; font-size:45.9px; margin:0 0 64px; text-transform:uppercase;">Что проверяется автоматически</h2>
+    <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:36px;">
+      <div style="border:5px solid #000; box-shadow:12px 12px 0 #000; padding:40px; display:flex; flex-direction:column; gap:14px;"><span style="font-family:'Unbounded',sans-serif; font-weight:900; font-size:58px;">100 %</span><span style="font-size:24px; font-weight:700;">доля шрифтов, взятых…</span></div>
+      <div style="border:5px solid #000; box-shadow:12px 12px 0 #000; padding:40px; display:flex; flex-direction:column; gap:14px; background:#ffd400;"><span style="font-family:'Unbounded',sans-serif; font-weight:900; font-size:58px;">64</span><span style="font-size:25px; font-weight:700;"></span></div>
+      <div style="border:5px solid #000; box-shadow:12px 12px 0 #000; padding:40px; display:flex; flex-direction:column; gap:14px; background:#ffd400;"><span style="font-family:'Unbounded',sans-serif; font-weight:900; font-size:58px;">40</span><span style="font-size:25px; font-weight:700;"></span></div>
+      <div style="border:5px solid #000; box-shadow:12px 12px 0 #000; padding:40px; display:flex; flex-direction:column; gap:14px;"><span style="font-family:'Unbounded',sans-serif; font-weight:900; font-size:36px;">100 %</span><span style="font-size:24px; font-weight:700;">доля цветов, взятых из…</span></div>
+    </div>
+  </section>
+  
+<section data-label="Раздел 01" style="background:#000; font-family:'JetBrains Mono',monospace; color:#ffd400; display:flex; flex-direction:column; justify-content:center; padding:80px 90px;">
+    <span style="border:4px solid #ffd400; padding:14px 32px; font-size:28px; font-weight:700; width:max-content;"></span>
+    <h2 style="font-family:'Unbounded',sans-serif; font-weight:900; font-size:93px; margin:40px 0 0; line-height:0.92; text-transform:uppercase;">Готовый файл…<br></h2>
+  </section>
+  
+<section data-label="Таблица" style="background:#ffd400; font-family:'JetBrains Mono',monospace; color:#000; display:flex; flex-direction:column; padding:80px 90px;">
+    <h2 style="font-family:'Unbounded',sans-serif; font-weight:900; font-size:45.9px; margin:0 0 56px; text-transform:uppercase;">Результаты на…</h2>
+    <div style="display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; font-size:28px; border:5px solid #000; background:#fff;">
+      <div style="padding:28px 40px; background:#000; color:#ffd400; font-weight:700;"></div><div style="padding:28px 24px; background:#000; color:#ffd400; font-weight:700;"></div><div style="padding:28px 24px; background:#000; color:#ffd400; font-weight:700;"></div><div style="padding:28px 24px; background:#000; color:#ffd400; font-weight:700;"></div>
+      <div style="padding:28px 40px; border-bottom:3px solid #000; font-weight:700;"></div><div style="padding:28px 24px; border-bottom:3px solid #000;"></div><div style="padding:28px 24px; border-bottom:3px solid #000;"></div><div style="padding:28px 24px; border-bottom:3px solid #000;"></div>
+      <div style="padding:28px 40px; border-bottom:3px solid #000; font-weight:700;"></div><div style="padding:28px 24px; border-bottom:3px solid #000;"></div><div style="padding:28px 24px; border-bottom:3px solid #000;"></div><div style="padding:28px 24px; border-bottom:3px solid #000;"></div>
+      <div style="padding:28px 40px; font-weight:700;"></div><div style="padding:28px 24px;"></div><div style="padding:28px 24px;">—</div><div style="padding:28px 24px;">—</div>
+    </div>
+    <p style="font-size:26px; margin:36px 0 0; font-weight:700;"></p>
+  </section>
+  
+<section data-label="Раздел 04" style="background:#000; font-family:'JetBrains Mono',monospace; color:#ffd400; display:flex; flex-direction:column; justify-content:center; padding:80px 90px;">
+    <span style="border:4px solid #ffd400; padding:14px 32px; font-size:28px; font-weight:700; width:max-content;"></span>
+    <h2 style="font-family:'Unbounded',sans-serif; font-weight:900; font-size:96.5px; margin:40px 0 0; line-height:0.92; text-transform:uppercase;">Чем доказывается адаптивность<br></h2>
+  </section>
+  
+<section data-label="Три колонки" style="background:#ffd400; font-family:'JetBrains Mono',monospace; color:#000; display:flex; flex-direction:column; padding:80px 90px;">
+    <h2 style="font-family:'Unbounded',sans-serif; font-weight:900; font-size:74px; margin:0 0 60px; text-transform:uppercase;">Стек</h2>
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:44px;">
+      <div style="background:#fff; border:5px solid #000; box-shadow:14px 14px 0 #000; padding:48px; display:flex; flex-direction:column; gap:24px;">
+        <svg width="60" height="60" viewbox="0 0 24 24" fill="none" stroke="#000" stroke-width="2.5" stroke-linecap="square"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg>
+        <h3 style="font-family:'Unbounded',sans-serif; font-weight:900; font-size:24.8px; margin:0; text-transform:uppercase;">Python 3.11…</h3>
+        <p style="font-size:26px; margin:0; line-height:1.5;">ядро и HTTP-интерфейс</p>
+      </div>
+      <div style="background:#fff; border:5px solid #000; box-shadow:14px 14px 0 #000; padding:48px; display:flex; flex-direction:column; gap:24px;">
+        <svg width="60" height="60" viewbox="0 0 24 24" fill="none" stroke="#000" stroke-width="2.5" stroke-linecap="square"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="3"></circle><path d="M12 2v3"></path><path d="M12 19v3"></path></svg>
+        <h3 style="font-family:'Unbounded',sans-serif; font-weight:900; font-size:24.8px; margin:0; text-transform:uppercase;">lxml поверх OOXML напрямую,</h3>
+        <p style="font-size:26px; margin:0; line-height:1.5;">python-pptx для сборки</p>
+      </div>
+      <div style="background:#fff; border:5px solid #000; box-shadow:14px 14px 0 #000; padding:48px; display:flex; flex-direction:column; gap:24px;">
+        <svg width="60" height="60" viewbox="0 0 24 24" fill="none" stroke="#000" stroke-width="2.5" stroke-linecap="square"><path d="M12 2v20"></path><path d="M2 12h20"></path><path d="m5 5 14 14"></path><path d="m19 5-14 14"></path></svg>
+        <h3 style="font-family:'Unbounded',sans-serif; font-weight:900; font-size:40px; margin:0; text-transform:uppercase;">fontTools</h3>
+        <p style="font-size:24px; margin:0; line-height:1.5;">метрики шрифтов, scikit-image и NumPy — разбор…</p>
+      </div>
+    </div>
+  </section>
+  
+<section data-label="Три колонки" style="background:#ffd400; font-family:'JetBrains Mono',monospace; color:#000; display:flex; flex-direction:column; padding:80px 90px;">
+    <h2 style="font-family:'Unbounded',sans-serif; font-weight:900; font-size:52.3px; margin:0 0 60px; text-transform:uppercase;">Что дальше</h2>
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:44px;">
+      <div style="background:#fff; border:5px solid #000; box-shadow:14px 14px 0 #000; padding:48px; display:flex; flex-direction:column; gap:24px;">
+        <svg width="60" height="60" viewbox="0 0 24 24" fill="none" stroke="#000" stroke-width="2.5" stroke-linecap="square"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg>
+        <h3 style="font-family:'Unbounded',sans-serif; font-weight:900; font-size:24.8px; margin:0; text-transform:uppercase;">Подбор иконок под…</h3>
+        <p style="font-size:26px; margin:0; line-height:1.5;">тезиса и перекраска в палитру шаблона</p>
+      </div>
+      <div style="background:#fff; border:5px solid #000; box-shadow:14px 14px 0 #000; padding:48px; display:flex; flex-direction:column; gap:24px;">
+        <svg width="60" height="60" viewbox="0 0 24 24" fill="none" stroke="#000" stroke-width="2.5" stroke-linecap="square"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="3"></circle><path d="M12 2v3"></path><path d="M12 19v3"></path></svg>
+        <h3 style="font-family:'Unbounded',sans-serif; font-weight:900; font-size:24.8px; margin:0; text-transform:uppercase;">Перекомпоновка слотов, когда…</h3>
+        <p style="font-size:26px; margin:0; line-height:1.5;">не ложится в готовую раскладку</p>
+      </div>
+      <div style="background:#fff; border:5px solid #000; box-shadow:14px 14px 0 #000; padding:48px; display:flex; flex-direction:column; gap:24px;">
+        <svg width="60" height="60" viewbox="0 0 24 24" fill="none" stroke="#000" stroke-width="2.5" stroke-linecap="square"><path d="M12 2v20"></path><path d="M2 12h20"></path><path d="m5 5 14 14"></path><path d="m19 5-14 14"></path></svg>
+        <h3 style="font-family:'Unbounded',sans-serif; font-weight:900; font-size:24.8px; margin:0; text-transform:uppercase;">Дообучение планировщика…</h3>
+        <p style="font-size:26px; margin:0; line-height:1.5;"></p>
+      </div>
+    </div>
+  </section>
+  
+<section data-label="Большая цифра" style="background:#fff; font-family:'JetBrains Mono',monospace; color:#000; display:flex; flex-direction:column; justify-content:center; padding:80px 90px;">
+    <span style="font-family:'Unbounded',sans-serif; font-weight:900; font-size:161.2px; line-height:0.95; letter-spacing:-0.02em;">Контакты<span style="font-size:161.2px; color:#ffd400; -webkit-text-stroke:6px #000;">Проект…</span></span>
+    <p style="font-size:36px; margin:48px 0 0; max-width:1200px; line-height:1.45; font-weight:700;"></p>
+  </section>
+  
+</x-import>
+</x-dc>
+</body>
+</html>

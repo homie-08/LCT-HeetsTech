@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-page font-sans text-ink-primary antialiased;
+  }
+
+  /* Фокус никогда не дефолтный — требование хендоффа. */
+  :focus-visible {
+    outline: 2px solid #4d9fff;
+    outline-offset: 2px;
+  }
+
+  ::selection {
+    background: rgba(0, 119, 255, 0.45);
+  }
+}
+
+@layer components {
+  /* Надпись фирменным начертанием. Пока лицензии на VK Sans Display нет,
+     ближайшая замена — Unbounded: тот же широкий геометрический рисунок,
+     растяжка трансформом больше не нужна. */
+  .display {
+    font-family: Unbounded, Onest, system-ui, sans-serif;
+  }
+
+  .label {
+    @apply text-[11px] font-semibold uppercase tracking-[0.06em] text-ink-label;
+  }
+
+  /* Свечение заголовка. Утилиты для text-shadow в Tailwind нет, а filter здесь
+     не подходит: он размывает и сам текст, а не только ореол. */
+  .title-glow {
+    text-shadow: 0 0 60px rgba(0, 119, 255, 0.35);
+  }
+
+  /* Пилюля-контрол: чипы, кнопки-действия, поля выбора. */
+  .pill {
+    @apply inline-flex h-[34px] items-center gap-2 rounded-pill border
+           border-edge-control bg-white/[0.04] px-3.5 text-[13px] font-medium
+           text-ink-secondary transition-colors duration-150;
+  }
+  .pill:hover:not(:disabled) {
+    @apply border-edge-hover text-vk-light;
+  }
+
+  .pill-primary {
+    @apply inline-flex h-[38px] items-center gap-2 rounded-pill bg-vk px-4
+           text-[13.5px] font-medium text-white transition-colors duration-150;
+  }
+  .pill-primary:hover:not(:disabled) {
+    @apply bg-vk-hover;
+  }
+  .pill-primary:active:not(:disabled) {
+    @apply bg-vk-pressed;
+  }
+  .pill-primary:disabled {
+    @apply cursor-not-allowed bg-white/[0.08] text-ink-label;
+  }
+
+  .pill-ghost {
+    @apply inline-flex h-[38px] items-center gap-2 rounded-pill border
+           border-edge-control px-4 text-[13.5px] font-medium text-ink-secondary
+           transition-colors duration-150;
+  }
+  .pill-ghost:hover:not(:disabled) {
+    @apply border-edge-hover text-vk-light;
+  }
+
+  /* Круглая иконочная кнопка. */
+  .icon-button {
+    @apply inline-flex items-center justify-center rounded-pill border
+           border-edge-control text-ink-muted transition-colors duration-150;
+  }
+  .icon-button:hover:not(:disabled) {
+    @apply border-edge-hover text-vk-light;
+  }
+}

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>body{margin:0;background:#e6ddcc} a{color:#6d1f2c} a:hover{color:#4a141e}</style>
+</helmet>
+<x-import component-from-global-scope="deck-stage" from="./deck-stage.js" width="1920" height="1080" hint-size="100%,100%">
+  <section data-label="Обложка" style="background:#f3ecdf; font-family:'Source Sans 3',sans-serif; color:#241f1a; display:flex; flex-direction:column; justify-content:center; padding:100px 140px;">
+    <div style="position:absolute; top:0; left:0; right:0; height:16px; background:#6d1f2c;"></div>
+    <span style="font-size:26px; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:#6d1f2c;">Открытый лекторий университета · курс из 8 лекций</span>
+    <h1 style="font-family:Lora,serif; font-size:130px; margin:44px 0 0; font-weight:600; line-height:1.05; max-width:1450px;">История науки: от астролябии до коллайдера</h1>
+    <p style="font-size:32px; margin:44px 0 0; max-width:950px; color:#6b6154; line-height:1.55;">Вводная лекция: зачем изучать, как менялась картина мира, и что нас ждёт в курсе</p>
+    <div style="display:flex; gap:60px; margin-top:64px; font-size:27px; color:#6b6154;"><span><b style="color:#241f1a;">Лектор:</b> проф. каф. истории науки</span><span><b style="color:#241f1a;">Среда,</b> 19:00, ауд. 210</span></div>
+  </section>
+  <section data-label="Содержание" style="background:#f3ecdf; font-family:'Source Sans 3',sans-serif; color:#241f1a; display:flex; flex-direction:column; padding:100px 140px;">
+    <h2 style="font-family:Lora,serif; font-size:80px; margin:0 0 68px; font-weight:600;">План лекции</h2>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:32px;">
+      <div style="background:#fff; border-radius:20px; padding:40px 44px; box-shadow:0 3px 14px rgba(36,31,26,0.07); display:flex; gap:30px; align-items:flex-start;"><span style="font-family:Lora,serif; font-size:40px; color:#6d1f2c; font-weight:600;">1</span><div style="display:flex; flex-direction:column; gap:10px;"><span style="font-size:31px; font-weight:700;">Что считать наукой</span><span style="font-size:25px; color:#6b6154; line-height:1.45;">Метод, наблюдение и проверяемость</span></div></div>
+      <div style="background:#fff; border-radius:20px; padding:40px 44px; box-shadow:0 3px 14px rgba(36,31,26,0.07); display:flex; gap:30px; align-items:flex-start;"><span style="font-family:Lora,serif; font-size:40px; color:#6d1f2c; font-weight:600;">2</span><div style="display:flex; flex-direction:column; gap:10px;"><span style="font-size:31px; font-weight:700;">Четыре революции</span><span style="font-size:25px; color:#6b6154; line-height:1.45;">Коперник, Ньютон, Дарвин, кванты</span></div></div>
+      <div style="background:#fff; border-radius:20px; padding:40px 44px; box-shadow:0 3px 14px rgba(36,31,26,0.07); display:flex; gap:30px; align-items:flex-start;"><span style="font-family:Lora,serif; font-size:40px; color:#6d1f2c; font-weight:600;">3</span><div style="display:flex; flex-direction:column; gap:10px;"><span style="font-size:31px; font-weight:700;">Наука как институт</span><span style="font-size:25px; color:#6b6154; line-height:1.45;">Университеты, журналы, репутация</span></div></div>
+      <div style="background:#fff; border-radius:20px; padding:40px 44px; box-shadow:0 3px 14px rgba(36,31,26,0.07); display:flex; gap:30px; align-items:flex-start;"><span style="font-family:Lora,serif; font-size:40px; color:#6d1f2c; font-weight:600;">4</span><div style="display:flex; flex-direction:column; gap:10px;"><span style="font-size:31px; font-weight:700;">Как устроен курс</span><span style="font-size:25px; color:#6b6154; line-height:1.45;">Восемь лекций, семинары, зачёт</span></div></div>
+    </div>
+  </section>
+  <section data-label="Раздел 1" style="background:#6d1f2c; font-family:'Source Sans 3',sans-serif; color:#f3ecdf; display:flex; flex-direction:column; justify-content:center; padding:100px 140px;">
+    <span style="font-size:27px; font-weight:600; letter-spacing:0.25em; text-transform:uppercase; color:#d8a7ae;">Часть первая</span>
+    <h2 style="font-family:Lora,serif; font-size:120px; margin:40px 0 0; font-weight:600; line-height:1.08; max-width:1400px;">Что считать наукой</h2>
+    <span style="width:140px; height:6px; background:#d8a7ae; margin-top:52px;"></span>
+  </section>
+  <section data-label="Три карточки" style="background:#f3ecdf; font-family:'Source Sans 3',sans-serif; color:#241f1a; display:flex; flex-direction:column; padding:100px 140px;">
+    <h2 style="font-family:Lora,serif; font-size:80px; margin:0 0 64px; font-weight:600;">Три опоры метода</h2>
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:40px;">
+      <div style="background:#fff; border-radius:20px; padding:52px 44px; box-shadow:0 3px 14px rgba(36,31,26,0.07); display:flex; flex-direction:column; gap:26px;">
+        <span style="width:88px; height:88px; border-radius:50%; background:#f0e0d4; display:flex; align-items:center; justify-content:center;"><svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#6d1f2c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></span>
+        <h3 style="font-family:Lora,serif; font-size:36px; margin:0; font-weight:600;">Наблюдение</h3>
+        <p style="font-size:26px; margin:0; color:#6b6154; line-height:1.55;">Факт первичен: теория обязана объяснять то, что видно в телескоп и микроскоп</p>
+      </div>
+      <div style="background:#fff; border-radius:20px; padding:52px 44px; box-shadow:0 3px 14px rgba(36,31,26,0.07); display:flex; flex-direction:column; gap:26px;">
+        <span style="width:88px; height:88px; border-radius:50%; background:#f0e0d4; display:flex; align-items:center; justify-content:center;"><svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#6d1f2c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2v7.31"/><path d="M14 9.3V2"/><path d="M8.5 2h7"/><path d="M14 9.3a6.5 6.5 0 1 1-4 0"/><path d="M5.52 16h12.96"/></svg></span>
+        <h3 style="font-family:Lora,serif; font-size:36px; margin:0; font-weight:600;">Эксперимент</h3>
+        <p style="font-size:26px; margin:0; color:#6b6154; line-height:1.55;">Условия воспроизводимы: любой может повторить опыт и получить тот же результат</p>
+      </div>
+      <div style="background:#fff; border-radius:20px; padding:52px 44px; box-shadow:0 3px 14px rgba(36,31,26,0.07); display:flex; flex-direction:column; gap:26px;">
+        <span style="width:88px; height:88px; border-radius:50%; background:#f0e0d4; display:flex; align-items:center; justify-content:center;"><svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#6d1f2c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 17 2 2 4-4"/><path d="m3 7 2 2 4-4"/><path d="M13 6h8"/><path d="M13 12h8"/><path d="M13 18h8"/></svg></span>
+        <h3 style="font-family:Lora,serif; font-size:36px; margin:0; font-weight:600;">Фальсифицируемость</h3>
+        <p style="font-size:26px; margin:0; color:#6b6154; line-height:1.55;">У теории есть условия, при которых она была бы неверна, — иначе это не наука</p>
+      </div>
+    </div>
+  </section>
+  <section data-label="Большая цифра" style="background:#f3ecdf; font-family:'Source Sans 3',sans-serif; color:#241f1a; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:100px 140px;">
+    <span style="font-family:Lora,serif; font-size:280px; line-height:1; color:#6d1f2c; font-weight:600;">1543</span>
+    <span style="width:120px; height:4px; background:#6d1f2c; margin:48px 0;"></span>
+    <p style="font-size:36px; margin:0; max-width:1200px; color:#6b6154; line-height:1.5;">год выхода «О вращении небесных сфер» Коперника — точка отсчёта научной революции</p>
+  </section>
+  <section data-label="Таймлайн" style="background:#f3ecdf; font-family:'Source Sans 3',sans-serif; color:#241f1a; display:flex; flex-direction:column; padding:100px 140px;">
+    <h2 style="font-family:Lora,serif; font-size:80px; margin:0 0 76px; font-weight:600;">Четыре революции</h2>
+    <div style="display:grid; grid-template-columns:100px 1fr; row-gap:0;">
+      <div style="display:flex; flex-direction:column; align-items:center;"><span style="width:60px; height:60px; border-radius:50%; background:#6d1f2c; color:#f3ecdf; display:flex; align-items:center; justify-content:center;"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.9 4.9 1.4 1.4"/><path d="m17.7 17.7 1.4 1.4"/><path d="M2 12h2"/><path d="M20 12h2"/></svg></span><span style="width:2px; flex:1; background:#c9b8a0;"></span></div>
+      <div style="padding:6px 0 44px 44px;"><h3 style="font-size:33px; margin:0 0 8px; font-weight:700;">1543 · Гелиоцентризм</h3><p style="font-size:26px; margin:0; color:#6b6154; line-height:1.5;">Земля перестаёт быть центром — меняется само место человека в мире</p></div>
+      <div style="display:flex; flex-direction:column; align-items:center;"><span style="width:60px; height:60px; border-radius:50%; background:#6d1f2c; color:#f3ecdf; display:flex; align-items:center; justify-content:center;"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3v18"/><path d="m5 10 7-7 7 7"/></svg></span><span style="width:2px; flex:1; background:#c9b8a0;"></span></div>
+      <div style="padding:6px 0 44px 44px;"><h3 style="font-size:33px; margin:0 0 8px; font-weight:700;">1687 · Механика Ньютона</h3><p style="font-size:26px; margin:0; color:#6b6154; line-height:1.5;">Одни законы для яблока и Луны: природа становится вычислимой</p></div>
+      <div style="display:flex; flex-direction:column; align-items:center;"><span style="width:60px; height:60px; border-radius:50%; background:#6d1f2c; color:#f3ecdf; display:flex; align-items:center; justify-content:center;"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20c4-1 6-3 7-6 1 2 3 3 5 3 3 0 4-2 4-5 0-4-3-8-8-8-4 0-8 3-8 8 0 3 0 6 0 8Z"/></svg></span><span style="width:2px; flex:1; background:#c9b8a0;"></span></div>
+      <div style="padding:6px 0 44px 44px;"><h3 style="font-size:33px; margin:0 0 8px; font-weight:700;">1859 · Эволюция</h3><p style="font-size:26px; margin:0; color:#6b6154; line-height:1.5;">Дарвин объясняет разнообразие жизни без чертежа и чертёжника</p></div>
+      <div style="display:flex; flex-direction:column; align-items:center;"><span style="width:60px; height:60px; border-radius:50%; background:#6d1f2c; color:#f3ecdf; display:flex; align-items:center; justify-content:center;"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="2.5"/><ellipse cx="12" cy="12" rx="9" ry="4"/><ellipse cx="12" cy="12" rx="9" ry="4" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="9" ry="4" transform="rotate(120 12 12)"/></svg></span></div>
+      <div style="padding:6px 0 0 44px;"><h3 style="font-size:33px; margin:0 0 8px; font-weight:700;">1900–1927 · Кванты</h3><p style="font-size:26px; margin:0; color:#6b6154; line-height:1.5;">Планк, Эйнштейн и Бор: на малых масштабах мир играет по другим правилам</p></div>
+    </div>
+  </section>
+  <section data-label="Таблица" style="background:#f3ecdf; font-family:'Source Sans 3',sans-serif; color:#241f1a; display:flex; flex-direction:column; padding:100px 140px;">
+    <h2 style="font-family:Lora,serif; font-size:80px; margin:0 0 60px; font-weight:600;">Структура курса</h2>
+    <div style="display:grid; grid-template-columns:0.6fr 2fr 1fr; font-size:28px; background:#fff; border-radius:20px; overflow:hidden; box-shadow:0 3px 14px rgba(36,31,26,0.07);">
+      <div style="padding:28px 44px; background:#6d1f2c; color:#f3ecdf; font-weight:700;">№</div><div style="padding:28px 24px; background:#6d1f2c; color:#f3ecdf; font-weight:700;">Тема лекции</div><div style="padding:28px 24px; background:#6d1f2c; color:#f3ecdf; font-weight:700;">Дата</div>
+      <div style="padding:26px 44px; border-bottom:1px solid #eee4d4;">2</div><div style="padding:26px 24px; border-bottom:1px solid #eee4d4;">Античность и исламский золотой век</div><div style="padding:26px 24px; border-bottom:1px solid #eee4d4;">17 сентября</div>
+      <div style="padding:26px 44px; border-bottom:1px solid #eee4d4;">3</div><div style="padding:26px 24px; border-bottom:1px solid #eee4d4;">Научная революция XVII века</div><div style="padding:26px 24px; border-bottom:1px solid #eee4d4;">24 сентября</div>
+      <div style="padding:26px 44px; border-bottom:1px solid #eee4d4;">4</div><div style="padding:26px 24px; border-bottom:1px solid #eee4d4;">Век пара и электричества</div><div style="padding:26px 24px; border-bottom:1px solid #eee4d4;">1 октября</div>
+      <div style="padding:26px 44px;">5–8</div><div style="padding:26px 24px;">XX век: кванты, ДНК, компьютеры, космос</div><div style="padding:26px 24px;">октябрь</div>
+    </div>
+  </section>
+  <section data-label="Цитата" style="background:#241f1a; font-family:'Source Sans 3',sans-serif; color:#f3ecdf; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:100px 180px;">
+    <span style="font-family:Lora,serif; font-size:170px; line-height:0.5; color:#6d1f2c;">“</span>
+    <p style="font-family:Lora,serif; font-style:italic; font-size:64px; line-height:1.35; margin:56px 0 0; max-width:1500px; font-weight:400;">Наука — это способ не обманывать себя. А себя обмануть проще всего.</p>
+    <p style="font-size:27px; margin:60px 0 0; letter-spacing:0.2em; text-transform:uppercase; color:#a89b88;">По мотивам Ричарда Фейнмана</p>
+  </section>
+  <section data-label="Две колонки" style="background:#f3ecdf; font-family:'Source Sans 3',sans-serif; color:#241f1a; display:grid; grid-template-columns:1fr 1fr; gap:90px; align-items:center; padding:100px 140px;">
+    <div style="display:flex; flex-direction:column; gap:34px;">
+      <h2 style="font-family:Lora,serif; font-size:76px; margin:0; font-weight:600; line-height:1.1;">Наука как институт</h2>
+      <p style="font-size:29px; margin:0; color:#6b6154; line-height:1.65;">Открытие не существует, пока не опубликовано и не проверено другими. Журналы, рецензии и репутация — такой же инструмент науки, как телескоп.</p>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:24px;">
+      <div style="background:#fff; border-radius:16px; padding:32px 40px; box-shadow:0 3px 14px rgba(36,31,26,0.07); display:flex; gap:24px; align-items:center;"><span style="font-family:Lora,serif; font-size:34px; color:#6d1f2c;">I</span><span style="font-size:28px; font-weight:600;">1088 — первый университет, Болонья</span></div>
+      <div style="background:#fff; border-radius:16px; padding:32px 40px; box-shadow:0 3px 14px rgba(36,31,26,0.07); display:flex; gap:24px; align-items:center;"><span style="font-family:Lora,serif; font-size:34px; color:#6d1f2c;">II</span><span style="font-size:28px; font-weight:600;">1665 — первый научный журнал</span></div>
+      <div style="background:#fff; border-radius:16px; padding:32px 40px; box-shadow:0 3px 14px rgba(36,31,26,0.07); display:flex; gap:24px; align-items:center;"><span style="font-family:Lora,serif; font-size:34px; color:#6d1f2c;">III</span><span style="font-size:28px; font-weight:600;">1901 — первая Нобелевская премия</span></div>
+    </div>
+  </section>
+  <section data-label="Задел" style="background:#f3ecdf; font-family:'Source Sans 3',sans-serif; color:#241f1a; display:flex; flex-direction:column; padding:90px 140px;">
+    <h2 style="font-family:Lora,serif; font-size:76px; margin:0 0 56px; font-weight:600;">Что уже готово к курсу</h2>
+    <div style="background:#fff; border-radius:20px; padding:12px 56px; box-shadow:0 3px 14px rgba(36,31,26,0.07); display:flex; flex-direction:column;">
+      <div style="display:grid; grid-template-columns:110px 1fr 64px; gap:44px; align-items:center; padding:36px 0; border-bottom:1px solid #eee4d4;"><span style="width:84px; height:84px; border-radius:14px; background:#6d1f2c; color:#f3ecdf; display:flex; align-items:center; justify-content:center; font-family:Lora,serif; font-size:42px; font-weight:600;">1</span><div><h3 style="font-size:33px; margin:0 0 8px; font-weight:700;">Программа восьми лекций</h3><p style="font-size:26px; margin:0; color:#6b6154; line-height:1.5;">Утверждена кафедрой, прочитана дважды на вечернем отделении</p></div><svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="#6d1f2c" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m7 5 7 7-7 7"/><path d="m14 5 7 7-7 7"/></svg></div>
+      <div style="display:grid; grid-template-columns:110px 1fr 64px; gap:44px; align-items:center; padding:36px 0; border-bottom:1px solid #eee4d4;"><span style="width:84px; height:84px; border-radius:14px; background:#6d1f2c; color:#f3ecdf; display:flex; align-items:center; justify-content:center; font-family:Lora,serif; font-size:42px; font-weight:600;">2</span><div><h3 style="font-size:33px; margin:0 0 8px; font-weight:700;">Хрестоматия первоисточников</h3><p style="font-size:26px; margin:0; color:#6b6154; line-height:1.5;">40 фрагментов от Аристотеля до Бора в новых переводах</p></div><svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="#6d1f2c" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m7 5 7 7-7 7"/><path d="m14 5 7 7-7 7"/></svg></div>
+      <div style="display:grid; grid-template-columns:110px 1fr 64px; gap:44px; align-items:center; padding:36px 0;"><span style="width:84px; height:84px; border-radius:14px; background:#a86a37; color:#f3ecdf; display:flex; align-items:center; justify-content:center; font-family:Lora,serif; font-size:42px; font-weight:600;">3</span><div><h3 style="font-size:33px; margin:0 0 8px; font-weight:700;">Видеозаписи и конспекты</h3><p style="font-size:26px; margin:0; color:#6b6154; line-height:1.5;">Каждая лекция публикуется на странице курса в течение суток</p></div><svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="#a86a37" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m7 5 7 7-7 7"/><path d="m14 5 7 7-7 7"/></svg></div>
+    </div>
+  </section>
+  <section data-label="Сравнение форматов" style="background:#f3ecdf; font-family:'Source Sans 3',sans-serif; color:#241f1a; display:flex; flex-direction:column; padding:90px 140px;">
+    <h2 style="font-family:Lora,serif; font-size:76px; margin:0 0 56px; font-weight:600;">Лекторий против самообучения</h2>
+    <div style="display:grid; grid-template-columns:1.6fr 1fr 1fr 1fr; font-size:27px; background:#fff; border-radius:20px; overflow:hidden; box-shadow:0 3px 14px rgba(36,31,26,0.07);">
+      <div style="padding:28px 44px; background:#6d1f2c; color:#f3ecdf; font-weight:700;">Критерий</div><div style="padding:28px 24px; background:#6d1f2c; color:#f3ecdf; font-weight:700;">Лекторий</div><div style="padding:28px 24px; background:#6d1f2c; color:#f3ecdf; font-weight:700;">Учебник</div><div style="padding:28px 24px; background:#6d1f2c; color:#f3ecdf; font-weight:700;">Видеоролики</div>
+      <div style="padding:26px 44px; border-bottom:1px solid #eee4d4; color:#6b6154;">Живые вопросы и спор</div><div style="padding:26px 24px; border-bottom:1px solid #eee4d4; color:#6d1f2c; font-weight:700;">✓</div><div style="padding:26px 24px; border-bottom:1px solid #eee4d4; color:#b8ab99;">—</div><div style="padding:26px 24px; border-bottom:1px solid #eee4d4; color:#b8ab99;">—</div>
+      <div style="padding:26px 44px; border-bottom:1px solid #eee4d4; color:#6b6154;">Работа с первоисточниками</div><div style="padding:26px 24px; border-bottom:1px solid #eee4d4; color:#6d1f2c; font-weight:700;">✓</div><div style="padding:26px 24px; border-bottom:1px solid #eee4d4;">частично</div><div style="padding:26px 24px; border-bottom:1px solid #eee4d4; color:#b8ab99;">—</div>
+      <div style="padding:26px 44px; color:#6b6154;">Системная картина эпох</div><div style="padding:26px 24px; color:#6d1f2c; font-weight:700;">✓</div><div style="padding:26px 24px;">✓</div><div style="padding:26px 24px; color:#6b6154;">фрагментами</div>
+    </div>
+  </section>
+  <section data-label="Показатели" style="background:#f3ecdf; font-family:'Source Sans 3',sans-serif; color:#241f1a; display:flex; flex-direction:column; padding:100px 140px;">
+    <h2 style="font-family:Lora,serif; font-size:80px; margin:0 0 80px; font-weight:600;">Курс в цифрах</h2>
+    <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:52px;">
+      <div style="border-top:3px solid #6d1f2c; padding-top:32px; display:flex; flex-direction:column; gap:16px;"><span style="font-family:Lora,serif; font-size:92px; color:#6d1f2c; font-weight:600;">8</span><span style="font-size:26px; color:#6b6154; line-height:1.45;">лекций по 90 минут</span></div>
+      <div style="border-top:3px solid #c9b8a0; padding-top:32px; display:flex; flex-direction:column; gap:16px;"><span style="font-family:Lora,serif; font-size:92px; font-weight:600;">4</span><span style="font-size:26px; color:#6b6154; line-height:1.45;">семинара с разбором первоисточников</span></div>
+      <div style="border-top:3px solid #c9b8a0; padding-top:32px; display:flex; flex-direction:column; gap:16px;"><span style="font-family:Lora,serif; font-size:92px; font-weight:600;">0</span><span style="font-size:26px; color:#6b6154; line-height:1.45;">формул, которые нужно запоминать</span></div>
+      <div style="border-top:3px solid #6d1f2c; padding-top:32px; display:flex; flex-direction:column; gap:16px;"><span style="font-family:Lora,serif; font-size:92px; color:#6d1f2c; font-weight:600;">1</span><span style="font-size:26px; color:#6b6154; line-height:1.45;">эссе вместо экзамена</span></div>
+    </div>
+  </section>
+  <section data-label="Финал" style="background:#f3ecdf; font-family:'Source Sans 3',sans-serif; color:#241f1a; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:100px 140px;">
+    <div style="position:absolute; bottom:0; left:0; right:0; height:16px; background:#6d1f2c;"></div>
+    <span style="font-size:26px; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:#6d1f2c;">Следующая лекция — 17 сентября</span>
+    <h2 style="font-family:Lora,serif; font-size:110px; margin:44px 0 0; font-weight:600; line-height:1.1; max-width:1500px;">Вопросы — лучшая часть лекции</h2>
+    <p style="font-size:30px; margin:48px 0 0; color:#6b6154;">Список литературы и записи — на странице курса</p>
+  </section>
+</x-import>
+</x-dc>
+</body>
+</html>

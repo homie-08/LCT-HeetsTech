@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@600;700&family=Nunito:wght@500;700;900&display=swap" rel="stylesheet">
+  <style>body{margin:0;background:#f3edfa} a{color:#8b5fbf} a:hover{color:#6a4795}</style>
+</helmet>
+<x-import component-from-global-scope="deck-stage" from="./deck-stage.js" width="1920" height="1080" hint-size="100%,100%">
+  <section data-label="Обложка" style="background:#fdf2f6; font-family:Nunito,sans-serif; color:#3d3352; display:flex; flex-direction:column; justify-content:center; padding:100px 120px; overflow:hidden;">
+    <div style="position:absolute; right:-100px; top:80px; width:520px; height:520px; border-radius:46% 54% 60% 40% / 50% 44% 56% 50%; background:#cdb4f0;"></div>
+    <div style="position:absolute; right:300px; bottom:-120px; width:340px; height:340px; border-radius:56% 44% 40% 60% / 44% 60% 40% 56%; background:#ffd6a5;"></div>
+    <div style="position:absolute; right:120px; bottom:180px; width:160px; height:160px; border-radius:50%; background:#a8e6cf;"></div>
+    <span style="background:#fff; border-radius:999px; padding:16px 36px; font-size:26px; font-weight:900; color:#8b5fbf; width:max-content; box-shadow:0 6px 20px rgba(139,95,191,0.18);">Приложение «Растишка»</span>
+    <h1 style="font-family:'Comfortaa',sans-serif; font-size:130px; margin:44px 0 0; line-height:1.02; font-weight:800; max-width:1200px;">Учимся играя, каждый день</h1>
+    <p style="font-size:34px; margin:40px 0 0; max-width:850px; color:#7a6f93; line-height:1.5; font-weight:700;">Развивающие занятия для детей 3–7 лет: 10 минут в день без экранной усталости</p>
+  </section>
+  <section data-label="Содержание" style="background:#fdf2f6; font-family:Nunito,sans-serif; color:#3d3352; display:flex; flex-direction:column; padding:100px 120px;">
+    <h2 style="font-family:'Comfortaa',sans-serif; font-size:84px; margin:0 0 64px; font-weight:800;">Что расскажем</h2>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:36px;">
+      <div style="display:flex; align-items:center; gap:30px; background:#fff; border-radius:32px; padding:38px 44px; box-shadow:0 8px 24px rgba(139,95,191,0.1);"><span style="display:flex; width:76px; height:76px; border-radius:24px; background:#cdb4f0; color:#fff; align-items:center; justify-content:center; font-family:'Comfortaa',sans-serif; font-size:36px; font-weight:800;">1</span><span style="font-size:31px; font-weight:800;">Почему дети бросают обучалки</span></div>
+      <div style="display:flex; align-items:center; gap:30px; background:#fff; border-radius:32px; padding:38px 44px; box-shadow:0 8px 24px rgba(139,95,191,0.1);"><span style="display:flex; width:76px; height:76px; border-radius:24px; background:#ffd6a5; color:#fff; align-items:center; justify-content:center; font-family:'Comfortaa',sans-serif; font-size:36px; font-weight:800;">2</span><span style="font-size:31px; font-weight:800;">Наш метод коротких игр</span></div>
+      <div style="display:flex; align-items:center; gap:30px; background:#fff; border-radius:32px; padding:38px 44px; box-shadow:0 8px 24px rgba(139,95,191,0.1);"><span style="display:flex; width:76px; height:76px; border-radius:24px; background:#a8e6cf; color:#fff; align-items:center; justify-content:center; font-family:'Comfortaa',sans-serif; font-size:36px; font-weight:800;">3</span><span style="font-size:31px; font-weight:800;">Результаты первого года</span></div>
+      <div style="display:flex; align-items:center; gap:30px; background:#fff; border-radius:32px; padding:38px 44px; box-shadow:0 8px 24px rgba(139,95,191,0.1);"><span style="display:flex; width:76px; height:76px; border-radius:24px; background:#f8b4c8; color:#fff; align-items:center; justify-content:center; font-family:'Comfortaa',sans-serif; font-size:36px; font-weight:800;">4</span><span style="font-size:31px; font-weight:800;">Планы и подписка</span></div>
+    </div>
+  </section>
+  <section data-label="Раздел 1" style="background:#cdb4f0; font-family:Nunito,sans-serif; color:#3d3352; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:100px 120px; overflow:hidden;">
+    <div style="position:absolute; left:-90px; bottom:-90px; width:360px; height:360px; border-radius:50%; background:#b99ce6;"></div>
+    <div style="position:absolute; right:-70px; top:-70px; width:280px; height:280px; border-radius:50%; background:#dcc9f7;"></div>
+    <span style="background:#fff; border-radius:999px; padding:14px 34px; font-size:26px; font-weight:900; color:#8b5fbf;">Раздел 1</span>
+    <h2 style="font-family:'Comfortaa',sans-serif; font-size:120px; margin:44px 0 0; font-weight:800; line-height:1.05; max-width:1400px;">Почему дети бросают обучалки</h2>
+  </section>
+  <section data-label="Три карточки" style="background:#fdf2f6; font-family:Nunito,sans-serif; color:#3d3352; display:flex; flex-direction:column; padding:100px 120px;">
+    <h2 style="font-family:'Comfortaa',sans-serif; font-size:84px; margin:0 0 64px; font-weight:800;">Наш метод — три правила</h2>
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:40px;">
+      <div style="background:#fff; border-radius:40px; padding:52px 44px; box-shadow:0 8px 24px rgba(139,95,191,0.1); display:flex; flex-direction:column; gap:26px;">
+        <span style="display:flex; width:92px; height:92px; border-radius:50%; background:#f3e8ff; align-items:center; justify-content:center;"><svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="#8b5fbf" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span>
+        <h3 style="font-family:'Comfortaa',sans-serif; font-size:38px; margin:0; font-weight:800;">10 минут</h3>
+        <p style="font-size:27px; margin:0; color:#7a6f93; line-height:1.5; font-weight:600;">Занятие короче мультика — заканчиваем до усталости</p>
+      </div>
+      <div style="background:#fff; border-radius:40px; padding:52px 44px; box-shadow:0 8px 24px rgba(139,95,191,0.1); display:flex; flex-direction:column; gap:26px;">
+        <span style="display:flex; width:92px; height:92px; border-radius:50%; background:#fff0dd; align-items:center; justify-content:center;"><svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="#e8a04c" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12l4 6-10 13L2 9Z"/><path d="M11 3 8 9l4 13 4-13-3-6"/><path d="M2 9h20"/></svg></span>
+        <h3 style="font-family:'Comfortaa',sans-serif; font-size:38px; margin:0; font-weight:800;">Награда — игра</h3>
+        <p style="font-size:27px; margin:0; color:#7a6f93; line-height:1.5; font-weight:600;">Не звёздочки за счёт, а новая игра за прогресс</p>
+      </div>
+      <div style="background:#fff; border-radius:40px; padding:52px 44px; box-shadow:0 8px 24px rgba(139,95,191,0.1); display:flex; flex-direction:column; gap:26px;">
+        <span style="display:flex; width:92px; height:92px; border-radius:50%; background:#e2f7ee; align-items:center; justify-content:center;"><svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="#4cb98a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+        <h3 style="font-family:'Comfortaa',sans-serif; font-size:38px; margin:0; font-weight:800;">Вместе с семьёй</h3>
+        <p style="font-size:27px; margin:0; color:#7a6f93; line-height:1.5; font-weight:600;">Половина заданий делается вдвоём со взрослым</p>
+      </div>
+    </div>
+  </section>
+  <section data-label="Большая цифра" style="background:#a8e6cf; font-family:Nunito,sans-serif; color:#2b4a3d; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:100px 120px; overflow:hidden;">
+    <div style="position:absolute; left:-80px; top:-80px; width:300px; height:300px; border-radius:50%; background:#8fd9bb;"></div>
+    <span style="font-family:'Comfortaa',sans-serif; font-size:300px; line-height:1; font-weight:800;">87%</span>
+    <p style="font-size:38px; margin:40px 0 0; max-width:1100px; line-height:1.45; font-weight:800;">детей возвращаются в приложение на следующий день — сами, без напоминаний</p>
+  </section>
+  <section data-label="Таймлайн" style="background:#fdf2f6; font-family:Nunito,sans-serif; color:#3d3352; display:flex; flex-direction:column; padding:100px 120px;">
+    <h2 style="font-family:'Comfortaa',sans-serif; font-size:84px; margin:0 0 90px; font-weight:800;">Путь ребёнка в приложении</h2>
+    <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:40px;">
+      <div style="display:flex; flex-direction:column; gap:22px; align-items:flex-start;"><span style="display:flex; width:84px; height:84px; border-radius:50%; background:#cdb4f0; color:#fff; align-items:center; justify-content:center; font-family:'Comfortaa',sans-serif; font-size:38px; font-weight:800;">1</span><span style="font-family:'Comfortaa',sans-serif; font-size:34px; font-weight:800;">Знакомство</span><p style="font-size:26px; margin:0; color:#7a6f93; line-height:1.5; font-weight:600;">Герой-зверёк подбирается под характер</p></div>
+      <div style="display:flex; flex-direction:column; gap:22px; align-items:flex-start;"><span style="display:flex; width:84px; height:84px; border-radius:50%; background:#f8b4c8; color:#fff; align-items:center; justify-content:center; font-family:'Comfortaa',sans-serif; font-size:38px; font-weight:800;">2</span><span style="font-family:'Comfortaa',sans-serif; font-size:34px; font-weight:800;">Первая неделя</span><p style="font-size:26px; margin:0; color:#7a6f93; line-height:1.5; font-weight:600;">Буквы и счёт через мини-игры</p></div>
+      <div style="display:flex; flex-direction:column; gap:22px; align-items:flex-start;"><span style="display:flex; width:84px; height:84px; border-radius:50%; background:#ffd6a5; color:#fff; align-items:center; justify-content:center; font-family:'Comfortaa',sans-serif; font-size:38px; font-weight:800;">3</span><span style="font-family:'Comfortaa',sans-serif; font-size:34px; font-weight:800;">Первый месяц</span><p style="font-size:26px; margin:0; color:#7a6f93; line-height:1.5; font-weight:600;">Логика, эмоции и задания вдвоём</p></div>
+      <div style="display:flex; flex-direction:column; gap:22px; align-items:flex-start;"><span style="display:flex; width:84px; height:84px; border-radius:50%; background:#a8e6cf; color:#fff; align-items:center; justify-content:center; font-family:'Comfortaa',sans-serif; font-size:38px; font-weight:800;">4</span><span style="font-family:'Comfortaa',sans-serif; font-size:34px; font-weight:800;">Полгода</span><p style="font-size:26px; margin:0; color:#7a6f93; line-height:1.5; font-weight:600;">Читает по слогам и считает до ста</p></div>
+    </div>
+  </section>
+  <section data-label="Таблица" style="background:#fdf2f6; font-family:Nunito,sans-serif; color:#3d3352; display:flex; flex-direction:column; padding:100px 120px;">
+    <h2 style="font-family:'Comfortaa',sans-serif; font-size:84px; margin:0 0 60px; font-weight:800;">Программы по возрастам</h2>
+    <div style="display:grid; grid-template-columns:1fr 1.4fr 1fr 1fr; font-size:28px; background:#fff; border-radius:36px; overflow:hidden; box-shadow:0 8px 24px rgba(139,95,191,0.1); font-weight:600;">
+      <div style="padding:30px 44px; background:#cdb4f0; color:#fff; font-weight:900;">Возраст</div><div style="padding:30px 24px; background:#cdb4f0; color:#fff; font-weight:900;">Фокус</div><div style="padding:30px 24px; background:#cdb4f0; color:#fff; font-weight:900;">Игр</div><div style="padding:30px 24px; background:#cdb4f0; color:#fff; font-weight:900;">Минут / день</div>
+      <div style="padding:30px 44px; border-bottom:2px solid #f3e8ff; font-weight:900;">3–4</div><div style="padding:30px 24px; border-bottom:2px solid #f3e8ff;">Формы, цвета, речь</div><div style="padding:30px 24px; border-bottom:2px solid #f3e8ff;">40</div><div style="padding:30px 24px; border-bottom:2px solid #f3e8ff;">7</div>
+      <div style="padding:30px 44px; border-bottom:2px solid #f3e8ff; font-weight:900;">5–6</div><div style="padding:30px 24px; border-bottom:2px solid #f3e8ff;">Буквы, счёт, логика</div><div style="padding:30px 24px; border-bottom:2px solid #f3e8ff;">65</div><div style="padding:30px 24px; border-bottom:2px solid #f3e8ff;">10</div>
+      <div style="padding:30px 44px; font-weight:900;">7</div><div style="padding:30px 24px;">Чтение, подготовка к школе</div><div style="padding:30px 24px;">80</div><div style="padding:30px 24px;">12</div>
+    </div>
+  </section>
+  <section data-label="Цитата" style="background:#fdf2f6; font-family:Nunito,sans-serif; color:#3d3352; display:flex; flex-direction:column; justify-content:center; padding:100px 160px;">
+    <div style="background:#fff; border-radius:48px; padding:90px 100px; box-shadow:0 12px 36px rgba(139,95,191,0.14); position:relative;">
+      <span style="position:absolute; top:-40px; left:80px; display:flex; width:88px; height:88px; border-radius:50%; background:#f8b4c8; color:#fff; align-items:center; justify-content:center; font-family:'Comfortaa',sans-serif; font-size:60px;">“</span>
+      <p style="font-family:'Comfortaa',sans-serif; font-size:56px; line-height:1.35; margin:0; font-weight:700;">Дочка сама просит «позаниматься с лисёнком». Раньше уговаривали, теперь ограничиваем.</p>
+      <p style="font-size:28px; margin:44px 0 0; color:#7a6f93; font-weight:800;">Мама Алисы, 5 лет · подписка 8 месяцев</p>
+    </div>
+  </section>
+  <section data-label="Две колонки" style="background:#fdf2f6; font-family:Nunito,sans-serif; color:#3d3352; display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; padding:100px 120px;">
+    <div style="display:flex; flex-direction:column; gap:34px;">
+      <h2 style="font-family:'Comfortaa',sans-serif; font-size:76px; margin:0; font-weight:800; line-height:1.1;">Отчёт для родителей</h2>
+      <p style="font-size:29px; margin:0; color:#7a6f93; line-height:1.6; font-weight:600;">Раз в неделю приходит письмо: чему ребёнок научился, где буксует и во что поиграть вместе на выходных — офлайн, без экрана.</p>
+      <span style="background:#8b5fbf; color:#fff; border-radius:999px; padding:22px 48px; font-size:28px; font-weight:900; width:max-content;">Пример отчёта</span>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:24px;">
+      <div style="background:#fff; border-radius:28px; padding:34px 40px; box-shadow:0 8px 24px rgba(139,95,191,0.1); display:flex; justify-content:space-between; align-items:center;"><span style="font-size:28px; font-weight:800;">Буквы А–И</span><span style="background:#a8e6cf; color:#2b4a3d; border-radius:999px; padding:10px 26px; font-size:24px; font-weight:900;">Освоено</span></div>
+      <div style="background:#fff; border-radius:28px; padding:34px 40px; box-shadow:0 8px 24px rgba(139,95,191,0.1); display:flex; justify-content:space-between; align-items:center;"><span style="font-size:28px; font-weight:800;">Счёт до 20</span><span style="background:#ffd6a5; color:#7a4a12; border-radius:999px; padding:10px 26px; font-size:24px; font-weight:900;">В процессе</span></div>
+      <div style="background:#fff; border-radius:28px; padding:34px 40px; box-shadow:0 8px 24px rgba(139,95,191,0.1); display:flex; justify-content:space-between; align-items:center;"><span style="font-size:28px; font-weight:800;">Чтение слогов</span><span style="background:#f3e8ff; color:#8b5fbf; border-radius:999px; padding:10px 26px; font-size:24px; font-weight:900;">Впереди</span></div>
+    </div>
+  </section>
+  <section data-label="Раздел 4" style="background:#f8b4c8; font-family:Nunito,sans-serif; color:#5c2a3d; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:100px 120px; overflow:hidden;">
+    <div style="position:absolute; right:-90px; bottom:-90px; width:360px; height:360px; border-radius:50%; background:#f49cb6;"></div>
+    <span style="background:#fff; border-radius:999px; padding:14px 34px; font-size:26px; font-weight:900; color:#d96690;">Раздел 4</span>
+    <h2 style="font-family:'Comfortaa',sans-serif; font-size:130px; margin:44px 0 0; font-weight:800;">Планы и подписка</h2>
+  </section>
+  <section data-label="Показатели" style="background:#fdf2f6; font-family:Nunito,sans-serif; color:#3d3352; display:flex; flex-direction:column; padding:100px 120px;">
+    <h2 style="font-family:'Comfortaa',sans-serif; font-size:84px; margin:0 0 70px; font-weight:800;">Первый год в цифрах</h2>
+    <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:36px;">
+      <div style="background:#fff; border-radius:36px; padding:44px; box-shadow:0 8px 24px rgba(139,95,191,0.1); display:flex; flex-direction:column; gap:14px;"><span style="font-family:'Comfortaa',sans-serif; font-size:80px; font-weight:800; color:#8b5fbf;">120 000</span><span style="font-size:26px; color:#7a6f93; font-weight:700;">семей с подпиской</span></div>
+      <div style="background:#fff; border-radius:36px; padding:44px; box-shadow:0 8px 24px rgba(139,95,191,0.1); display:flex; flex-direction:column; gap:14px;"><span style="font-family:'Comfortaa',sans-serif; font-size:80px; font-weight:800; color:#d96690;">185</span><span style="font-size:26px; color:#7a6f93; font-weight:700;">игр в библиотеке</span></div>
+      <div style="background:#fff; border-radius:36px; padding:44px; box-shadow:0 8px 24px rgba(139,95,191,0.1); display:flex; flex-direction:column; gap:14px;"><span style="font-family:'Comfortaa',sans-serif; font-size:80px; font-weight:800; color:#4cb98a;">9,6</span><span style="font-size:26px; color:#7a6f93; font-weight:700;">минут — средняя сессия</span></div>
+      <div style="background:#fff; border-radius:36px; padding:44px; box-shadow:0 8px 24px rgba(139,95,191,0.1); display:flex; flex-direction:column; gap:14px;"><span style="font-family:'Comfortaa',sans-serif; font-size:80px; font-weight:800; color:#e8a04c;">4,8</span><span style="font-size:26px; color:#7a6f93; font-weight:700;">оценка в сторах</span></div>
+    </div>
+  </section>
+  <section data-label="Финал" style="background:#cdb4f0; font-family:Nunito,sans-serif; color:#3d3352; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:100px 120px; overflow:hidden;">
+    <div style="position:absolute; left:-100px; top:-100px; width:380px; height:380px; border-radius:50%; background:#dcc9f7;"></div>
+    <div style="position:absolute; right:-80px; bottom:-80px; width:320px; height:320px; border-radius:50%; background:#b99ce6;"></div>
+    <h2 style="font-family:'Comfortaa',sans-serif; font-size:130px; margin:0; font-weight:800; color:#fff;">Попробуйте бесплатно</h2>
+    <p style="font-size:32px; margin:40px 0 0; font-weight:800; color:#4b3a6b;">14 дней полного доступа — карта не нужна</p>
+    <span style="margin-top:60px; background:#fff; color:#8b5fbf; border-radius:999px; padding:26px 64px; font-size:32px; font-weight:900; box-shadow:0 10px 30px rgba(61,51,82,0.15);">rastishka.example</span>
+  </section>
+</x-import>
+</x-dc>
+</body>
+</html>

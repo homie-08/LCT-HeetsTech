@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet">
+  <style>body{margin:0;background:#e8e8e8} a{color:#e30613} a:hover{color:#a3040d}</style>
+
+<style>
+/* Анимация появления. Базовый стиль — конечный вид: если анимация не
+   проиграет (печать, prefers-reduced-motion, старый браузер), слайд всё равно
+   показан целиком. */
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes dc-rise { from { opacity: 0; transform: translateY(28px); } }
+  @keyframes dc-title { from { opacity: 0; transform: translateY(38px); filter: blur(9px); } }
+  @keyframes dc-kicker { from { opacity: 0; letter-spacing: .28em; } }
+  @keyframes dc-card { from { opacity: 0; transform: translateY(34px) scale(.965); } }
+  @keyframes dc-draw { from { opacity: 0; transform: scale(.86) rotate(-7deg); } }
+  @keyframes dc-wipe { from { opacity: 0; clip-path: inset(0 100% 0 0); } }
+
+  [data-deck-active] [data-anim] { animation-fill-mode: both; }
+  [data-deck-active] [data-anim="kicker"] {
+    animation: dc-kicker .55s cubic-bezier(.2,.8,.2,1);
+    animation-delay: calc(var(--i, 0) * 70ms);
+  }
+  [data-deck-active] [data-anim="title"] {
+    animation: dc-title .72s cubic-bezier(.2,.8,.2,1);
+    animation-delay: calc(80ms + var(--i, 0) * 70ms);
+  }
+  [data-deck-active] [data-anim="text"] {
+    animation: dc-rise .6s cubic-bezier(.2,.8,.2,1);
+    animation-delay: calc(180ms + var(--i, 0) * 70ms);
+  }
+  [data-deck-active] [data-anim="card"] {
+    animation: dc-card .66s cubic-bezier(.2,.8,.2,1);
+    animation-delay: calc(240ms + var(--i, 0) * 110ms);
+    transform-origin: center top;
+  }
+  [data-deck-active] [data-anim="figure"] {
+    animation: dc-draw .9s cubic-bezier(.2,.8,.2,1);
+    animation-delay: calc(200ms + var(--i, 0) * 90ms);
+    transform-origin: center;
+    transform-box: fill-box;
+  }
+  [data-deck-active] [data-anim="rule"] {
+    animation: dc-wipe .7s cubic-bezier(.2,.8,.2,1);
+    animation-delay: calc(160ms + var(--i, 0) * 80ms);
+  }
+}
+
+/* Печать не ждёт: браузер снимает страницу когда угодно и может поймать
+   элемент в начальной фазе — то есть невидимым. В PDF анимации не нужны
+   вовсе, поэтому здесь их просто нет. */
+@media print {
+  [data-anim] { animation: none !important; }
+}
+</style>
+</helmet>
+<x-import component-from-global-scope="deck-stage" from="./deck-stage.js" width="1920" height="1080" hint-size="100%,100%">
+<section data-label="Обложка" style="background:#fff; font-family:'Golos Text',sans-serif; color:#111; display:flex; flex-direction:column; justify-content:space-between; padding:80px 100px;">
+    <div style="--i:0; display:flex; justify-content:space-between; font-size:26px; font-weight:500; text-transform:uppercase; letter-spacing:0.08em;" data-anim="card"><span data-anim="card" style="--i:1;"></span><span data-anim="card" style="--i:2;"></span></div>
+    <h1 style="--i:1; font-size:148.1px; line-height:0.95; margin:0; font-weight:700; letter-spacing:-0.03em; text-transform:uppercase;" data-anim="title">Цифровой дизайнер презентаций<br><span style="--i:2; font-size:105.4px; color:#e30613;" data-anim="text">Сервис…</span></h1>
+    <div style="--i:3; display:flex; justify-content:space-between; align-items:flex-end;" data-anim="card"><span style="font-size:28px; max-width:640px; line-height:1.4;"></span><span style="width:120px; height:120px; background:#e30613;"></span></div>
+  </section>
+  
+<section data-label="Содержание" style="background:#fff; font-family:'Golos Text',sans-serif; color:#111; display:flex; flex-direction:column; padding:80px 100px;">
+    <h2 style="--i:1; font-size:64px; margin:0 0 70px; font-weight:700; text-transform:uppercase; letter-spacing:-0.02em;" data-anim="title">Содержание</h2>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:0; border-top:4px solid #111;">
+      <div style="--i:0; display:flex; gap:36px; padding:36px 0; border-bottom:2px solid #111;" data-anim="card"><span style="--i:1; font-size:32px; color:#e30613; font-weight:700;" data-anim="card">01</span><span style="--i:2; font-size:29.6px; font-weight:500;" data-anim="card">Цифровой дизайнер презентаций</span></div>
+      <div style="--i:3; display:flex; gap:36px; padding:36px 0 36px 48px; border-bottom:2px solid #111; border-left:2px solid #111;" data-anim="card"><span style="font-size:32px; color:#e30613; font-weight:700;">02</span><span style="font-size:34px; font-weight:500;"></span></div>
+      <div style="--i:4; display:flex; gap:36px; padding:36px 0; border-bottom:2px solid #111;" data-anim="card"><span style="font-size:32px; color:#e30613; font-weight:700;">03</span><span style="font-size:34px; font-weight:500;">Проблема</span></div>
+      <div style="--i:5; display:flex; gap:36px; padding:36px 0 36px 48px; border-bottom:2px solid #111; border-left:2px solid #111;" data-anim="card"><span style="font-size:32px; color:#e30613; font-weight:700;">04</span><span style="font-size:34px; font-weight:500;"></span></div>
+    </div>
+  </section>
+  
+<section data-label="Две колонки" style="background:#fff; font-family:'Golos Text',sans-serif; color:#111; display:grid; grid-template-columns:1fr 1fr; align-items:stretch;">
+    <div style="display:flex; flex-direction:column; justify-content:center; padding:80px 100px; gap:36px;">
+      <h2 style="--i:1; font-size:39.7px; margin:0; font-weight:700; text-transform:uppercase; line-height:1.05;" data-anim="title">Сервис собирает готовую презентацию в заданном шаблоне из…<br></h2>
+      <p style="--i:0; font-size:29px; margin:0; line-height:1.55; color:#444;" data-anim="kicker"></p>
+    </div>
+    <div style="background:#e30613; display:grid; grid-template-columns:repeat(3,1fr); grid-template-rows:repeat(3,1fr); gap:4px; padding:4px;">
+      <span style="--i:0; background:#fff;" data-anim="card"></span><span style="--i:1; background:#e30613;" data-anim="card"></span><span style="--i:2; background:#fff;" data-anim="card"></span>
+      <span style="--i:3; background:#e30613;" data-anim="card"></span><span style="--i:4; background:#111;" data-anim="card"></span><span style="--i:5; background:#e30613;" data-anim="card"></span>
+      <span style="--i:6; background:#fff;" data-anim="card"></span><span style="--i:7; background:#e30613;" data-anim="card"></span><span style="--i:8; background:#fff;" data-anim="card"></span>
+    </div>
+  </section>
+  
+<section data-label="Три колонки" style="background:#fff; font-family:'Golos Text',sans-serif; color:#111; display:flex; flex-direction:column; padding:80px 100px;">
+    <h2 style="--i:1; font-size:64px; margin:0 0 70px; font-weight:700; text-transform:uppercase;" data-anim="title">Проблема</h2>
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:60px; border-top:4px solid #111; padding-top:48px;">
+      <div style="--i:0; display:flex; flex-direction:column; gap:24px;" data-anim="card"><svg width="56" height="56" viewbox="0 0 24 24" fill="none" stroke="#e30613" stroke-width="2" stroke-linecap="square" data-anim="figure" style="--i:0;"><rect x="3" y="3" width="18" height="18"></rect><path d="M3 9h18" data-anim="card" style="--i:1;"></path><path d="M3 15h18" data-anim="card" style="--i:2;"></path><path d="M9 3v18" data-anim="card" style="--i:3;"></path><path d="M15 3v18" data-anim="card" style="--i:4;"></path></svg><h3 style="font-size:32.9px; margin:0; font-weight:700;">4 часа</h3><p style="font-size:27px; margin:0; line-height:1.5; color:#444;">средний срок сборки презентации на 12 слайдов</p></div>
+      <div style="--i:5; display:flex; flex-direction:column; gap:24px;" data-anim="card"><svg width="56" height="56" viewbox="0 0 24 24" fill="none" stroke="#e30613" stroke-width="2" stroke-linecap="square" data-anim="figure" style="--i:1;"><path d="M4 20h16"></path><path d="M6 16 12 4l6 12"></path><path d="M8.5 12h7"></path></svg><h3 style="font-size:24px; margin:0; font-weight:700;">60 % времени…</h3><p style="font-size:27px; margin:0; line-height:1.5; color:#444;">на подгонку текста под макет, а не на смысл</p></div>
+      <div style="--i:6; display:flex; flex-direction:column; gap:24px;" data-anim="card"><svg width="56" height="56" viewbox="0 0 24 24" fill="none" stroke="#e30613" stroke-width="2" stroke-linecap="square" data-anim="figure" style="--i:2;"><path d="M4 4h10v10H4z"></path><path d="M14 14h6v6h-6z"></path></svg><h3 style="font-size:29.4px; margin:0; font-weight:700;">3 из 10 слайдов</h3><p style="font-size:27px; margin:0; line-height:1.5; color:#444;">нарушают шаблон: чужой шрифт, цвет или отступ</p></div>
+    </div>
+  </section>
+  
+<section data-label="Большая цифра" style="background:#111; font-family:'Golos Text',sans-serif; color:#fff; display:flex; flex-direction:column; justify-content:center; padding:80px 100px;">
+    <span style="--i:1; font-size:226.8px; font-weight:700; letter-spacing:-0.04em; line-height:1; color:#e30613;" data-anim="title">Решение</span>
+    <p style="--i:2; font-size:24.8px; margin:40px 0 0; max-width:1100px; line-height:1.4;" data-anim="text">Стиль не выдумывается — он вынимается из файла шаблона. Палитра, пара шрифтов, шкала кеглей, сетка, фоны и декор берутся из мастеров и макетов, а раскладки распознаются по геометрии слотов.</p>
+  </section>
+  
+<section data-label="Таймлайн" style="background:#fff; font-family:'Golos Text',sans-serif; color:#111; display:flex; flex-direction:column; padding:80px 100px;">
+    <h2 style="--i:1; font-size:58.4px; margin:0 0 90px; font-weight:700; text-transform:uppercase;" data-anim="title">Как устроено</h2>
+    <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:48px;">
+      <div style="--i:0; display:flex; flex-direction:column; gap:20px; border-top:6px solid #e30613; padding-top:28px;" data-anim="card"><span style="font-size:44px; font-weight:700;" data-anim-count="">1928</span><p style="font-size:26px; margin:0; line-height:1.5; color:#444;"></p></div>
+      <div style="--i:1; display:flex; flex-direction:column; gap:20px; border-top:6px solid #111; padding-top:28px;" data-anim="card"><span style="font-size:44px; font-weight:700;" data-anim-count="">1957</span><p style="font-size:26px; margin:0; line-height:1.5; color:#444;"></p></div>
+      <div style="--i:2; display:flex; flex-direction:column; gap:20px; border-top:6px solid #111; padding-top:28px;" data-anim="card"><span style="font-size:44px; font-weight:700;" data-anim-count="">1961</span><p style="font-size:26px; margin:0; line-height:1.5; color:#444;"></p></div>
+      <div style="--i:3; display:flex; flex-direction:column; gap:20px; border-top:6px solid #111; padding-top:28px;" data-anim="card"><span style="font-size:44px; font-weight:700;" data-anim-count="">1984</span><p style="font-size:26px; margin:0; line-height:1.5; color:#444;"></p></div>
+    </div>
+  </section>
+  
+<section data-label="Показатели" style="background:#fff; font-family:'Golos Text',sans-serif; color:#111; display:flex; flex-direction:column; padding:80px 100px;">
+    <h2 style="--i:2; font-size:64px; margin:0 0 80px; font-weight:700; text-transform:uppercase;" data-anim="text"></h2>
+    <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:60px; border-top:4px solid #111; padding-top:56px;">
+      <div style="--i:0; display:flex; flex-direction:column; gap:16px;" data-anim="card"><span style="--i:1; font-size:60.7px; font-weight:700; letter-spacing:-0.03em; color:#e30613;" data-anim="card" data-anim-count="">100 %</span><span style="--i:2; font-size:26px; color:#444; line-height:1.4;" data-anim="card">доля шрифтов, взятых из шаблона</span></div>
+      <div style="--i:3; display:flex; flex-direction:column; gap:16px;" data-anim="card"><span style="font-size:74.4px; font-weight:700; letter-spacing:-0.03em;" data-anim-count="">100 %</span><span style="font-size:24px; color:#444; line-height:1.4;">доля цветов, взятых из палитры…</span></div>
+      <div style="--i:4; display:flex; flex-direction:column; gap:16px;" data-anim="card"><span style="font-size:59.5px; font-weight:700; letter-spacing:-0.03em;" data-anim-count="">92 %</span><span style="font-size:24px; color:#444; line-height:1.4;">доля исходного контента…</span></div>
+      </div>
+  </section>
+  
+<section data-label="Большая цифра" style="background:#111; font-family:'Golos Text',sans-serif; color:#fff; display:flex; flex-direction:column; justify-content:center; padding:80px 100px;">
+    <span style="--i:1; font-size:186px; font-weight:700; letter-spacing:-0.04em; line-height:1; color:#e30613;" data-anim="title">Готовый…</span>
+    <p style="--i:2; font-size:24.8px; margin:40px 0 0; max-width:1100px; line-height:1.4;" data-anim="text">Готовый файл сравнивается с рендером пустого макета: всё, что появилось поверх фона, — это наш контент. Если он оказался вне слотов, значит текст вылез за границы, и это видно по пикселям, без разметки.</p>
+  </section>
+  
+<section data-label="Раздел 1" style="background:#e30613; font-family:'Golos Text',sans-serif; color:#fff; display:flex; flex-direction:column; justify-content:flex-end; padding:80px 100px;">
+    <span style="--i:0; font-size:32px; font-weight:700;" data-anim="kicker">01</span>
+    <h2 style="--i:1; font-size:127.6px; margin:20px 0 0; font-weight:700; letter-spacing:-0.03em; text-transform:uppercase; line-height:0.95;" data-anim="title">Результаты на разных шаблонах<br></h2>
+  </section>
+  
+<section data-label="Большая цифра" style="background:#111; font-family:'Golos Text',sans-serif; color:#fff; display:flex; flex-direction:column; justify-content:center; padding:80px 100px;">
+    <span style="--i:1; font-size:186px; font-weight:700; letter-spacing:-0.04em; line-height:1; color:#e30613;" data-anim="title">Чем…</span>
+    <p style="--i:2; font-size:24.8px; margin:40px 0 0; max-width:1100px; line-height:1.4;" data-anim="text">Ни одного шаблона нет в коде. У каждой роли в палитре хранится происхождение — из какого слота темы она взялась. Линтер проверяет, что в исходниках нет зашитых цветов и названий шрифтов.</p>
+  </section>
+  
+<section data-label="Цитата" style="background:#fff; font-family:'Golos Text',sans-serif; color:#111; display:flex; flex-direction:column; justify-content:center; padding:80px 140px;">
+    <span style="width:120px; height:12px; background:#e30613;"></span>
+    <p style="--i:0; font-size:76px; font-weight:500; line-height:1.2; margin:56px 0 0; letter-spacing:-0.02em; max-width:1500px;" data-anim="card">Python 3.11, FastAPI, pydantic</p>
+    <p style="--i:1; font-size:28px; margin:56px 0 0; color:#888; text-transform:uppercase; letter-spacing:0.08em;" data-anim="card">lxml поверх OOXML напрямую,</p>
+  </section>
+  
+<section data-label="Таблица" style="background:#fff; font-family:'Golos Text',sans-serif; color:#111; display:flex; flex-direction:column; padding:80px 100px;">
+    <h2 style="--i:1; font-size:64px; margin:0 0 60px; font-weight:700; text-transform:uppercase;" data-anim="title">Что дальше</h2>
+    <div style="display:grid; grid-template-columns:1.2fr 1fr 1fr; font-size:29px; border-top:4px solid #111;">
+      <div style="--i:0; font-size:24px; padding:28px 0; font-weight:700; border-bottom:2px solid #111;" data-anim="card">Подбор…</div><div style="--i:1; font-size:24px; padding:28px 0; font-weight:700; border-bottom:2px solid #111; color:#888;" data-anim="card">Перекомпоновк…</div><div style="--i:2; font-size:24px; padding:28px 0; font-weight:700; border-bottom:2px solid #111; color:#e30613;" data-anim="card">Дообучение…</div>
+      </div>
+  </section>
+  
+<section data-label="Раздел 2" style="background:#111; font-family:'Golos Text',sans-serif; color:#fff; display:flex; flex-direction:column; justify-content:flex-end; padding:80px 100px;">
+    <span style="--i:0; font-size:32px; font-weight:700; color:#e30613;" data-anim="kicker">04</span>
+    <h2 style="--i:1; font-size:150px; margin:20px 0 0; font-weight:700; letter-spacing:-0.03em; text-transform:uppercase; line-height:0.95;" data-anim="title">Контакты<br></h2>
+  </section>
+  
+</x-import>
+<script>
+/* Числа на показателях набегают от нуля. Значение в разметке — конечное:
+   без скрипта и при печати виден готовый результат. */
+(function () {
+  var motion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)');
+  if (motion && motion.matches) return;
+
+  function parse(text) {
+    /* Пробел-разделитель разрядов забираем только между цифрами: иначе из
+       «100 %» пропадёт пробел перед знаком процента. */
+    var match = String(text).match(
+      /^(\D*?)(\d+(?:[\s\u00a0]\d{3})*(?:[.,]\d+)?)(.*)$/s);
+    if (!match) return null;
+    var raw = match[2].replace(/[\s\u00a0]/g, '').replace(',', '.');
+    var value = parseFloat(raw);
+    if (!isFinite(value)) return null;
+    var decimals = (raw.split('.')[1] || '').length;
+    var grouped = /[\s\u00a0]/.test(match[2]);
+    return { prefix: match[1], value: value, suffix: match[3],
+             decimals: decimals, grouped: grouped };
+  }
+
+  function show(node, parsed, value) {
+    var text = value.toFixed(parsed.decimals);
+    if (parsed.grouped) text = text.replace(/\B(?=(\d{3})+(?!\d))/g, '\u00a0');
+    if (parsed.decimals) text = text.replace('.', ',');
+    node.textContent = parsed.prefix + text + parsed.suffix;
+  }
+
+  function run(node) {
+    if (node.dataset.dcCounted) return;
+    var parsed = parse(node.dataset.dcValue || node.textContent);
+    if (!parsed) return;
+    node.dataset.dcCounted = '1';
+    node.dataset.dcValue = parsed.prefix + parsed.value + parsed.suffix;
+    var start = null, duration = 900, delay = 260;
+    function step(now) {
+      if (start === null) start = now;
+      var passed = now - start - delay;
+      if (passed < 0) return requestAnimationFrame(step);
+      var progress = Math.min(1, passed / duration);
+      var eased = 1 - Math.pow(1 - progress, 3);
+      show(node, parsed, parsed.value * eased);
+      if (progress < 1) requestAnimationFrame(step);
+      else show(node, parsed, parsed.value);
+    }
+    requestAnimationFrame(step);
+  }
+
+  function sweep() {
+    var active = document.querySelectorAll('[data-deck-active] [data-anim-count]');
+    for (var i = 0; i < active.length; i++) run(active[i]);
+  }
+
+  var observer = new MutationObserver(sweep);
+  observer.observe(document.documentElement,
+                   { attributes: true, subtree: true, attributeFilter: ['data-deck-active'] });
+  document.addEventListener('DOMContentLoaded', sweep);
+  sweep();
+})();
+</script>
+</x-dc>
+</body>
+</html>

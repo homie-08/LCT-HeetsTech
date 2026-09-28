@@ -5,7 +5,7 @@
 ни одного своего цвета, шрифта или координаты здесь нет, текст кладётся в
 плейсхолдеры, оформление приходит из шаблона.
 
-    python scripts/build_pitch.py --out "data/out/pitch/Питч.pptx" --pdf
+    python scripts/build_pitch.py --pdf
 
 Места, которые команда заполняет сама, помечены в тексте квадратными
 скобками — их видно и в файле, и в списке `TODO` на выходе скрипта.
@@ -416,7 +416,7 @@ def to_pdf(source: pathlib.Path, target: pathlib.Path) -> None:
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--out", default="data/out/pitch/Питч.pptx")
+    parser.add_argument("--out", default="materials/pitch-heets-tech.pptx")
     parser.add_argument("--pdf", action="store_true", help="сохранить ещё и .pdf")
     parser.add_argument("--layouts", action="store_true",
                         help="показать макеты шаблона и их плейсхолдеры")

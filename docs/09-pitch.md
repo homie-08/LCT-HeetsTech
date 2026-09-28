@@ -2,7 +2,9 @@
 
 Презентация для защиты собрана на официальном шаблоне ЛЦТ 2026
 (`ресурсы/Презентация/ЛЦТ2026 Шаблон презентации.pptx`) и лежит в
-`data/out/pitch/`: `Питч.pptx` (12 МБ, шрифты вшиты) и `Питч.pdf` (1 МБ).
+`materials/`: [`pitch-heets-tech.pptx`](../materials/pitch-heets-tech.pptx)
+(12 МБ, шрифты вшиты) и [`pitch-heets-tech.pdf`](../materials/pitch-heets-tech.pdf)
+(1 МБ).
 
 Важно: она собрана **вручную**, скриптом [`scripts/build_pitch.py`](../scripts/build_pitch.py),
 а не нашим сервисом. Содержание презентации — авторское, и выдавать его за
@@ -11,7 +13,7 @@
 в плейсхолдеры, оформление приходит из шаблона.
 
 ```bash
-python scripts/build_pitch.py --out "data/out/pitch/Питч.pptx" --pdf
+python scripts/build_pitch.py --pdf
 ```
 
 PDF сохраняет PowerPoint через COM, он же вшивает в `.pptx` шрифты темы

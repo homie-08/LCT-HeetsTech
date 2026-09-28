@@ -9,6 +9,15 @@
 шаблона**, а не работать по зашитым сценариям. Поэтому пайплайн нигде не знает
 цветов, шрифтов и раскладок заранее — всё извлекается из загруженного файла.
 
+## Материалы заявки
+
+Одной страницей — [`SUBMISSION.md`](SUBMISSION.md): что чем закрывается.
+Коротко: документация — [`ARCHITECTURE.md`](ARCHITECTURE.md),
+[`MODELS.md`](MODELS.md), [`AUDIT.md`](AUDIT.md), [`docs/10-api.md`](docs/10-api.md);
+презентация — [`materials/pitch-heets-tech.pdf`](materials/pitch-heets-tech.pdf);
+демонстрация работы — [`materials/demo-6m37.mp4`](materials/demo-6m37.mp4);
+запуск стенда — [`run.cmd`](run.cmd) или [`run.sh`](run.sh), ниже в «Быстром старте».
+
 ## Статус
 
 🟢 Готово к защите: веб-интерфейс, API и CLI поверх одного ядра. Из шаблона и
@@ -20,7 +29,8 @@
 Документы по ТЗ: [`ARCHITECTURE.md`](ARCHITECTURE.md) · [`MODELS.md`](MODELS.md) ·
 [`AUDIT.md`](AUDIT.md) · [`docs/07-variants.md`](docs/07-variants.md) ·
 [`docs/08-video.md`](docs/08-video.md) · [`docs/09-pitch.md`](docs/09-pitch.md) ·
-промпты и конфиги агентов — [`backend/prompts/`](backend/prompts/README.md).
+[`docs/10-api.md`](docs/10-api.md) · промпты и конфиги агентов —
+[`backend/prompts/`](backend/prompts/README.md).
 
 - [x] Разбор задачи, критерии, риски — [`docs/01-task-analysis.md`](docs/01-task-analysis.md)
 - [x] Архитектура и форматы данных — [`docs/02-architecture.md`](docs/02-architecture.md)

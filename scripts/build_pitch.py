@@ -19,7 +19,15 @@ import re
 import sys
 
 from pptx import Presentation
-from pptx.util import Emu
+from pptx.dml.color import RGBColor
+from pptx.enum.text import MSO_ANCHOR
+from pptx.util import Emu, Pt
+
+# Акценты берём из темы шаблона (ppt/theme/theme1.xml), а не придумываем свои —
+# те же значения, что шаблон уже использует на слайдах-образцах для подписей
+# и цифр (accent2 — розовый, accent4 — лавандовый).
+ACCENT_PINK = "FFD6E3"
+ACCENT_LAVENDER = "8A83D1"
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 TEMPLATE = ROOT / "ресурсы" / "Презентация" / "ЛЦТ2026 Шаблон презентации.pptx"
@@ -70,6 +78,7 @@ DECK: list[dict] = [
             19: "Собранный файл проходит чек-лист заказчика; что исправимо — "
                 "пересобирается по выбору пользователя.",
         },
+        "style": {14: {"color": ACCENT_LAVENDER, "size": Pt(22), "bold": True}},
     },
     {
         "layout": "Стадии",
@@ -173,6 +182,7 @@ DECK: list[dict] = [
             19: "Промпты и конфиги агентов — отдельные версионированные файлы; "
                 "версия каждого попадает в отчёт сборки.",
         },
+        "style": {14: {"color": ACCENT_LAVENDER, "size": Pt(22), "bold": True}},
     },
     {
         "layout": "1_Статистика",
@@ -186,8 +196,8 @@ DECK: list[dict] = [
             24: "6 минут 37 секунд",
             25: "живой прогон от чужого шаблона до готовой презентации на ноутбуке "
                 "с локальной 4B-моделью, без монтажных склеек",
-            26: "665 автотестов",
-            27: "628 на бэкенде и 37 на интерфейсе, включая линтер, который "
+            26: "666 автотестов",
+            27: "629 на бэкенде и 37 на интерфейсе, включая линтер, который "
                 "запрещает цвета, шрифты и координаты в коде генерации",
         },
     },
@@ -207,6 +217,7 @@ DECK: list[dict] = [
             19: "Встраивание в корпоративный портал: HTTP API готов, интерфейс "
                 "подключается к нему как обычный клиент.",
         },
+        "style": {14: {"color": ACCENT_LAVENDER, "size": Pt(22), "bold": True}},
     },
     {
         "layout": "Сравнение",
@@ -225,6 +236,15 @@ DECK: list[dict] = [
                "одного цвета, шрифта и координаты — это проверяется тестом.\n"
                "Аудит встроен в конвейер, и пользователь сам выбирает, какие "
                "находки чинить.",
+        },
+        # Заголовки колонок в шаблоне — обычный белый текст без акцента, в
+        # отличие от таких же по смыслу подписей в «Проблема и решение»;
+        # тексты короче высоты блоков — оба выравниваем по центру.
+        "style": {
+            1: {"color": ACCENT_PINK},
+            2: {"anchor": "middle"},
+            3: {"color": ACCENT_PINK},
+            4: {"anchor": "middle"},
         },
     },
     {
@@ -259,6 +279,10 @@ DECK: list[dict] = [
                "файлом и открытый репозиторий.\n"
                "Демо: живой прогон 6:37 без монтажных склеек.",
         },
+        # Плейсхолдер макета — почти в весь слайд; пять строк оставляют его
+        # пустым на треть снизу, центрируем, чтобы заключительный слайд не
+        # выглядел недоделанным.
+        "style": {1: {"anchor": "middle"}},
     },
 ]
 
@@ -293,6 +317,29 @@ def fill(placeholder, text: str) -> None:
         paragraph.level = frame.paragraphs[0].level
 
 
+def emphasize(placeholder, *, color: str | None = None, size: Pt | None = None,
+              bold: bool | None = None, anchor: str | None = None) -> None:
+    """Точечная правка оформления плейсхолдера поверх стиля макета.
+
+    Часть плейсхолдеров шаблона — обычный текст без своего размера и цвета
+    (макет «Пункты» и заголовки в «Сравнение»), в отличие от карточек и
+    цифр в других макетах той же колоды. Дотягиваем именно эти места до
+    уровня остальных, беря цвет из темы шаблона, а не придумывая новый.
+    `anchor="middle"` — плейсхолдер выше своего текста и после сборки виден
+    пустым нижним полем; центрируем содержимое по высоте вместо этого.
+    """
+    if anchor == "middle":
+        placeholder.text_frame.vertical_anchor = MSO_ANCHOR.MIDDLE
+    for paragraph in placeholder.text_frame.paragraphs:
+        for run in paragraph.runs:
+            if color is not None:
+                run.font.color.rgb = RGBColor.from_string(color)
+            if size is not None:
+                run.font.size = size
+            if bold is not None:
+                run.font.bold = bold
+
+
 def build(template: pathlib.Path, out: pathlib.Path) -> list[str]:
     presentation = Presentation(str(template))
     drop_example_slides(presentation)
@@ -317,6 +364,12 @@ def build(template: pathlib.Path, out: pathlib.Path) -> list[str]:
                 raise SystemExit(f"слайд {number}: в макете нет плейсхолдера {idx}")
             fill(placeholder, text)
             todo.extend(f"слайд {number}: {mark}" for mark in re.findall(r"\[[^\]]+\]", text))
+
+        for idx, rules in spec.get("style", {}).items():
+            placeholder = by_idx.get(idx)
+            if placeholder is None:
+                raise SystemExit(f"слайд {number}: в макете нет плейсхолдера {idx}")
+            emphasize(placeholder, **rules)
 
         with_picture: set[int] = set()
         for idx, name in spec.get("pictures", {}).items():
